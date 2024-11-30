@@ -8,7 +8,7 @@ const AllGetInTouch = () => {
     useEffect(() => {
         const fetchgetintouch = async () => {
             try {
-                const response = await axios.get('https://api.sofia.digiindiasolutions.com/api/all-getintouch'); // Replace with your actual API endpoint
+                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/all-getintouch'); // Replace with your actual API endpoint
                 setGetintouch(response.data.data);
             } catch (error) {
                 console.error('Error fetching getintouch:', error);
@@ -22,7 +22,7 @@ const AllGetInTouch = () => {
     const handleStatusChange = async (id) => {
         try {
             // Update the status to "Complete" in the backend
-            await axios.put(`https://api.sofia.digiindiasolutions.com/api/update-getintouch-status/${id}`, { status: 'Complete' });
+            await axios.put(`https://api.sofia.assortsmachinetools.com/api/update-getintouch-status/${id}`, { status: 'Complete' });
             setGetintouch((prevgetintouch) =>
                 prevgetintouch.map((contact) =>
                     contact._id === id ? { ...contact, status: 'Complete' } : contact

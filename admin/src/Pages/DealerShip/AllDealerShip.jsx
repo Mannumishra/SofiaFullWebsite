@@ -8,7 +8,7 @@ const AllDealerShip = () => {
     useEffect(() => {
         const fetchDealerships = async () => {
             try {
-                const response = await axios.get('https://api.sofia.digiindiasolutions.com/api/all-dealership'); // Replace with your actual API endpoint
+                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/all-dealership'); // Replace with your actual API endpoint
                 setDealerships(response.data.data);
             } catch (error) {
                 console.error('Error fetching dealerships:', error);
@@ -22,7 +22,7 @@ const AllDealerShip = () => {
     const handleStatusChange = async (id) => {
         try {
             // Update the status to "Complete" in the backend
-            await axios.put(`https://api.sofia.digiindiasolutions.com/api/update-dealership-status/${id}`, { status: 'Complete' });
+            await axios.put(`https://api.sofia.assortsmachinetools.com/api/update-dealership-status/${id}`, { status: 'Complete' });
             setDealerships((prevDealerships) =>
                 prevDealerships.map((dealer) =>
                     dealer._id === id ? { ...dealer, status: 'Complete' } : dealer

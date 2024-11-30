@@ -20,7 +20,7 @@ const EditInstupment = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('https://api.sofia.digiindiasolutions.com/api/get-all-category');
+                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/get-all-category');
                 if (response.data.success) {
                     setCategories(response.data.data);
                 } else {
@@ -38,7 +38,7 @@ const EditInstupment = () => {
     useEffect(() => {
         const fetchInplant = async () => {
             try {
-                const response = await axios.get(`https://api.sofia.digiindiasolutions.com/api/single-instupment/${id}`);
+                const response = await axios.get(`https://api.sofia.assortsmachinetools.com/api/single-instupment/${id}`);
                 console.log(response)
                 if (response.data.success) {
                     const { categoryName, instupmentName } = response.data.data;
@@ -87,7 +87,7 @@ const EditInstupment = () => {
 
         setIsLoading(true);
         try {
-            const response = await axios.put(`https://api.sofia.digiindiasolutions.com/api/update-instupment/${id}`, data, {
+            const response = await axios.put(`https://api.sofia.assortsmachinetools.com/api/update-instupment/${id}`, data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

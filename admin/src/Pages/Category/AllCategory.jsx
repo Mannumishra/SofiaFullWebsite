@@ -13,7 +13,7 @@ const AllCategory = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('https://api.sofia.digiindiasolutions.com/api/get-all-category'); // Adjust the endpoint as necessary
+                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/get-all-category'); // Adjust the endpoint as necessary
                 setCategories(response.data.data); // Assuming the response contains the array of categories
             } catch (error) {
                 console.error("Error fetching categories:", error);
@@ -39,7 +39,7 @@ const AllCategory = () => {
 
         if (result.isConfirmed) {
             try {
-                await axios.delete(`https://api.sofia.digiindiasolutions.com/api/delete-category/${id}`); // Adjust the endpoint as necessary
+                await axios.delete(`https://api.sofia.assortsmachinetools.com/api/delete-category/${id}`); // Adjust the endpoint as necessary
                 setCategories(categories.filter(category => category._id !== id));
                 toast.success("Category deleted successfully.");
             } catch (error) {
@@ -100,7 +100,7 @@ const AllCategory = () => {
                                         <th scope="row">{index + 1}</th>
                                         <td>{category.categoryName}</td>
                                         <td>
-                                            <img src={`https://api.sofia.digiindiasolutions.com/${category.categoryImage}`} alt={category.categoryName} style={{ width: '50px', height: '50px' }} />
+                                            <img src={`https://api.sofia.assortsmachinetools.com/${category.categoryImage}`} alt={category.categoryName} style={{ width: '50px', height: '50px' }} />
                                         </td>
                                         <td>{category.categoryStatus === 'True' ? 'Yes' : 'No'}</td>
                                         <td>

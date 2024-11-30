@@ -8,7 +8,7 @@ const AllContactQuery = () => {
     useEffect(() => {
         const fetchContacts = async () => {
             try {
-                const response = await axios.get('https://api.sofia.digiindiasolutions.com/api/all-contact'); // Replace with your actual API endpoint
+                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/all-contact'); // Replace with your actual API endpoint
                 setContacts(response.data.data);
             } catch (error) {
                 console.error('Error fetching contacts:', error);
@@ -22,7 +22,7 @@ const AllContactQuery = () => {
     const handleStatusChange = async (id) => {
         try {
             // Update the status to "Complete" in the backend
-            await axios.put(`https://api.sofia.digiindiasolutions.com/api/update-contact-status/${id}`, { status: 'Complete' });
+            await axios.put(`https://api.sofia.assortsmachinetools.com/api/update-contact-status/${id}`, { status: 'Complete' });
             setContacts((prevContacts) =>
                 prevContacts.map((contact) =>
                     contact._id === id ? { ...contact, status: 'Complete' } : contact

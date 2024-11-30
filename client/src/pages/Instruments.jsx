@@ -9,7 +9,7 @@ function Instruments() {
 
     const getApiData = async () => {
         try {
-            const res = await axios.get("https://api.sofia.digiindiasolutions.com/api/all-instupment")
+            const res = await axios.get("https://api.sofia.assortsmachinetools.com/api/all-instupment")
             const filterData = res.data.data
             const filterIntrupment = filterData.filter((x) => x.categoryName.categoryName === categoryName)
             setData(filterIntrupment)
@@ -44,7 +44,7 @@ function Instruments() {
                                     <div className="col-md-3" key={index}>
                                         <div className="category-card">
                                             <Link to={`/instrument-details/${instrument.instupmentName}`}>
-                                                <img alt={instrument.instupmentName} className="img-fluid" src={`https://api.sofia.digiindiasolutions.com/${instrument.instupmentImage}`} width="250" height="230" />
+                                                <img alt={instrument.instupmentName} className="img-fluid" src={`https://api.sofia.assortsmachinetools.com/${instrument.instupmentImage}`} width="250" height="230" />
                                             </Link>
                                             <div className="category-title">
                                                 {instrument.instupmentName}

@@ -20,7 +20,7 @@ const EditTestimonial = () => {
         // Fetch existing testimonial data
         const fetchTestimonial = async () => {
             try {
-                const response = await axios.get(`https://api.sofia.digiindiasolutions.com/api/get-single-textimonial/${id}`);
+                const response = await axios.get(`https://api.sofia.assortsmachinetools.com/api/get-single-textimonial/${id}`);
                 const { name, position, details, activeStatus, image } = response.data;
                 setFormData({
                     name,
@@ -63,7 +63,7 @@ const EditTestimonial = () => {
         }
 
         try {
-            await axios.put(`https://api.sofia.digiindiasolutions.com/api/update-textimonial/${id}`, data, {
+            await axios.put(`https://api.sofia.assortsmachinetools.com/api/update-textimonial/${id}`, data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -127,7 +127,7 @@ const EditTestimonial = () => {
                             onChange={handleImageChange}
                         />
                         {image && typeof image === 'string' && (
-                            <img src={`https://api.sofia.digiindiasolutions.com/${image}`} alt="Current" width="50" height="50" className="mt-2" />
+                            <img src={`https://api.sofia.assortsmachinetools.com/${image}`} alt="Current" width="50" height="50" className="mt-2" />
                         )}
                     </div>
                     <div className="col-md-12">

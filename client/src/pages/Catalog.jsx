@@ -23,7 +23,7 @@ function Catalog() {
 
     const getApiData = async () => {
         try {
-            const res = await axios.get("https://api.sofia.digiindiasolutions.com/api/all-catalog");
+            const res = await axios.get("https://api.sofia.assortsmachinetools.com/api/all-catalog");
             setData(res.data.data);
         } catch (error) {
             console.log(error);
@@ -46,7 +46,7 @@ function Catalog() {
         e.preventDefault();  
         try {
             const updatedFormData = { ...formData, catelogId: selectedCatalogId }; // Change catalogId to catelogId
-            const response = await axios.post("https://api.sofia.digiindiasolutions.com/api/download-catelog", updatedFormData);
+            const response = await axios.post("https://api.sofia.assortsmachinetools.com/api/download-catelog", updatedFormData);
             if (response.data.success) {
                 window.open(response.data.catalogUrl, "_blank");
             }
@@ -79,7 +79,7 @@ function Catalog() {
                                     <img
                                         alt={item.catalogName}
                                         className="img-fluid"
-                                        src={`https://api.sofia.digiindiasolutions.com/${item.catalogImage}`}
+                                        src={`https://api.sofia.assortsmachinetools.com/${item.catalogImage}`}
                                         width="250"
                                         height="230"
                                     />

@@ -12,7 +12,7 @@ const AllProduct = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('https://api.sofia.digiindiasolutions.com/api/all-inplants-product'); // Adjust API endpoint as needed
+                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/all-inplants-product'); // Adjust API endpoint as needed
                 setData(response.data.data); // Assuming the data is in the 'data' field
             } catch (error) {
                 console.error("Error fetching products:", error);
@@ -37,7 +37,7 @@ const AllProduct = () => {
 
         if (result.isConfirmed) {
             try {
-                await axios.delete(`https://api.sofia.digiindiasolutions.com/api/delete-inplants-product/${id}`); // Adjust API endpoint as needed
+                await axios.delete(`https://api.sofia.assortsmachinetools.com/api/delete-inplants-product/${id}`); // Adjust API endpoint as needed
                 setData(data.filter(item => item._id !== id)); // Remove the deleted item from the state
                 toast.success("Product deleted successfully!");
             } catch (error) {
@@ -98,7 +98,7 @@ const AllProduct = () => {
                                     <td>{item.category.categoryName}</td>
                                     <td>{item.inplants.inplantsName}</td>
                                     <td>{item.productName}</td>
-                                    <td><img src={`https://api.sofia.digiindiasolutions.com/${item.image}`} alt="" /></td>
+                                    <td><img src={`https://api.sofia.assortsmachinetools.com/${item.image}`} alt="" /></td>
                                     {/* <td>{item.productDetails}</td>
                                     <td>{item.stainlessDetails}</td>
                                     <td>{item.titaniumDetails}</td>

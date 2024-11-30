@@ -18,7 +18,7 @@ const AddInplants = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('https://api.sofia.digiindiasolutions.com/api/get-all-category'); // Adjust API endpoint as needed
+                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/get-all-category'); // Adjust API endpoint as needed
                 if (response.data.success) {
                     setCategories(response.data.data); // Assumes categories data is in `data.data`
                 } else {
@@ -56,7 +56,7 @@ const AddInplants = () => {
 
         setIsLoading(true);
         try {
-            const response = await axios.post('https://api.sofia.digiindiasolutions.com/api/create-inplants', data, {
+            const response = await axios.post('https://api.sofia.assortsmachinetools.com/api/create-inplants', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

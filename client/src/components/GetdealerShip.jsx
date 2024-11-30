@@ -24,7 +24,7 @@ function GetdealerShip() {
     e.preventDefault();
     
     try {
-      const response = await axios.post('https://api.sofia.digiindiasolutions.com/api/send-dealership', formData);
+      const response = await axios.post('https://api.sofia.assortsmachinetools.com/api/send-dealership', formData);
       Swal.fire('Success', 'Dealership request submitted successfully!', 'success');
       setFormData({
         companyName: '',

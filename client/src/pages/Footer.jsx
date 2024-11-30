@@ -35,7 +35,7 @@ function Footer() {
 
     try {
       const response = await axios.post(
-        "https://api.sofia.digiindiasolutions.com/api/send-getintouch",
+        "https://api.sofia.assortsmachinetools.com/api/send-getintouch",
         formData
       );
       Swal.fire(
