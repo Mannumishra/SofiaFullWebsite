@@ -16,6 +16,7 @@ import Catalog from './pages/Catalog.jsx';
 import Thumbnail from './pages/Thumbnail.jsx';
 import Socialicons from './components/Socialicon.jsx';
 import InstrumentProduct from './pages/InstrumentProduct.jsx';
+import CareerPage from './pages/CareerPage.jsx';
 
 
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="/Certificates" element={<Certificates/>} />
         <Route path="/Catalog" element={<Catalog/>} />
         <Route path="/Contact-us" element={<ContactUs/>}/>
+        <Route path="/career" element={<CareerPage/>}/>
        
         
       </Routes>

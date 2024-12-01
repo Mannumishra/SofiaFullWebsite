@@ -15,6 +15,8 @@ const ContactRouter = require("./Routes/ContactRouter")
 const GetInTouchRouter = require("./Routes/ContactRouter copy")
 const DownloadCatelogRouter = require("./Routes/DownloadCatelogRouter")
 const TestimonialRouter = require("./Routes/TestimonialRouter")
+const CareerRouter = require("./Routes/careerRoutes")
+const VedioRouter = require("./Routes/VedioRouter")
 
 
 const app = express()
@@ -41,6 +43,8 @@ app.use("/api", ContactRouter)
 app.use("/api", GetInTouchRouter)
 app.use("/api", DownloadCatelogRouter)
 app.use("/api", TestimonialRouter)
+app.use("/api", CareerRouter)
+app.use("/api", VedioRouter)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server Is Running At ${process.env.PORT}`)

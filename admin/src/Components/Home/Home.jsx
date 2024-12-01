@@ -36,6 +36,10 @@ import AllTestimonial from '../../Pages/Testimonial/AllTestimonial'
 import AddTestimonial from '../../Pages/Testimonial/AddTestimonial'
 import EditTestimonial from '../../Pages/Testimonial/EditTestimonial'
 import AllDownCatelogQuery from '../../Pages/DownCatelogQuery/AllDownCatelogQuery'
+import AllCareerInquery from '../../Pages/CareerInquery/AllCareerInquery'
+import AllBannerVedio from '../../Pages/BannerVedio/AllBannerVedio'
+import AddBannerVedio from '../../Pages/BannerVedio/AddBannerVedio'
+import EditBannerVedio from '../../Pages/BannerVedio/EditBannerVedio'
 
 const Home = () => {
   return (
@@ -79,12 +83,19 @@ const Home = () => {
           <Route path={"/all-getintouch-query"} element={<AllGetInTouch />} />
           <Route path={"/all-contact-query"} element={<AllContactQuery />} />
           <Route path={"/all-catelog-query"} element={<AllDownCatelogQuery />} />
+          <Route path={"/all-career-query"} element={<AllCareerInquery />} />
       
 
           {/* --- Vouchers --- */}
           <Route path={"/all-testimonial"} element={<AllTestimonial />} />   {/* // All Vouchers */}
           <Route path={"/add-testimonial"} element={<AddTestimonial />} />
           <Route path={"/edit-testimonial/:id"} element={<EditTestimonial />} />
+
+
+
+          <Route path={"/all-vedio"} element={<AllBannerVedio />} />   {/* // All Vouchers */}
+          <Route path={"/add-vedio"} element={<AddBannerVedio />} />
+          <Route path={"/edit-vedio/:id"} element={<EditBannerVedio />} />
 
           {/* --- Tags --- */}
           <Route path={"/all-tags"} element={<AllTags />} />

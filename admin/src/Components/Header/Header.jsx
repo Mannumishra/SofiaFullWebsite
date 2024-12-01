@@ -81,11 +81,28 @@ const Header = () => {
             </li>
             <li>
               <Link
+                to="/all-career-query"
+                className={location.pathname === '/all-career-query' ? 'active-link' : ''}
+                onClick={handletoggleBtn}
+              >
+                <i className="fa-solid fa-layer-group"></i> Career Query
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/all-category"
                 className={location.pathname === '/all-category' ? 'active-link' : ''}
                 onClick={handletoggleBtn}
               >
                 <i className="fa-solid fa-tag"></i> Manage Category
+              </Link>
+            </li> <li>
+              <Link
+                to="/all-vedio"
+                className={location.pathname === '/all-vedio' ? 'active-link' : ''}
+                onClick={handletoggleBtn}
+              >
+                <i className="fa-solid fa-tag"></i> Manage Vedio
               </Link>
             </li>
             <li>

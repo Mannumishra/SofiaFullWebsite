@@ -160,7 +160,7 @@ function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/" className="text-white">
+                <Link to="/career" className="text-white">
                   Career
                 </Link>
               </li>

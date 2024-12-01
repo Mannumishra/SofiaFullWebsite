@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Homelogo from '../assets/images/homeimage.jpg';
 import flag from '../assets/images/madeindia.png';
 import iso from '../assets/images/iso1.png';
@@ -8,9 +8,28 @@ import Products from '../components/Products';
 import Aboutsection from '../components/Aboutsection';
 import Testimonials from '../components/Testimonials';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function Home() {
+  const [videos, setVideos] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
+  // Fetch the videos on component mount
+  useEffect(() => {
+      const fetchVideos = async () => {
+          try {
+              const response = await axios.get('http://localhost:8000/api/get-vedio');  // Replace with your API endpoint
+              console.log(response)
+              setVideos(response.data);
+              setIsLoading(false);
+          } catch (error) {
+              // toast.error('Error fetching videos');
+              setIsLoading(false);
+          }
+      };
+
+      fetchVideos();
+  }, []);
   return (
     <>
       {/* Home Section */}
@@ -42,7 +61,7 @@ function Home() {
 
               {/* Video Section */}
               <div className="col-md-6 text-center">
-                <video src={require('../assets/video/with watermark.mp4')} alt="Home Video" className="img-fluid" style={{ height: '350px', width: '100%' }}
+                <video src={`http://localhost:8000/${videos[0]?.vedio}`} alt="Home Video" className="img-fluid" style={{ height: '350px', width: '100%' }}
                   autoPlay loop muted />
               </div>
             </div>
