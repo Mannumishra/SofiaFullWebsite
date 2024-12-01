@@ -20,7 +20,7 @@ const EditCatalog = () => {
     useEffect(() => {
         const fetchCatalog = async () => {
             try {
-                const response = await axios.get(`https://api.sofia.assortsmachinetools.com/api/single-catalog/${id}`);
+                const response = await axios.get(`http://localhost:8000/api/single-catalog/${id}`);
                 if (response.data.success) {
                     const catalog = response.data.data;
                     setFormData({
@@ -66,7 +66,7 @@ const EditCatalog = () => {
                 updateData.append('catalogPDF', formData.catalogPDF);
             }
 
-            const response = await axios.put(`https://api.sofia.assortsmachinetools.com/api/update-catalog/${id}`, updateData, {
+            const response = await axios.put(`http://localhost:8000/api/update-catalog/${id}`, updateData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

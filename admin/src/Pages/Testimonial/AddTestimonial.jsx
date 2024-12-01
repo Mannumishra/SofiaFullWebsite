@@ -41,7 +41,7 @@ const AddTestimonial = ({ onCreate }) => {
         }
 
         try {
-            await axios.post('https://api.sofia.assortsmachinetools.com/api/add-textimonial', data, {
+            await axios.post('http://localhost:8000/api/add-textimonial', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

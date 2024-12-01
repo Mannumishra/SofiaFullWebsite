@@ -9,16 +9,18 @@ const AllInstupment = () => {
     const [instupment, setInstupment] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
 
     useEffect(() => {
         const fetchInstupment = async () => {
             try {
-                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/all-instupment');
+                const response = await axios.get('http://localhost:8000/api/all-instupment');
                 console.log(response);
                 setInstupment(response.data.data);
             } catch (error) {
-                console.error("Error fetching inplants:", error);
-                toast.error("Failed to fetch inplants.");
+                console.error("Error fetching instupment:", error);
+                toast.error("Failed to fetch instupment.");
             } finally {
                 setIsLoading(false);
             }
@@ -40,12 +42,12 @@ const AllInstupment = () => {
 
         if (result.isConfirmed) {
             try {
-                await axios.delete(`https://api.sofia.assortsmachinetools.com/api/delete-instupment/${id}`);
-                setInstupment(instupment.filter(inplant => inplant._id !== id));
-                toast.success("Inplant deleted successfully.");
+                await axios.delete(`http://localhost:8000/api/delete-instupment/${id}`);
+                setInstupment(instupment.filter(inst => inst._id !== id));
+                toast.success("Instupment deleted successfully.");
             } catch (error) {
-                console.error("Error deleting inplant:", error);
-                toast.error("Failed to delete inplant.");
+                console.error("Error deleting instupment:", error);
+                toast.error("Failed to delete instupment.");
             }
         }
     };
@@ -53,6 +55,17 @@ const AllInstupment = () => {
     const filteredInstupment = instupment.filter(instupment =>
         instupment.categoryName.categoryName.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    // Pagination: Calculate the current page's items
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filteredInstupment.slice(indexOfFirstItem, indexOfLastItem);
+
+    const totalPages = Math.ceil(filteredInstupment.length / itemsPerPage);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
     return (
         <>
@@ -81,28 +94,28 @@ const AllInstupment = () => {
 
             <section className="d-table">
                 {isLoading ? (
-                    <p>Loading inplants...</p>
+                    <p>Loading instupment...</p>
                 ) : (
                     <table className="table table-bordered table-striped table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">Sr.No.</th>
                                 <th scope="col">Category Name</th>
-                                <th scope="col">Inplant Name</th>
-                                <th scope="col">Inplant Image</th>
+                                <th scope="col">Instupment Name</th>
+                                <th scope="col">Instupment Image</th>
                                 <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {filteredInstupment.length > 0 ? (
-                                filteredInstupment.map((instupment, index) => (
+                            {currentItems.length > 0 ? (
+                                currentItems.map((instupment, index) => (
                                     <tr key={instupment._id}>
                                         <th scope="row">{index + 1}</th>
                                         <td>{instupment.categoryName.categoryName}</td>
                                         <td>{instupment.instupmentName}</td>
                                         <td>
-                                            <img src={`https://api.sofia.assortsmachinetools.com/${instupment.instupmentImage}`} alt={instupment.instupmentName} style={{ width: '50px', height: '50px' }} />
+                                            <img src={`http://localhost:8000/${instupment.instupmentImage}`} alt={instupment.instupmentName} style={{ width: '50px', height: '50px' }} />
                                         </td>
                                         <td>
                                             <Link to={`/edit-instupment/${instupment._id}`} className="bt edit">Edit <i className="fa-solid fa-pen-to-square"></i></Link>
@@ -114,13 +127,40 @@ const AllInstupment = () => {
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan="6" className="text-center">No inplants found.</td>
+                                    <td colSpan="6" className="text-center">No instupment found.</td>
                                 </tr>
                             )}
                         </tbody>
                     </table>
                 )}
             </section>
+
+            {/* Pagination */}
+            <div className="pagination">
+                <button
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    className="btn btn-primary"
+                    disabled={currentPage === 1}
+                >
+                    Previous
+                </button>
+                {[...Array(totalPages)].map((_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => handlePageChange(index + 1)}
+                        className={`btn btn-outline-primary ${index + 1 === currentPage ? 'active' : ''}`}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
+                <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="btn btn-primary"
+                >
+                    Next
+                </button>
+            </div>
         </>
     );
 }

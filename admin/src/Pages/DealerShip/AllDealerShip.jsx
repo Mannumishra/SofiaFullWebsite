@@ -3,12 +3,14 @@ import axios from 'axios';
 
 const AllDealerShip = () => {
     const [dealerships, setDealerships] = useState([]);
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const [dealershipsPerPage] = useState(10);
+    
     // Fetch dealership data on component mount
     useEffect(() => {
         const fetchDealerships = async () => {
             try {
-                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/all-dealership'); // Replace with your actual API endpoint
+                const response = await axios.get('http://localhost:8000/api/all-dealership'); // Replace with your actual API endpoint
                 setDealerships(response.data.data);
             } catch (error) {
                 console.error('Error fetching dealerships:', error);
@@ -22,7 +24,7 @@ const AllDealerShip = () => {
     const handleStatusChange = async (id) => {
         try {
             // Update the status to "Complete" in the backend
-            await axios.put(`https://api.sofia.assortsmachinetools.com/api/update-dealership-status/${id}`, { status: 'Complete' });
+            await axios.put(`http://localhost:8000/api/update-dealership-status/${id}`, { status: 'Complete' });
             setDealerships((prevDealerships) =>
                 prevDealerships.map((dealer) =>
                     dealer._id === id ? { ...dealer, status: 'Complete' } : dealer
@@ -32,6 +34,25 @@ const AllDealerShip = () => {
             console.error('Error updating status:', error);
         }
     };
+
+    // Handle delete dealership
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`http://localhost:8000/api/delete-dealership/${id}`);
+            setDealerships((prevDealerships) =>
+                prevDealerships.filter((dealer) => dealer._id !== id)
+            );
+        } catch (error) {
+            console.error('Error deleting dealership:', error);
+        }
+    };
+
+    // Pagination logic
+    const indexOfLastDealership = currentPage * dealershipsPerPage;
+    const indexOfFirstDealership = indexOfLastDealership - dealershipsPerPage;
+    const currentDealerships = dealerships.slice(indexOfFirstDealership, indexOfLastDealership);
+
+    const totalPages = Math.ceil(dealerships.length / dealershipsPerPage);
 
     return (
         <>
@@ -59,10 +80,10 @@ const AllDealerShip = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {dealerships.length > 0 ? (
-                                dealerships.map((dealer, index) => (
+                            {currentDealerships.length > 0 ? (
+                                currentDealerships.map((dealer, index) => (
                                     <tr key={dealer._id}>
-                                        <th scope="row">{index + 1}</th>
+                                        <th scope="row">{index + 1 + (currentPage - 1) * dealershipsPerPage}</th>
                                         <td>{dealer.companyName}</td>
                                         <td>{dealer.companyNumber}</td>
                                         <td>{dealer.companyEmail}</td>
@@ -85,7 +106,13 @@ const AllDealerShip = () => {
                                                 disabled={dealer.status === 'Complete'}
                                                 className={`btn ${dealer.status === 'Complete' ? 'btn-secondary' : 'btn-primary'}`}
                                             >
-                                                {dealer.status === 'Complete' ? 'Completed' : 'Mark as Complete'}
+                                                {dealer.status === 'Complete' ? 'Completed' : 'Complete'}
+                                            </button>
+                                            <button
+                                                onClick={() => handleDelete(dealer._id)}
+                                                className="btn btn-danger ml-2"
+                                            >
+                                                Delete
                                             </button>
                                         </td>
                                     </tr>
@@ -101,6 +128,24 @@ const AllDealerShip = () => {
                     </table>
                 </div>
             </section>
+
+            <div className="pagination">
+                <button
+                    onClick={() => setCurrentPage(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="btn btn-secondary"
+                >
+                    Previous
+                </button>
+                <span className="mx-3">{`Page ${currentPage} of ${totalPages}`}</span>
+                <button
+                    onClick={() => setCurrentPage(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="btn btn-secondary"
+                >
+                    Next
+                </button>
+            </div>
         </>
     );
 };

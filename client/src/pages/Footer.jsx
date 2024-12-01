@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import footerLogo from "../assets/images/sofia.png";
 import {
@@ -17,6 +17,19 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 function Footer() {
+  const [categoryData, setCategoryData] = useState([])
+  const catlogData = async () => {
+    try {
+      const res = await axios.get("http://localhost:8000/api/get-all-category")
+      console.log(res)
+      setCategoryData(res.data.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(() => {
+    catlogData()
+  }, [])
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -35,7 +48,7 @@ function Footer() {
 
     try {
       const response = await axios.post(
-        "https://api.sofia.assortsmachinetools.com/api/send-getintouch",
+        "http://localhost:8000/api/send-getintouch",
         formData
       );
       Swal.fire(
@@ -163,28 +176,20 @@ function Footer() {
           <div className="col-lg-2 col-md-6 mb-4">
             <h5 className="mb-3">Categories</h5>
             <ul className="list-unstyled">
-              <li>
-                <Link to="/" className="text-white">
-                  Category 1
-                </Link>
-              </li>
-              <li>
-                <Link to="/" className="text-white">
-                  Category 2
-                </Link>
-              </li>
-              <li>
-                <Link to="/" className="text-white">
-                  Category 3
-                </Link>
-              </li>
-              <li>
-                <Link to="/" className="text-white">
-                  Category 4
-                </Link>
-              </li>
+              {
+                categoryData.map((item, index) => {
+                  return (  // Add return here
+                    <li key={index}> {/* Add a key for list items */}
+                      <Link to="/" className="text-white">
+                        {item.categoryName}
+                      </Link>
+                    </li>
+                  );
+                })
+              }
             </ul>
           </div>
+
 
           {/* Contact Form */}
           <div className="col-lg-5 col-md-6">
@@ -215,7 +220,7 @@ function Footer() {
                 </div>
                 <div className="form-group">
                   <input
-                    type="text"
+                    type="number"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}

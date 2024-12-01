@@ -13,7 +13,7 @@ function Testimonials() {
     useEffect(() => {
       const fetchTestimonials = async () => {
         try {
-          const response = await axios.get("https://api.sofia.assortsmachinetools.com/api/all-textimonial");
+          const response = await axios.get("http://localhost:8000/api/all-textimonial");
           console.log(response)
           setTestimonials(response.data);
           setIsLoading(false);
@@ -91,7 +91,7 @@ function Testimonials() {
               <p>{testimonial.details}</p>
             </div>
             <div className="testimonial-author">
-              <img src={`https://api.sofia.assortsmachinetools.com/${testimonial.image}`} alt={testimonial.name} className="author-image" />
+              <img src={`http://localhost:8000/${testimonial.image}`} alt={testimonial.name} className="author-image" />
               <div className="author-info">
                 <h4>{testimonial.name}</h4>
                 <p>{testimonial.position}</p>

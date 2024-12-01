@@ -87,8 +87,28 @@ const updateGetInTouchStatus = async (req, res) => {
     }
 };
 
+const deleteGetintouch = async(req,res)=>{
+    try {
+        const data = await GetinTouch.findById(req.params.id)
+        if(!data){
+            return res.status(404).json({
+                success:false,
+                messsage:"Record not found for delete"
+            })
+        }
+        await data.deleteOne()
+        res.status(200).json({
+            success:true,
+            message:"Record Delete Successfully"
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 module.exports = {
     createGetInTouch,
     getAllGetInTouch,
     updateGetInTouchStatus, // Include this if you're also exporting the status update function
+    deleteGetintouch
 };

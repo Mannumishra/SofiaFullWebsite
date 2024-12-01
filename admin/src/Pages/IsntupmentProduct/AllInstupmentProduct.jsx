@@ -8,11 +8,14 @@ import 'react-toastify/dist/ReactToastify.css';
 const AllInstupmentProduct = () => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(10);
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/all-instupment-product'); // Adjust API endpoint as needed
+                const response = await axios.get('http://localhost:8000/api/all-instupment-product');
                 setData(response.data.data); // Assuming the data is in the 'data' field
             } catch (error) {
                 console.error("Error fetching products:", error);
@@ -37,8 +40,8 @@ const AllInstupmentProduct = () => {
 
         if (result.isConfirmed) {
             try {
-                await axios.delete(`https://api.sofia.assortsmachinetools.com/api/delete-instupment-product/${id}`); // Adjust API endpoint as needed
-                setData(data.filter(item => item._id !== id)); // Remove the deleted item from the state
+                await axios.delete(`http://localhost:8000/api/delete-instupment-product/${id}`);
+                setData(data.filter(item => item._id !== id));
                 toast.success("Product deleted successfully!");
             } catch (error) {
                 console.error("Error deleting product:", error);
@@ -46,6 +49,20 @@ const AllInstupmentProduct = () => {
             }
         }
     };
+
+    const filteredData = data.filter(item =>
+        item.productName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.instupment.instupmentName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.category.categoryName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    // Get the current page items
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+
+    // Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
         <>
@@ -60,15 +77,15 @@ const AllInstupmentProduct = () => {
             </div>
 
             <div className="filteration">
-                <div className="selects">
-                    {/* <select>
-                        <option>Ascending Order </option>
-                        <option>Descending Order </option>
-                    </select> */}
-                </div>
                 <div className="search">
                     <label htmlFor="search">Search </label> &nbsp;
-                    <input type="text" name="search" id="search" />
+                    <input
+                        type="text"
+                        name="search"
+                        id="search"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
                 </div>
             </div>
 
@@ -83,36 +100,48 @@ const AllInstupmentProduct = () => {
                                 <th scope="col">Category</th>
                                 <th scope="col">Inplants</th>
                                 <th scope="col">Product Name</th>
-                                {/* <th scope="col">Product Details</th>
-                                <th scope="col">Stainless Details</th>
-                                <th scope="col">Titanium Details</th> */}
                                 <th scope="col">Product Image</th>
                                 <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map((item, index) => (
-                                <tr key={item._id}>
-                                    <td>{index + 1}</td>
-                                    <td>{item.category.categoryName}</td>
-                                    <td>{item.instupment.instupmentName}</td>
-                                    <td>{item.productName}</td>
-                                    <td><img src={`https://api.sofia.assortsmachinetools.com/${item.image}`} alt="" /></td>
-                                    {/* <td>{item.productDetails}</td>
-                                    <td>{item.stainlessDetails}</td>
-                                    <td>{item.titaniumDetails}</td>
-                                    <td>{new Date(item.createdAt).toLocaleDateString()}</td> Assuming you have a createdAt field */}
-                                    <td>
-                                        <Link to={`/edit-instupment-product/${item._id}`} className="bt edit">Edit <i className="fa-solid fa-pen-to-square"></i></Link>
-                                    </td>
-                                    <td>
-                                        <button className="bt delete" onClick={() => handleDelete(item._id)}>Delete <i className="fa-solid fa-trash"></i></button>
-                                    </td>
+                            {currentItems.length > 0 ? (
+                                currentItems.map((item, index) => (
+                                    <tr key={item._id}>
+                                        <td>{index + 1}</td>
+                                        <td>{item.category.categoryName}</td>
+                                        <td>{item.instupment.instupmentName}</td>
+                                        <td>{item.productName}</td>
+                                        <td><img src={`http://localhost:8000/${item.image}`} alt={item.productName} style={{ width: '50px', height: '50px' }} /></td>
+                                        <td>
+                                            <Link to={`/edit-instupment-product/${item._id}`} className="bt edit">Edit <i className="fa-solid fa-pen-to-square"></i></Link>
+                                        </td>
+                                        <td>
+                                            <button className="bt delete" onClick={() => handleDelete(item._id)}>Delete <i className="fa-solid fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr>
+                                    <td colSpan="7" className="text-center">No products found.</td>
                                 </tr>
-                            ))}
+                            )}
                         </tbody>
                     </table>
+
+                    {/* Pagination Controls */}
+                    <div className="pagination">
+                        {Array.from({ length: Math.ceil(filteredData.length / itemsPerPage) }).map((_, index) => (
+                            <button
+                                key={index + 1}
+                                onClick={() => paginate(index + 1)}
+                                className={`page-button ${currentPage === index + 1 ? 'active' : ''}`}
+                            >
+                                {index + 1}
+                            </button>
+                        ))}
+                    </div>
                 </section>
             )}
         </>

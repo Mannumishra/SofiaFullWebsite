@@ -9,14 +9,13 @@ const AllInplants = () => {
     const [inplants, setInplants] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
-
-    
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(10);
 
     useEffect(() => {
         const fetchInplants = async () => {
             try {
-                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/all-inplants');
-                console.log(response);
+                const response = await axios.get('http://localhost:8000/api/all-inplants');
                 setInplants(response.data.data);
             } catch (error) {
                 console.error("Error fetching inplants:", error);
@@ -42,7 +41,7 @@ const AllInplants = () => {
 
         if (result.isConfirmed) {
             try {
-                await axios.delete(`https://api.sofia.assortsmachinetools.com/api/delete-inplants/${id}`);
+                await axios.delete(`http://localhost:8000/api/delete-inplants/${id}`);
                 setInplants(inplants.filter(inplant => inplant._id !== id));
                 toast.success("Inplant deleted successfully.");
             } catch (error) {
@@ -52,9 +51,18 @@ const AllInplants = () => {
         }
     };
 
+    // Filter the inplants based on the search term
     const filteredInplants = inplants.filter(inplant =>
         inplant.categoryName.categoryName.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    // Get the current page data
+    const indexOfLastInplant = currentPage * itemsPerPage;
+    const indexOfFirstInplant = indexOfLastInplant - itemsPerPage;
+    const currentInplants = filteredInplants.slice(indexOfFirstInplant, indexOfLastInplant);
+
+    // Pagination logic
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
         <>
@@ -85,42 +93,71 @@ const AllInplants = () => {
                 {isLoading ? (
                     <p>Loading inplants...</p>
                 ) : (
-                    <table className="table table-bordered table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">Sr.No.</th>
-                                <th scope="col">Category Name</th>
-                                <th scope="col">Inplant Name</th>
-                                <th scope="col">Inplant Image</th>
-                                <th scope="col">Edit</th>
-                                <th scope="col">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {filteredInplants.length > 0 ? (
-                                filteredInplants.map((inplant, index) => (
-                                    <tr key={inplant._id}>
-                                        <th scope="row">{index + 1}</th>
-                                        <td>{inplant.categoryName.categoryName}</td>
-                                        <td>{inplant.inplantsName}</td>
-                                        <td>
-                                            <img src={`https://api.sofia.assortsmachinetools.com/${inplant.inplantsImage}`} alt={inplant.inplantsName} style={{ width: '50px', height: '50px' }} />
-                                        </td>
-                                        <td>
-                                            <Link to={`/edit-inplants/${inplant._id}`} className="bt edit">Edit <i className="fa-solid fa-pen-to-square"></i></Link>
-                                        </td>
-                                        <td>
-                                            <button onClick={() => handleDelete(inplant._id)} className="bt delete">Delete <i className="fa-solid fa-trash"></i></button>
-                                        </td>
-                                    </tr>
-                                ))
-                            ) : (
+                    <>
+                        <table className="table table-bordered table-striped table-hover">
+                            <thead>
                                 <tr>
-                                    <td colSpan="6" className="text-center">No inplants found.</td>
+                                    <th scope="col">Sr.No.</th>
+                                    <th scope="col">Category Name</th>
+                                    <th scope="col">Inplant Name</th>
+                                    <th scope="col">Inplant Image</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
                                 </tr>
-                            )}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {currentInplants.length > 0 ? (
+                                    currentInplants.map((inplant, index) => (
+                                        <tr key={inplant._id}>
+                                            <th scope="row">{index + 1}</th>
+                                            <td>{inplant.categoryName.categoryName}</td>
+                                            <td>{inplant.inplantsName}</td>
+                                            <td>
+                                                <img src={`http://localhost:8000/${inplant.inplantsImage}`} alt={inplant.inplantsName} style={{ width: '50px', height: '50px' }} />
+                                            </td>
+                                            <td>
+                                                <Link to={`/edit-inplants/${inplant._id}`} className="bt edit">Edit <i className="fa-solid fa-pen-to-square"></i></Link>
+                                            </td>
+                                            <td>
+                                                <button onClick={() => handleDelete(inplant._id)} className="bt delete">Delete <i className="fa-solid fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                    ))
+                                ) : (
+                                    <tr>
+                                        <td colSpan="6" className="text-center">No inplants found.</td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+
+                        {/* Pagination Controls */}
+                        <div className="pagination">
+                            <button
+                                onClick={() => paginate(currentPage - 1)}
+                                disabled={currentPage === 1}
+                                className="btn btn-primary"
+                            >
+                                Previous
+                            </button>
+                            {Array.from({ length: Math.ceil(filteredInplants.length / itemsPerPage) }, (_, index) => (
+                                <button
+                                    key={index + 1}
+                                    onClick={() => paginate(index + 1)}
+                                    className={`btn btn-outline-primary ${index + 1 === currentPage ? 'active' : ''}`}
+                                >
+                                    {index + 1}
+                                </button>
+                            ))}
+                            <button
+                                onClick={() => paginate(currentPage + 1)}
+                                disabled={currentPage === Math.ceil(filteredInplants.length / itemsPerPage)}
+                                className="btn btn-primary"
+                            >
+                                Next
+                            </button>
+                        </div>
+                    </>
                 )}
             </section>
         </>

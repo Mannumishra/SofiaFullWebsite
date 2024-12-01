@@ -150,7 +150,7 @@ function Aboutsection() {
           </div>
           <div
             className="row p-2"
-            style={{ background: "#fff", borderRadius: "10px", objectFit:'cover' }}
+            style={{ background: "#fff", borderRadius: "10px", objectFit: 'cover' }}
           >
             <div className="col-md-3">
               <img
@@ -160,7 +160,7 @@ function Aboutsection() {
                 className="pt-3"
                 height={"400px"}
                 width={"100%"}
-                style={{ borderRadius: "6px", cursor: "pointer", objectFit:'cover' }}
+                style={{ borderRadius: "6px", cursor: "pointer", objectFit: 'cover' }}
               />
             </div>
             <div className="col-md-3">
@@ -172,7 +172,7 @@ function Aboutsection() {
                   onClick={() => handleShow(fa111)}
                   height={"200px"}
                   width={"100%"}
-                  style={{ borderRadius: "6px", cursor: "pointer" , objectFit:'cover' }}
+                  style={{ borderRadius: "6px", cursor: "pointer", objectFit: 'cover' }}
                 />
               </div>
               <div>
@@ -183,7 +183,7 @@ function Aboutsection() {
                   className="pt-3"
                   height={"200px"}
                   width={"100%"}
-                  style={{ borderRadius: "6px", cursor: "pointer", objectFit:'cover' }}
+                  style={{ borderRadius: "6px", cursor: "pointer", objectFit: 'cover' }}
                 />
               </div>
             </div>
@@ -196,7 +196,7 @@ function Aboutsection() {
                   onClick={() => handleShow(fa113)}
                   height={"200px"}
                   width={"100%"}
-                  style={{ borderRadius: "6px", cursor: "pointer", objectFit:'cover' }}
+                  style={{ borderRadius: "6px", cursor: "pointer", objectFit: 'cover' }}
                 />
               </div>
               <div>
@@ -207,7 +207,7 @@ function Aboutsection() {
                   className="pt-3"
                   height={"200px"}
                   width={"100%"}
-                  style={{ borderRadius: "6px", cursor: "pointer" , objectFit:'cover'}}
+                  style={{ borderRadius: "6px", cursor: "pointer", objectFit: 'cover' }}
                 />
               </div>
             </div>
@@ -219,7 +219,7 @@ function Aboutsection() {
                 onClick={() => handleShow(fa115)}
                 height={"400px"}
                 width={"100%"}
-                style={{ borderRadius: "6px", cursor: "pointer", objectFit:'cover' }}
+                style={{ borderRadius: "6px", cursor: "pointer", objectFit: 'cover' }}
               />
             </div>
           </div>
@@ -230,7 +230,9 @@ function Aboutsection() {
                 <h2 className="mission">Vision & Mission</h2>
                 <p className="missionPara">
                   Our mission is to enhance the quality of life for patients
-                  through advanced orthopedic solutions...
+                  through advanced orthopedic solutions. We envision a world where
+                  everyone can achieve optimal mobility and functionality, free
+                  from the limitations of musculoskeletal disorders.
                 </p>
                 <p className="name">Simrat Kaur</p>
                 <p className="position">Founder of Sofia</p>

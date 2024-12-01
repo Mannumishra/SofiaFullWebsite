@@ -24,7 +24,7 @@ function GetdealerShip() {
     e.preventDefault();
     
     try {
-      const response = await axios.post('https://api.sofia.assortsmachinetools.com/api/send-dealership', formData);
+      const response = await axios.post('http://localhost:8000/api/send-dealership', formData);
       Swal.fire('Success', 'Dealership request submitted successfully!', 'success');
       setFormData({
         companyName: '',
@@ -82,7 +82,7 @@ function GetdealerShip() {
                 </div>
                 <div className="row">
                   <div className="col mb-4">
-                    <input type="text" className="form-control" name="companyEmail" placeholder="Company Email ID*" value={formData.companyEmail} onChange={handleChange} required />
+                    <input type="email" className="form-control" name="companyEmail" placeholder="Company Email ID*" value={formData.companyEmail} onChange={handleChange} required />
                   </div>
                   <div className="col mb-4">
                     <input type="text" className="form-control" name="companyCountry" placeholder="Country*" value={formData.companyCountry} onChange={handleChange} required />

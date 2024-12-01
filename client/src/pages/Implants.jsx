@@ -11,7 +11,7 @@ function Implants() {
 
     const getApiData = async () => {
         try {
-            const res = await axios.get("https://api.sofia.assortsmachinetools.com/api/all-inplants")
+            const res = await axios.get("http://localhost:8000/api/all-inplants")
             const filterData = res.data.data
             const filterInplants = filterData.filter((x) => x.categoryName.categoryName === categoryName)
             setData(filterInplants)
@@ -47,7 +47,7 @@ function Implants() {
                                     <div className="col-md-3" key={index}>
                                         <div className="category-card">
                                             <Link to={`/inplants-details/${implant.inplantsName}`} className='text-decoration-none'>
-                                                <img alt={implant.inplantsName} className="img-fluid" src={`https://api.sofia.assortsmachinetools.com/${implant.inplantsImage}`} width="250" height="230" />
+                                                <img alt={implant.inplantsName} className="img-fluid" src={`http://localhost:8000/${implant.inplantsImage}`} width="250" height="230" />
                                                 <div className="category-title  text-dark">
                                                     {implant.inplantsName}
                                                 </div>

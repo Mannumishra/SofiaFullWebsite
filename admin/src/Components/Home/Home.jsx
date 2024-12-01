@@ -35,6 +35,7 @@ import AllContactQuery from '../../Pages/ContactQuery/AllContactQuery'
 import AllTestimonial from '../../Pages/Testimonial/AllTestimonial'
 import AddTestimonial from '../../Pages/Testimonial/AddTestimonial'
 import EditTestimonial from '../../Pages/Testimonial/EditTestimonial'
+import AllDownCatelogQuery from '../../Pages/DownCatelogQuery/AllDownCatelogQuery'
 
 const Home = () => {
   return (
@@ -77,6 +78,8 @@ const Home = () => {
           <Route path={"/all-dealership-query"} element={<AllDealerShip />} />
           <Route path={"/all-getintouch-query"} element={<AllGetInTouch />} />
           <Route path={"/all-contact-query"} element={<AllContactQuery />} />
+          <Route path={"/all-catelog-query"} element={<AllDownCatelogQuery />} />
+      
 
           {/* --- Vouchers --- */}
           <Route path={"/all-testimonial"} element={<AllTestimonial />} />   {/* // All Vouchers */}

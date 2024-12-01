@@ -60,7 +60,7 @@ function Navbar() {
         <>
             <section className={`headerSection pt-4 ${isSticky ? 'hide-row' : ''}`}>
                 <div className="container">
-                    <div style={{alignItems:'center'}} className="row pb-2 top-row">
+                    <div style={{ alignItems: 'center' }} className="row pb-2 top-row">
                         <div className="col-12 col-md-4 text-center text-md-start mb-2 mb-md-0">
                             <div className="logoIcon">
                                 <Link target='_blank' to="https://www.facebook.com/indra.chauhan.18?mibextid=LQQJ4d"><FaFacebook size={20} className='icon m-1' /></Link>
@@ -89,7 +89,7 @@ function Navbar() {
                                     </form>
                                 </div>
                                 <button className="language-button mb-2 mb-md-0" onClick={() => handleLanguageChange(i18n.language === 'en' ? 'hi' : 'en')}>
-                                <GrLanguage /> &nbsp;{t('language')} 
+                                    <GrLanguage /> &nbsp;{t('language')}
                                 </button>
                                 <Link to="GetdealerShip">
                                     <button className="cta-button mb-2 mb-md-0"><b>{t('getDealership')}</b></button>
@@ -128,10 +128,11 @@ function Navbar() {
                                     <Link className={`nav-link ${isActive('/Contact-us')}`} to="/Contact-us" onClick={closeNavbar}>{t('contactUs')}</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="#" onClick={closeNavbar} >
+                                    <Link className="nav-link" to="tel:+919015555501" onClick={closeNavbar}>
                                         <IoCallOutline className="fs-4" /> +91-9015555501
                                     </Link>
                                 </li>
+
                             </ul>
                         </div>
                     </div>

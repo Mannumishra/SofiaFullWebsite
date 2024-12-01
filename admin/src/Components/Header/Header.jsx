@@ -22,7 +22,7 @@ const Header = () => {
             </div>
           </div>
           <div className="left">
-            <a href="" target="_blank" rel="noopener noreferrer">
+            <a href="https://client.sofia.assortsmachinetools.com/" target="_blank" rel="noopener noreferrer">
               <i className="fa-solid fa-globe"></i>
               Go To Website
             </a>
@@ -68,6 +68,15 @@ const Header = () => {
                 onClick={handletoggleBtn}
               >
                 <i className="fa-solid fa-layer-group"></i> Contact Query
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/all-catelog-query"
+                className={location.pathname === '/all-catelog-query' ? 'active-link' : ''}
+                onClick={handletoggleBtn}
+              >
+                <i className="fa-solid fa-layer-group"></i> Download Catelog Query
               </Link>
             </li>
             <li>

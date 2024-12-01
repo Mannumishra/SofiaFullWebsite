@@ -18,7 +18,7 @@ const AddInstupment = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/get-all-category'); // Adjust API endpoint as needed
+                const response = await axios.get('http://localhost:8000/api/get-all-category'); // Adjust API endpoint as needed
                 if (response.data.success) {
                     setCategories(response.data.data); // Assumes categories data is in `data.data`
                 } else {
@@ -56,7 +56,7 @@ const AddInstupment = () => {
 
         setIsLoading(true);
         try {
-            const response = await axios.post('https://api.sofia.assortsmachinetools.com/api/create-instupment', data, {
+            const response = await axios.post('http://localhost:8000/api/create-instupment', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const AllContactQuery = () => {
+const AllDownCatelogQuery = () => {
     const [contacts, setContacts] = useState([]);  // Store all contacts
     const [currentPage, setCurrentPage] = useState(1);  // Track the current page
     const [recordsPerPage] = useState(10);  // Records per page
@@ -11,7 +11,7 @@ const AllContactQuery = () => {
     useEffect(() => {
         const fetchContacts = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/all-contact');  // Replace with your actual API endpoint
+                const response = await axios.get('http://localhost:8000/api/get-download-catelog');  // Replace with your actual API endpoint
                 setContacts(response.data.data);
                 setTotalPages(Math.ceil(response.data.data.length / recordsPerPage)); // Calculate total pages
             } catch (error) {
@@ -39,7 +39,7 @@ const AllContactQuery = () => {
     // Handle delete contact
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:8000/api/delete-contact/${id}`);
+            await axios.delete(`http://localhost:8000/api/delete-download-catelog/${id}`);
             setContacts((prevContacts) =>
                 prevContacts.filter((contact) => contact._id !== id)
             );
@@ -74,13 +74,11 @@ const AllContactQuery = () => {
                                 <th scope="col">Sr.No.</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Profession</th>
                                 <th scope="col">Country</th>
+                                <th scope="col">Phone</th>
                                 <th scope="col">City</th>
-                                <th scope="col">Subject</th>
-                                <th scope="col">Message</th>
+                                <th scope="col">Profession</th>
                                 <th scope="col">Created At</th>
-                                <th scope="col">Status</th>
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
@@ -91,29 +89,24 @@ const AllContactQuery = () => {
                                         <th scope="row">{indexOfFirstRecord + index + 1}</th>
                                         <td>{contact.name}</td>
                                         <td>{contact.email}</td>
-                                        <td>{contact.profession}</td>
                                         <td>{contact.country}</td>
+                                        <td>{contact.phone}</td>
                                         <td>{contact.city}</td>
-                                        <td>{contact.subject}</td>
-                                        <td>{contact.message}</td>
+                                        <td>{contact.profession}</td>
                                         <td>
                                             {new Date(contact.createdAt).toISOString().slice(8, 10)}/
                                             {new Date(contact.createdAt).toISOString().slice(5, 7)}/
                                             {new Date(contact.createdAt).toISOString().slice(0, 4)}
                                         </td>
+
                                         <td>
-                                            <span style={{ color: contact.status === 'Complete' ? 'green' : 'red', fontSize: "15px", fontWeight: 700 }}>
-                                                {contact.status}
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <button
+                                            {/* <button
                                                 onClick={() => handleStatusChange(contact._id)}
                                                 disabled={contact.status === 'Complete'}
                                                 className={`btn ${contact.status === 'Complete' ? 'btn-secondary' : 'btn-primary'}`}
                                             >
                                                 {contact.status === 'Complete' ? 'Completed' : 'Complete'}
-                                            </button>
+                                            </button> */}
                                             <button
                                                 onClick={() => handleDelete(contact._id)}
                                                 className="btn btn-danger ml-2"
@@ -159,4 +152,4 @@ const AllContactQuery = () => {
     );
 };
 
-export default AllContactQuery;
+export default AllDownCatelogQuery;

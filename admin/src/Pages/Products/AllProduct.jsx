@@ -7,13 +7,18 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const AllProduct = () => {
     const [data, setData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]); // For search functionality
     const [isLoading, setIsLoading] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/all-inplants-product'); // Adjust API endpoint as needed
-                setData(response.data.data); // Assuming the data is in the 'data' field
+                const response = await axios.get('http://localhost:8000/api/all-inplants-product');
+                setData(response.data.data);
+                setFilteredData(response.data.data); // Set initial filtered data
             } catch (error) {
                 console.error("Error fetching products:", error);
                 toast.error("Failed to fetch products.");
@@ -24,6 +29,30 @@ const AllProduct = () => {
 
         fetchProducts();
     }, []);
+
+    // Handle the search input and filter the data
+    const handleSearch = (e) => {
+        const value = e.target.value;
+        setSearchTerm(value);
+
+        if (value === '') {
+            setFilteredData(data); // If search is empty, show all data
+        } else {
+            const filtered = data.filter(item =>
+                item.productName.toLowerCase().includes(value.toLowerCase()) ||
+                item.inplants.inplantsName.toLowerCase().includes(value.toLowerCase()) ||
+                item.category.categoryName.toLowerCase().includes(value.toLowerCase())
+            );
+            setFilteredData(filtered); // Set filtered data
+        }
+    };
+
+    // Pagination logic
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     const handleDelete = async (id) => {
         const result = await Swal.fire({
@@ -37,8 +66,9 @@ const AllProduct = () => {
 
         if (result.isConfirmed) {
             try {
-                await axios.delete(`https://api.sofia.assortsmachinetools.com/api/delete-inplants-product/${id}`); // Adjust API endpoint as needed
-                setData(data.filter(item => item._id !== id)); // Remove the deleted item from the state
+                await axios.delete(`http://localhost:8000/api/delete-inplants-product/${id}`);
+                setData(data.filter(item => item._id !== id));
+                setFilteredData(filteredData.filter(item => item._id !== id)); // Remove deleted item from filtered data as well
                 toast.success("Product deleted successfully!");
             } catch (error) {
                 console.error("Error deleting product:", error);
@@ -60,15 +90,15 @@ const AllProduct = () => {
             </div>
 
             <div className="filteration">
-                <div className="selects">
-                    {/* <select>
-                        <option>Ascending Order </option>
-                        <option>Descending Order </option>
-                    </select> */}
-                </div>
                 <div className="search">
                     <label htmlFor="search">Search </label> &nbsp;
-                    <input type="text" name="search" id="search" />
+                    <input
+                        type="text"
+                        name="search"
+                        id="search"
+                        value={searchTerm}
+                        onChange={handleSearch} // Handle the search input
+                    />
                 </div>
             </div>
 
@@ -83,26 +113,19 @@ const AllProduct = () => {
                                 <th scope="col">Category</th>
                                 <th scope="col">Inplants</th>
                                 <th scope="col">Product Name</th>
-                                {/* <th scope="col">Product Details</th>
-                                <th scope="col">Stainless Details</th>
-                                <th scope="col">Titanium Details</th> */}
                                 <th scope="col">Product Image</th>
                                 <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map((item, index) => (
+                            {currentItems.map((item, index) => (
                                 <tr key={item._id}>
                                     <td>{index + 1}</td>
                                     <td>{item.category.categoryName}</td>
                                     <td>{item.inplants.inplantsName}</td>
                                     <td>{item.productName}</td>
-                                    <td><img src={`https://api.sofia.assortsmachinetools.com/${item.image}`} alt="" /></td>
-                                    {/* <td>{item.productDetails}</td>
-                                    <td>{item.stainlessDetails}</td>
-                                    <td>{item.titaniumDetails}</td>
-                                    <td>{new Date(item.createdAt).toLocaleDateString()}</td> Assuming you have a createdAt field */}
+                                    <td><img src={`http://localhost:8000/${item.image}`} alt="" /></td>
                                     <td>
                                         <Link to={`/edit-inplants-product/${item._id}`} className="bt edit">Edit <i className="fa-solid fa-pen-to-square"></i></Link>
                                     </td>
@@ -113,6 +136,33 @@ const AllProduct = () => {
                             ))}
                         </tbody>
                     </table>
+
+                    {/* Pagination */}
+                    <div className="pagination">
+                        <button
+                            onClick={() => paginate(currentPage - 1)}
+                            disabled={currentPage === 1}
+                             className="btn btn-primary"
+                        >
+                            Previous
+                        </button>
+                        {[...Array(Math.ceil(filteredData.length / itemsPerPage))].map((_, index) => (
+                            <button
+                                key={index + 1}
+                                onClick={() => paginate(index + 1)}
+                                className={`btn btn-outline-primary ${index + 1 === currentPage ? 'active' : ''}`}
+                            >
+                                {index + 1}
+                            </button>
+                        ))}
+                        <button
+                            onClick={() => paginate(currentPage + 1)}
+                            disabled={currentPage === Math.ceil(filteredData.length / itemsPerPage)}
+                             className="btn btn-primary"
+                        >
+                            Next
+                        </button>
+                    </div>
                 </section>
             )}
         </>

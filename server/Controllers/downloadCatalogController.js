@@ -53,6 +53,43 @@ const downloadCatalogController = async (req, res) => {
     }
 }
 
+const getCatlogDownloadRecord = async(req,res)=>{
+    try {
+        const  data = await DownloadCatelog.find()
+        if(!data) {
+            return res.status(404).json({
+                success:false,
+                message:"Record Not Found"
+            })
+        }
+        res.status(200).json({
+            success:true,
+            message:"REcord Found Successfully",
+            data:data.reverse()
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 
-module.exports = { downloadCatalogController };
+const deleteCatlogDownloadRecord = async(req,res)=>{
+    try {
+        const  data = await DownloadCatelog.findById(req.params.id)
+        if(!data) {
+            return res.status(404).json({
+                success:false,
+                message:"Record Not Found"
+            })
+        }
+        await data.deleteOne()
+        res.status(200).json({
+            success:true,
+            message:"REcord delete Successfully",
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+module.exports = { downloadCatalogController ,getCatlogDownloadRecord ,deleteCatlogDownloadRecord };
