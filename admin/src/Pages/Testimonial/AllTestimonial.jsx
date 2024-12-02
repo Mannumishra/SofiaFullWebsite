@@ -67,14 +67,14 @@ const AllTestimonial = () => {
                                 </td>
                                 <td>{testimonial.activeStatus}</td>
                                 <td>
-                                    <Link to={`/edit-testimonial/${testimonial._id}`} className="btn btn-primary btn-sm">
+                                    <Link to={`/edit-testimonial/${testimonial._id}`} className="bt edit">
                                         Edit
                                     </Link>
                                 </td>
                                 <td>
                                     <button 
                                         onClick={() => handleDelete(testimonial._id)} 
-                                        className="btn btn-danger btn-sm"
+                                       className="bt delete"
                                     >
                                         Delete
                                     </button>

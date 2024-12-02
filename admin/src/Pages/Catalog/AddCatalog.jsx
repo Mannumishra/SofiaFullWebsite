@@ -87,7 +87,7 @@ const AddCatalog = () => {
             <ToastContainer />
             <div className="bread">
                 <div className="head">
-                    <h4>Add Catalog</h4>
+                    <h4>Add Catalogue</h4>
                 </div>
                 <div className="links">
                     <Link to="/all-catalog" className="add-new">Back <i className="fa-regular fa-circle-left"></i></Link>

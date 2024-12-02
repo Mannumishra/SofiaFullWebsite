@@ -63,22 +63,14 @@ const AllCatalog = () => {
             <ToastContainer />
             <div className="bread">
                 <div className="head">
-                    <h4>All Catalog</h4>
+                    <h4>All Catalogue</h4>
                 </div>
                 <div className="links">
                     <Link to="/add-catalog" className="add-new">Add New <i className="fa-solid fa-plus"></i></Link>
                 </div>
             </div>
 
-            <div className="filteration">
-                <div className="selects">
-                    {/* Option for future sorting or filtering */}
-                </div>
-                <div className="search">
-                    <label htmlFor="search">Search </label> &nbsp;
-                    <input type="text" name="search" id="search" placeholder="Search catalog" />
-                </div>
-            </div>
+         
 
             <section className="d-table">
                 {loading ? (
@@ -88,9 +80,9 @@ const AllCatalog = () => {
                         <thead>
                             <tr>
                                 <th scope="col">Sr.No.</th>
-                                <th scope="col">Catalog Name</th>
-                                <th scope="col">Catalog Image</th>
-                                <th scope="col">Catalog Pdf</th>
+                                <th scope="col">Catalogue Name</th>
+                                <th scope="col">Catalogue Image</th>
+                                <th scope="col">Catalogue Pdf</th>
                                 <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
                             </tr>

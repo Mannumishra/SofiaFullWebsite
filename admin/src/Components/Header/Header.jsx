@@ -140,7 +140,7 @@ const Header = () => {
                 className={location.pathname === '/all-vedio' ? 'active-link' : ''}
                 onClick={handletoggleBtn}
               >
-                <i className="fa-solid fa-tag"></i> Manage Vedio
+                <i className="fa-solid fa-tag"></i> Manage Video
               </Link>
             </li>
             <li>
@@ -158,7 +158,7 @@ const Header = () => {
                 className={location.pathname === '/all-catalog' ? 'active-link' : ''}
                 onClick={handletoggleBtn}
               >
-                <i className="fa-brands fa-unsplash"></i> Manage Catalog
+                <i className="fa-brands fa-unsplash"></i> Manage Catalogue
               </Link>
             </li>
             <li>
