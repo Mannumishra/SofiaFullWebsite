@@ -5,7 +5,7 @@ const AllDealerShip = () => {
     const [dealerships, setDealerships] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [dealershipsPerPage] = useState(10);
-    
+
     // Fetch dealership data on component mount
     useEffect(() => {
         const fetchDealerships = async () => {
@@ -96,7 +96,7 @@ const AllDealerShip = () => {
                                             {new Date(dealer.createdAt).toISOString().slice(0, 4)}
                                         </td>
                                         <td>
-                                            <span style={{ color: dealer.status === 'Complete' ? 'green' : 'red' , fontSize:"15px" ,fontWeight:700}}>
+                                            <span style={{ color: dealer.status === 'Complete' ? 'green' : 'red', fontSize: "15px", fontWeight: 700 }}>
                                                 {dealer.status}
                                             </span>
                                         </td>
@@ -129,11 +129,11 @@ const AllDealerShip = () => {
                 </div>
             </section>
 
-            <div className="pagination">
+            <div className="pagination d-flex justify-content-center align-items-center">
                 <button
                     onClick={() => setCurrentPage(currentPage - 1)}
                     disabled={currentPage === 1}
-                    className="btn btn-secondary"
+                    className="btn btn-primary"
                 >
                     Previous
                 </button>
@@ -141,11 +141,12 @@ const AllDealerShip = () => {
                 <button
                     onClick={() => setCurrentPage(currentPage + 1)}
                     disabled={currentPage === totalPages}
-                    className="btn btn-secondary"
+                    className="btn btn-primary"
                 >
                     Next
                 </button>
             </div>
+
         </>
     );
 };

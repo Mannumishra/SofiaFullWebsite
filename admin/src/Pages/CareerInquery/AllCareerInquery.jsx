@@ -138,7 +138,7 @@ const AllCareerInquery = () => {
 
                         {/* Pagination controls */}
 
-                        <div className="pagination">
+                        <div className="pagination d-flex justify-content-center align-items-center">
                             <button
                                 className="btn btn-primary"
                                 onClick={() => handlePageChange(currentPage - 1)}
@@ -146,7 +146,7 @@ const AllCareerInquery = () => {
                             >
                                 Previous
                             </button>
-
+                                &nbsp;
                             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                                 <button
                                     key={page}
@@ -156,7 +156,7 @@ const AllCareerInquery = () => {
                                     {page}
                                 </button>
                             ))}
-
+                            &nbsp;
                             <button
                                 className="btn btn-primary"
                                 onClick={() => handlePageChange(currentPage + 1)}

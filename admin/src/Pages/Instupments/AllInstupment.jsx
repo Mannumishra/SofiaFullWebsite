@@ -136,7 +136,7 @@ const AllInstupment = () => {
             </section>
 
             {/* Pagination */}
-            <div className="pagination">
+            <div className="pagination d-flex justify-content-center align-items-center">
                 <button
                     onClick={() => handlePageChange(currentPage - 1)}
                     className="btn btn-primary"
@@ -144,6 +144,7 @@ const AllInstupment = () => {
                 >
                     Previous
                 </button>
+                &nbsp;
                 {[...Array(totalPages)].map((_, index) => (
                     <button
                         key={index}
@@ -153,6 +154,7 @@ const AllInstupment = () => {
                         {index + 1}
                     </button>
                 ))}
+                &nbsp;
                 <button
                     onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage === totalPages}

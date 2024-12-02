@@ -138,7 +138,7 @@ const AllProduct = () => {
                     </table>
 
                     {/* Pagination */}
-                    <div className="pagination">
+                    <div className="pagination d-flex justify-content-center align-items-center">
                         <button
                             onClick={() => paginate(currentPage - 1)}
                             disabled={currentPage === 1}
@@ -146,6 +146,7 @@ const AllProduct = () => {
                         >
                             Previous
                         </button>
+                        &nbsp;
                         {[...Array(Math.ceil(filteredData.length / itemsPerPage))].map((_, index) => (
                             <button
                                 key={index + 1}
@@ -155,6 +156,7 @@ const AllProduct = () => {
                                 {index + 1}
                             </button>
                         ))}
+                        &nbsp;
                         <button
                             onClick={() => paginate(currentPage + 1)}
                             disabled={currentPage === Math.ceil(filteredData.length / itemsPerPage)}

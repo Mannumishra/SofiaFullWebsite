@@ -133,19 +133,19 @@ const AllGetInTouch = () => {
                     </table>
 
                     {/* Pagination */}
-                    <div className="pagination">
+                    <div className="pagination d-flex justify-content-center align-items-center">
                         <button
-                            className="btn btn-secondary"
+                            className="btn btn-primary"
                             onClick={() => handlePageChange(currentPage - 1)}
                             disabled={currentPage === 1}
                         >
                             Previous
                         </button>
-                        <span>
+                        <span className='mx-3'>
                             Page {currentPage} of {totalPages}
                         </span>
                         <button
-                            className="btn btn-secondary"
+                            className="btn btn-primary"
                             onClick={() => handlePageChange(currentPage + 1)}
                             disabled={currentPage === totalPages}
                         >

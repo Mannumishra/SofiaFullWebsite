@@ -131,17 +131,34 @@ const AllInstupmentProduct = () => {
                     </table>
 
                     {/* Pagination Controls */}
-                    <div className="pagination">
+                    <div className="pagination d-flex justify-content-center align-items-center">
+                        <button
+                            onClick={() => paginate(currentPage - 1)}
+                            disabled={currentPage === 1}
+                            className="btn btn-primary"
+                        >
+                            Previous
+                        </button>
+                        &nbsp;
                         {Array.from({ length: Math.ceil(filteredData.length / itemsPerPage) }).map((_, index) => (
                             <button
                                 key={index + 1}
                                 onClick={() => paginate(index + 1)}
-                                className={`page-button ${currentPage === index + 1 ? 'active' : ''}`}
+                                className={`btn btn-primary ${currentPage === index + 1 ? 'active' : ''}`}
                             >
                                 {index + 1}
                             </button>
                         ))}
+                        &nbsp;
+                        <button
+                            onClick={() => paginate(currentPage + 1)}
+                            disabled={currentPage === Math.ceil(filteredData.length / itemsPerPage)}
+                            className="btn btn-primary"
+                        >
+                            Next
+                        </button>
                     </div>
+
                 </section>
             )}
         </>

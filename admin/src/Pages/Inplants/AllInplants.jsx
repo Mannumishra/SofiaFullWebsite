@@ -132,7 +132,7 @@ const AllInplants = () => {
                         </table>
 
                         {/* Pagination Controls */}
-                        <div className="pagination">
+                        <div className="pagination d-flex justify-content-center align-items-center">
                             <button
                                 onClick={() => paginate(currentPage - 1)}
                                 disabled={currentPage === 1}
@@ -140,6 +140,7 @@ const AllInplants = () => {
                             >
                                 Previous
                             </button>
+                            &nbsp;
                             {Array.from({ length: Math.ceil(filteredInplants.length / itemsPerPage) }, (_, index) => (
                                 <button
                                     key={index + 1}
@@ -149,6 +150,7 @@ const AllInplants = () => {
                                     {index + 1}
                                 </button>
                             ))}
+                            &nbsp;
                             <button
                                 onClick={() => paginate(currentPage + 1)}
                                 disabled={currentPage === Math.ceil(filteredInplants.length / itemsPerPage)}

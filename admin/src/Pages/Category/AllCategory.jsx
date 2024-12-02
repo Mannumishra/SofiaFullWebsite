@@ -131,7 +131,7 @@ const AllCategory = () => {
                         </table>
 
                         {/* Pagination */}
-                        <div className="pagination">
+                        <div className="pagination d-flex justify-content-center align-items-center">
                             <button
                                 onClick={() => paginate(currentPage - 1)}
                                 disabled={currentPage === 1}
