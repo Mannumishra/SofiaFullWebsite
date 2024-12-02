@@ -32,7 +32,7 @@ const AddGalleryImage = () => {
 
         try {
             // Send POST request with image file
-            const response = await axios.post('http://localhost:8000/api/add-image', formData, {
+            const response = await axios.post('https://api.sofia.assortsmachinetools.com/api/add-image', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

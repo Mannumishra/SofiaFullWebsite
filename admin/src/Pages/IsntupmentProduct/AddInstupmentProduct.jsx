@@ -24,7 +24,7 @@ const AddInstupmentProduct = () => {
         const fetchCategories = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get('http://localhost:8000/api/get-all-category');
+                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/get-all-category');
                 setCategories(response.data.data);
             } catch (error) {
                 console.error("Error fetching categories:", error);
@@ -42,7 +42,7 @@ const AddInstupmentProduct = () => {
             if (!formData.category) return;
             setIsLoading(true);
             try {
-                const response = await axios.get('http://localhost:8000/api/all-instupment-after-details');
+                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/all-instupment-after-details');
                 // Assuming inplants data has a 'categoryId' field matching the category's `_id`
                 const filteredData = response.data.data.filter((x) => x.categoryName._id === formData.category);
                 setInstupment(filteredData);
@@ -85,7 +85,7 @@ const AddInstupmentProduct = () => {
         data.append('image', formData.image);
 
         try {
-            const response = await axios.post('http://localhost:8000/api/create-instupment-product', data, {
+            const response = await axios.post('https://api.sofia.assortsmachinetools.com/api/create-instupment-product', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

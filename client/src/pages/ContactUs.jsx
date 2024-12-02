@@ -28,7 +28,7 @@ function ContactUs() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8000/api/send-contact', formData);
+      const response = await axios.post('https://api.sofia.assortsmachinetools.com/api/send-contact', formData);
       Swal.fire('Success', 'Contact request submitted successfully!', 'success');
       setFormData({
         name: '',

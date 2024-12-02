@@ -15,7 +15,7 @@ const AllInstupment = () => {
     useEffect(() => {
         const fetchInstupment = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/all-instupment');
+                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/all-instupment');
                 console.log(response);
                 setInstupment(response.data.data);
             } catch (error) {
@@ -42,7 +42,7 @@ const AllInstupment = () => {
 
         if (result.isConfirmed) {
             try {
-                await axios.delete(`http://localhost:8000/api/delete-instupment/${id}`);
+                await axios.delete(`https://api.sofia.assortsmachinetools.com/api/delete-instupment/${id}`);
                 setInstupment(instupment.filter(inst => inst._id !== id));
                 toast.success("Instupment deleted successfully.");
             } catch (error) {
@@ -115,7 +115,7 @@ const AllInstupment = () => {
                                         <td>{instupment.categoryName.categoryName}</td>
                                         <td>{instupment.instupmentName}</td>
                                         <td>
-                                            <img src={`http://localhost:8000/${instupment.instupmentImage}`} alt={instupment.instupmentName} style={{ width: '50px', height: '50px' }} />
+                                            <img src={`https://api.sofia.assortsmachinetools.com/${instupment.instupmentImage}`} alt={instupment.instupmentName} style={{ width: '50px', height: '50px' }} />
                                         </td>
                                         <td>
                                             <Link to={`/edit-instupment/${instupment._id}`} className="bt edit">Edit <i className="fa-solid fa-pen-to-square"></i></Link>

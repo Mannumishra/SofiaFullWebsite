@@ -19,9 +19,9 @@ const EditGalleryImage = () => {
     useEffect(() => {
         const fetchImageData = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/get-image/${id}`); // Adjust API endpoint
+                const response = await axios.get(`https://api.sofia.assortsmachinetools.com/api/get-image/${id}`); // Adjust API endpoint
                 setImageData(response.data);
-                setImagePreview(`http://localhost:8000/${response.data.image}`); // Set image preview
+                setImagePreview(`https://api.sofia.assortsmachinetools.com/${response.data.image}`); // Set image preview
             } catch (error) {
                 toast.error('Error fetching image data');
             }
@@ -47,7 +47,7 @@ const EditGalleryImage = () => {
         formData.append('active', imageData.active);
 
         try {
-            const response = await axios.put(`http://localhost:8000/api/update-image/${id}`, formData, {
+            const response = await axios.put(`https://api.sofia.assortsmachinetools.com/api/update-image/${id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

@@ -63,7 +63,7 @@ const AddCatalog = () => {
 
         try {
             setIsLoading(true);
-            const response = await axios.post('http://localhost:8000/api/create-catalog', uploadData, {
+            const response = await axios.post('https://api.sofia.assortsmachinetools.com/api/create-catalog', uploadData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

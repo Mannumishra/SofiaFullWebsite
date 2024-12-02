@@ -42,7 +42,7 @@ const downloadCatalogController = async (req, res) => {
         res.status(200).json({
             success: true,
             message: "Thank you for downloading the catalog!",
-            catalogUrl: `http://localhost:8000/${catalog.catalogPDF}`
+            catalogUrl: `https://api.sofia.assortsmachinetools.com/${catalog.catalogPDF}`
         });
     } catch (error) {
         console.error(error);

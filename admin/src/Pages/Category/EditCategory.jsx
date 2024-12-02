@@ -17,7 +17,7 @@ const EditCategory = () => {
     useEffect(() => {
         const fetchCategory = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/get-category/${id}`);
+                const response = await axios.get(`https://api.sofia.assortsmachinetools.com/api/get-category/${id}`);
                 if (response.data.success) {
                     const { categoryName, categoryImage, categoryStatus } = response.data.data;
                     setFormData({
@@ -60,7 +60,7 @@ const EditCategory = () => {
 
         setBtnLoading(true);
         try {
-            const response = await axios.put(`http://localhost:8000/api/update-category/${id}`, data, {
+            const response = await axios.put(`https://api.sofia.assortsmachinetools.com/api/update-category/${id}`, data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

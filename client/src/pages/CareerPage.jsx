@@ -31,7 +31,7 @@ const CareerPage = () => {
         formDataToSend.append("resume", formData.resume);
 
         try {
-            const response = await axios.post("http://localhost:8000/api/apply-job", formDataToSend, {
+            const response = await axios.post("https://api.sofia.assortsmachinetools.com/api/apply-job", formDataToSend, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
 

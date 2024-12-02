@@ -20,7 +20,7 @@ function Footer() {
   const [categoryData, setCategoryData] = useState([])
   const catlogData = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/get-all-category")
+      const res = await axios.get("https://api.sofia.assortsmachinetools.com/api/get-all-category")
       console.log(res)
       setCategoryData(res.data.data)
     } catch (error) {
@@ -48,7 +48,7 @@ function Footer() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/send-getintouch",
+        "https://api.sofia.assortsmachinetools.com/api/send-getintouch",
         formData
       );
       Swal.fire(

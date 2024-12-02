@@ -11,7 +11,7 @@ const AllContactQuery = () => {
     useEffect(() => {
         const fetchContacts = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/all-contact');  // Replace with your actual API endpoint
+                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/all-contact');  // Replace with your actual API endpoint
                 setContacts(response.data.data);
                 setTotalPages(Math.ceil(response.data.data.length / recordsPerPage)); // Calculate total pages
             } catch (error) {
@@ -25,7 +25,7 @@ const AllContactQuery = () => {
     // Handle status change
     const handleStatusChange = async (id) => {
         try {
-            await axios.put(`http://localhost:8000/api/update-contact-status/${id}`, { status: 'Complete' });
+            await axios.put(`https://api.sofia.assortsmachinetools.com/api/update-contact-status/${id}`, { status: 'Complete' });
             setContacts((prevContacts) =>
                 prevContacts.map((contact) =>
                     contact._id === id ? { ...contact, status: 'Complete' } : contact
@@ -39,7 +39,7 @@ const AllContactQuery = () => {
     // Handle delete contact
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:8000/api/delete-contact/${id}`);
+            await axios.delete(`https://api.sofia.assortsmachinetools.com/api/delete-contact/${id}`);
             setContacts((prevContacts) =>
                 prevContacts.filter((contact) => contact._id !== id)
             );

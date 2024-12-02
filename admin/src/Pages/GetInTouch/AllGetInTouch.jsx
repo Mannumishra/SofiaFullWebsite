@@ -11,7 +11,7 @@ const AllGetInTouch = () => {
     useEffect(() => {
         const fetchGetintouch = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/all-getintouch`);
+                const response = await axios.get(`https://api.sofia.assortsmachinetools.com/api/all-getintouch`);
                 setGetintouch(response.data.data);
                 setTotalPages(Math.ceil(response.data.data.length / recordsPerPage)); // Calculate total pages based on data length
             } catch (error) {
@@ -26,7 +26,7 @@ const AllGetInTouch = () => {
     const handleStatusChange = async (id) => {
         try {
             // Update the status to "Complete" in the backend
-            await axios.put(`http://localhost:8000/api/update-getintouch-status/${id}`, { status: 'Complete' });
+            await axios.put(`https://api.sofia.assortsmachinetools.com/api/update-getintouch-status/${id}`, { status: 'Complete' });
             setGetintouch((prevGetintouch) =>
                 prevGetintouch.map((contact) =>
                     contact._id === id ? { ...contact, status: 'Complete' } : contact
@@ -41,7 +41,7 @@ const AllGetInTouch = () => {
     const handleDelete = async (id) => {
         try {
             // Delete the contact in the backend
-            await axios.delete(`http://localhost:8000/api/delete-getintouch/${id}`);
+            await axios.delete(`https://api.sofia.assortsmachinetools.com/api/delete-getintouch/${id}`);
             // Remove deleted contact from state
             setGetintouch((prevGetintouch) =>
                 prevGetintouch.filter((contact) => contact._id !== id)

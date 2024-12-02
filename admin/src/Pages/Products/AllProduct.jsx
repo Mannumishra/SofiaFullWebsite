@@ -16,7 +16,7 @@ const AllProduct = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/all-inplants-product');
+                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/all-inplants-product');
                 setData(response.data.data);
                 setFilteredData(response.data.data); // Set initial filtered data
             } catch (error) {
@@ -66,7 +66,7 @@ const AllProduct = () => {
 
         if (result.isConfirmed) {
             try {
-                await axios.delete(`http://localhost:8000/api/delete-inplants-product/${id}`);
+                await axios.delete(`https://api.sofia.assortsmachinetools.com/api/delete-inplants-product/${id}`);
                 setData(data.filter(item => item._id !== id));
                 setFilteredData(filteredData.filter(item => item._id !== id)); // Remove deleted item from filtered data as well
                 toast.success("Product deleted successfully!");
@@ -125,7 +125,7 @@ const AllProduct = () => {
                                     <td>{item.category.categoryName}</td>
                                     <td>{item.inplants.inplantsName}</td>
                                     <td>{item.productName}</td>
-                                    <td><img src={`http://localhost:8000/${item.image}`} alt="" /></td>
+                                    <td><img src={`https://api.sofia.assortsmachinetools.com/${item.image}`} alt="" /></td>
                                     <td>
                                         <Link to={`/edit-inplants-product/${item._id}`} className="bt edit">Edit <i className="fa-solid fa-pen-to-square"></i></Link>
                                     </td>
