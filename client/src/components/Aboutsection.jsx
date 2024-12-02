@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 // import customerImg from '../assets/images/customer-re.png';
 import missionImg from "../assets/images/mission.png";
@@ -12,8 +12,10 @@ import { MdDiamond } from "react-icons/md";
 import group from "../assets/images/00cfb8d7d1e59f2b9c0ee9e3307da7a2.png";
 import earth from "../assets/images/earth.png";
 import man from "../assets/images/man.png";
+import axios from "axios";
 
 function Aboutsection() {
+  const [images, setImage] = useState();
   const [show, setShow] = useState(false);
   const [currentImage, setCurrentImage] = useState("");
 
@@ -22,6 +24,20 @@ function Aboutsection() {
     setCurrentImage(image);
     setShow(true);
   };
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const res = await axios.get(
+          "https://api.sofia.assortsmachinetools.com/api/get-images"
+        );
+        setImage(res.data.images);
+      } catch (error) {
+        console.log(error, "image not found");
+      }
+    };
+    fetchImages();
+  }, []);
 
   return (
     <>
@@ -150,7 +166,11 @@ function Aboutsection() {
           </div>
           <div
             className="row p-2"
-            style={{ background: "#fff", borderRadius: "10px", objectFit: 'cover' }}
+            style={{
+              background: "#fff",
+              borderRadius: "10px",
+              objectFit: "cover",
+            }}
           >
             <div className="col-md-3">
               <img
@@ -160,7 +180,11 @@ function Aboutsection() {
                 className="pt-3"
                 height={"400px"}
                 width={"100%"}
-                style={{ borderRadius: "6px", cursor: "pointer", objectFit: 'cover' }}
+                style={{
+                  borderRadius: "6px",
+                  cursor: "pointer",
+                  objectFit: "cover",
+                }}
               />
             </div>
             <div className="col-md-3">
@@ -172,7 +196,11 @@ function Aboutsection() {
                   onClick={() => handleShow(fa111)}
                   height={"200px"}
                   width={"100%"}
-                  style={{ borderRadius: "6px", cursor: "pointer", objectFit: 'cover' }}
+                  style={{
+                    borderRadius: "6px",
+                    cursor: "pointer",
+                    objectFit: "cover",
+                  }}
                 />
               </div>
               <div>
@@ -183,7 +211,11 @@ function Aboutsection() {
                   className="pt-3"
                   height={"200px"}
                   width={"100%"}
-                  style={{ borderRadius: "6px", cursor: "pointer", objectFit: 'cover' }}
+                  style={{
+                    borderRadius: "6px",
+                    cursor: "pointer",
+                    objectFit: "cover",
+                  }}
                 />
               </div>
             </div>
@@ -196,7 +228,11 @@ function Aboutsection() {
                   onClick={() => handleShow(fa113)}
                   height={"200px"}
                   width={"100%"}
-                  style={{ borderRadius: "6px", cursor: "pointer", objectFit: 'cover' }}
+                  style={{
+                    borderRadius: "6px",
+                    cursor: "pointer",
+                    objectFit: "cover",
+                  }}
                 />
               </div>
               <div>
@@ -207,7 +243,11 @@ function Aboutsection() {
                   className="pt-3"
                   height={"200px"}
                   width={"100%"}
-                  style={{ borderRadius: "6px", cursor: "pointer", objectFit: 'cover' }}
+                  style={{
+                    borderRadius: "6px",
+                    cursor: "pointer",
+                    objectFit: "cover",
+                  }}
                 />
               </div>
             </div>
@@ -219,20 +259,33 @@ function Aboutsection() {
                 onClick={() => handleShow(fa115)}
                 height={"400px"}
                 width={"100%"}
-                style={{ borderRadius: "6px", cursor: "pointer", objectFit: 'cover' }}
+                style={{
+                  borderRadius: "6px",
+                  cursor: "pointer",
+                  objectFit: "cover",
+                }}
               />
             </div>
           </div>
-
+          <Modal show={show} onHide={handleClose} centered>
+            <Modal.Body>
+              <img
+                src={currentImage}
+                alt="Selected"
+                width="100%"
+                height="380px"
+              />
+            </Modal.Body>
+          </Modal>
           <div className="row mt-4 mb-4">
             <div className="col-md-8">
               <div className="ourMission">
                 <h2 className="mission">Vision & Mission</h2>
                 <p className="missionPara">
                   Our mission is to enhance the quality of life for patients
-                  through advanced orthopedic solutions. We envision a world where
-                  everyone can achieve optimal mobility and functionality, free
-                  from the limitations of musculoskeletal disorders.
+                  through advanced orthopedic solutions. We envision a world
+                  where everyone can achieve optimal mobility and functionality,
+                  free from the limitations of musculoskeletal disorders.
                 </p>
                 <p className="name">Simrat Kaur</p>
                 <p className="position">Founder of Sofia</p>
@@ -249,20 +302,6 @@ function Aboutsection() {
           </div>
         </div>
       </div>
-
-      <Modal show={show} onHide={handleClose} centered>
-        {/* <Modal.Header closeButton> */}
-        {/* <Modal.Title>Image Preview</Modal.Title> */}
-        {/* </Modal.Header> */}
-        <Modal.Body>
-          <img src={currentImage} alt="Selected" width="100%" height="380px" />
-        </Modal.Body>
-        {/* <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                </Modal.Footer> */}
-      </Modal>
     </>
   );
 }

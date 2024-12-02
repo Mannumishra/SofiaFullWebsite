@@ -45,8 +45,8 @@ function Certificates() {
 
             {/* image section  */}
             
-           
-                <div className="container py-4" style={{ background: 'linear-gradient(180deg, #E3F1FF 0%, #FFFFFF 125.72%)' }}>
+           <div style={{ background: 'linear-gradient(180deg, #E3F1FF 0%, #FFFFFF 125.72%)' }}>
+                <div className="container py-4">
                     <div className="row">
                         {images.map((image, index) => (
                             <div className="col-md-4 mb-5" key={index}>
@@ -69,6 +69,7 @@ function Certificates() {
                         </Modal.Body>
                     </Modal>
                 </div>
+           </div>
         </>
     );
 }
