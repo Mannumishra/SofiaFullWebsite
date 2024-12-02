@@ -363,7 +363,7 @@ function GetdealerShip() {
                         name="country"
                         className="form-control"
                         placeholder="Country*"
-                        value={formData.country}
+                        value={formData.companyCountry}
                         onChange={handleChange}
                         onFocus={() => setShowSuggestions(true)}
                         required
