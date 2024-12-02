@@ -39,7 +39,7 @@ const Socialicons = () => {
 
                 <div className="icon">
                     <div className="btn1 text-center pt-2 pb-2">
-                        <Link to={"https://wa.me/919015555501"}>
+                        <Link to={"https://wa.me/919015555501"} target='_blank'>
                         <FaWhatsapp size={25} style={{ color: '#25D366' }} />
                         </Link>
                     </div>
