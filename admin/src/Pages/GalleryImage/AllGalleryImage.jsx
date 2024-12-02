@@ -95,8 +95,8 @@ const AllGalleryImage = () => {
                                         </Link>
                                     </td> */}
                                     <td>
-                                        <button 
-                                            className="bt delete" 
+                                        <button
+                                            className="bt delete"
                                             onClick={() => deleteImage(image._id)}>
                                             Delete <i className="fa-solid fa-trash"></i>
                                         </button>

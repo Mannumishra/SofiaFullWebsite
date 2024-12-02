@@ -97,6 +97,43 @@ const Header = () => {
                 <i className="fa-solid fa-tag"></i> Manage Category
               </Link>
             </li>
+
+            <li>
+              <Link
+                to="/all-inplants"
+                className={location.pathname === '/all-inplants' ? 'active-link' : ''}
+                onClick={handletoggleBtn}
+              >
+                <i className="fa-solid fa-tag"></i> Manage Implants
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/all-inplants-products"
+                className={location.pathname === '/all-inplants-products' ? 'active-link' : ''}
+                onClick={handletoggleBtn}
+              >
+                <i className="fa-solid fa-layer-group"></i> Manage Implants Product
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/all-instupment"
+                className={location.pathname === '/all-instupment' ? 'active-link' : ''}
+                onClick={handletoggleBtn}
+              >
+                <i className="fa-solid fa-tag"></i> Manage Instrument
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/all-instupment-products"
+                className={location.pathname === '/all-instupment-products' ? 'active-link' : ''}
+                onClick={handletoggleBtn}
+              >
+                <i className="fa-solid fa-layer-group"></i> Manage Instrument Product
+              </Link>
+            </li>
             <li>
               <Link
                 to="/all-vedio"
@@ -113,42 +150,6 @@ const Header = () => {
                 onClick={handletoggleBtn}
               >
                 <i className="fa-solid fa-tag"></i> Manage Gallery
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/all-inplants"
-                className={location.pathname === '/all-inplants' ? 'active-link' : ''}
-                onClick={handletoggleBtn}
-              >
-                <i className="fa-solid fa-tag"></i> Manage Inplants
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/all-instupment"
-                className={location.pathname === '/all-instupment' ? 'active-link' : ''}
-                onClick={handletoggleBtn}
-              >
-                <i className="fa-solid fa-tag"></i> Manage Instupment
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/all-inplants-products"
-                className={location.pathname === '/all-inplants-products' ? 'active-link' : ''}
-                onClick={handletoggleBtn}
-              >
-                <i className="fa-solid fa-layer-group"></i> Manage Inplants Product
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/all-instupment-products"
-                className={location.pathname === '/all-instupment-products' ? 'active-link' : ''}
-                onClick={handletoggleBtn}
-              >
-                <i className="fa-solid fa-layer-group"></i> Manage Instupment Product
               </Link>
             </li>
             <li>

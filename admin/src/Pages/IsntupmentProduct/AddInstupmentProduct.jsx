@@ -117,7 +117,7 @@ const AddInstupmentProduct = () => {
             <ToastContainer />
             <div className="bread">
                 <div className="head">
-                    <h4>Add Product</h4>
+                    <h4>Add Instrument Product</h4>
                 </div>
                 <div className="links">
                     <Link to="/all-instupment-products" className="add-new">Back <i className="fa-regular fa-circle-left"></i></Link>

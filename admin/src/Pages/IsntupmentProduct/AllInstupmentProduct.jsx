@@ -69,7 +69,7 @@ const AllInstupmentProduct = () => {
             <ToastContainer />
             <div className="bread">
                 <div className="head">
-                    <h4>All Product List</h4>
+                    <h4>All Instrument Product List</h4>
                 </div>
                 <div className="links">
                     <Link to="/add-instupment-product" className="add-new">Add New <i className="fa-solid fa-plus"></i></Link>
@@ -98,7 +98,7 @@ const AllInstupmentProduct = () => {
                             <tr>
                                 <th scope="col">Sr.No.</th>
                                 <th scope="col">Category</th>
-                                <th scope="col">Inplants</th>
+                                <th scope="col">Instrument</th>
                                 <th scope="col">Product Name</th>
                                 <th scope="col">Product Image</th>
                                 <th scope="col">Edit</th>

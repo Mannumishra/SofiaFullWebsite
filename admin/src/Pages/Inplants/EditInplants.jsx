@@ -112,7 +112,7 @@ const EditInplants = () => {
             <ToastContainer />
             <div className="bread">
                 <div className="head">
-                    <h4>Edit Inplant</h4>
+                    <h4>Edit Implants</h4>
                 </div>
                 <div className="links">
                     <Link to="/all-inplants" className="add-new">Back <i className="fa-regular fa-circle-left"></i></Link>

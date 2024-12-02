@@ -85,7 +85,7 @@ const AddInplants = () => {
             <ToastContainer />
             <div className="bread">
                 <div className="head">
-                    <h4>Add Inplant</h4>
+                    <h4>Add Implants</h4>
                 </div>
                 <div className="links">
                     <Link to="/all-inplants" className="add-new">Back <i className="fa-regular fa-circle-left"></i></Link>
