@@ -12,6 +12,7 @@ function Products({ showOnlyActive = false }) { // Accept showOnlyActive prop wi
     const getApiData = async () => {
         try {
             const res = await axios.get("https://api.sofia.assortsmachinetools.com/api/get-all-category");
+            console.log(res)
             setData(res.data.data);
         } catch (error) {
             console.log(error);

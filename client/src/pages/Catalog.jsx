@@ -39,11 +39,11 @@ function Catalog() {
         setSelectedCatalogId(id);  // Store catalog ID
         setShowModal(true);
     };
-    
+
     const handleCloseModal = () => setShowModal(false);
 
     const postData = async (e) => {
-        e.preventDefault();  
+        e.preventDefault();
         try {
             const updatedFormData = { ...formData, catelogId: selectedCatalogId }; // Change catalogId to catelogId
             const response = await axios.post("https://api.sofia.assortsmachinetools.com/api/download-catelog", updatedFormData);
@@ -55,7 +55,7 @@ function Catalog() {
             console.log(error);
         }
     };
-    
+
 
     return (
         <>
@@ -121,7 +121,7 @@ function Catalog() {
                             </div>
                             <div className="col">
                                 <input
-                                    type="text"
+                                    type="email"
                                     name="email"
                                     value={formData.email}
                                     className="form-control"

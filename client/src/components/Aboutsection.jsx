@@ -15,7 +15,7 @@ import man from "../assets/images/man.png";
 import axios from "axios";
 
 function Aboutsection() {
-  const [images, setImage] = useState();
+  const [images, setImage] = useState([]); 
   const [show, setShow] = useState(false);
   const [currentImage, setCurrentImage] = useState("");
 
@@ -31,7 +31,9 @@ function Aboutsection() {
         const res = await axios.get(
           "https://api.sofia.assortsmachinetools.com/api/get-images"
         );
-        setImage(res.data.images);
+        console.log(res)
+        setImage(res.data);
+        console.log(images[0].image);
       } catch (error) {
         console.log(error, "image not found");
       }
@@ -172,100 +174,106 @@ function Aboutsection() {
               objectFit: "cover",
             }}
           >
-            <div className="col-md-3">
-              <img
-                src={fa110}
-                alt=""
-                onClick={() => handleShow(fa110)}
-                className="pt-3"
-                height={"400px"}
-                width={"100%"}
-                style={{
-                  borderRadius: "6px",
-                  cursor: "pointer",
-                  objectFit: "cover",
-                }}
-              />
-            </div>
-            <div className="col-md-3">
-              <div>
-                <img
-                  src={fa111}
-                  alt=""
-                  className="pt-3"
-                  onClick={() => handleShow(fa111)}
-                  height={"200px"}
-                  width={"100%"}
-                  style={{
-                    borderRadius: "6px",
-                    cursor: "pointer",
-                    objectFit: "cover",
-                  }}
-                />
-              </div>
-              <div>
-                <img
-                  src={fa112}
-                  alt=""
-                  onClick={() => handleShow(fa112)}
-                  className="pt-3"
-                  height={"200px"}
-                  width={"100%"}
-                  style={{
-                    borderRadius: "6px",
-                    cursor: "pointer",
-                    objectFit: "cover",
-                  }}
-                />
-              </div>
-            </div>
-            <div className="col-md-3">
-              <div>
-                <img
-                  src={fa113}
-                  alt=""
-                  className="pt-3"
-                  onClick={() => handleShow(fa113)}
-                  height={"200px"}
-                  width={"100%"}
-                  style={{
-                    borderRadius: "6px",
-                    cursor: "pointer",
-                    objectFit: "cover",
-                  }}
-                />
-              </div>
-              <div>
-                <img
-                  src={fa114}
-                  alt=""
-                  onClick={() => handleShow(fa114)}
-                  className="pt-3"
-                  height={"200px"}
-                  width={"100%"}
-                  style={{
-                    borderRadius: "6px",
-                    cursor: "pointer",
-                    objectFit: "cover",
-                  }}
-                />
-              </div>
-            </div>
-            <div className="col-md-3">
-              <img
-                src={fa115}
-                alt=""
-                className="pt-3"
-                onClick={() => handleShow(fa115)}
-                height={"400px"}
-                width={"100%"}
-                style={{
-                  borderRadius: "6px",
-                  cursor: "pointer",
-                  objectFit: "cover",
-                }}
-              />
-            </div>
+            {images.length > 0 && (
+              <>
+                <div className="col-md-3">
+                  <img
+                    src={`https://api.sofia.assortsmachinetools.com/${images[0]?.image}`}
+                    alt=""
+                    onClick={() => handleShow(fa110)}
+                    className="pt-3"
+                    height={"400px"}
+                    width={"100%"}
+                    style={{
+                      borderRadius: "6px",
+                      cursor: "pointer",
+                      objectFit: "cover",
+                    }}
+                  />
+                </div>
+                <div className="col-md-3">
+                  <div>
+                    <img
+                      src={`https://api.sofia.assortsmachinetools.com/${images[1]?.image}`}
+                      alt=""
+                      className="pt-3"
+                      onClick={() => handleShow(fa111)}
+                      height={"200px"}
+                      width={"100%"}
+                      style={{
+                        borderRadius: "6px",
+                        cursor: "pointer",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <img
+                      src={`https://api.sofia.assortsmachinetools.com/${images[2]?.image}`}
+                      alt=""
+                      onClick={() => handleShow(fa112)}
+                      className="pt-3"
+                      height={"200px"}
+                      width={"100%"}
+                      style={{
+                        borderRadius: "6px",
+                        cursor: "pointer",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="col-md-3">
+                  <div>
+                    <img
+                      src={`https://api.sofia.assortsmachinetools.com/${images[3]?.image}`}
+                      alt=""
+                      className="pt-3"
+                      onClick={() => handleShow(fa113)}
+                      height={"200px"}
+                      width={"100%"}
+                      style={{
+                        borderRadius: "6px",
+                        cursor: "pointer",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <img
+                      src={`https://api.sofia.assortsmachinetools.com/${images[4]?.image}`}
+                      alt=""
+                      onClick={() => handleShow(fa114)}
+                      className="pt-3"
+                      height={"200px"}
+                      width={"100%"}
+                      style={{
+                        borderRadius: "6px",
+                        cursor: "pointer",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="col-md-3">
+                  <div>
+                    <img
+                      src={`https://api.sofia.assortsmachinetools.com/${images[5]?.image}`}
+                      alt=""
+                      onClick={() => handleShow(fa115)}
+                      className="pt-3"
+                      height={"400px"}
+                      width={"100%"}
+                      style={{
+                        borderRadius: "6px",
+                        cursor: "pointer",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                </div>
+              </>
+            )}
           </div>
           <Modal show={show} onHide={handleClose} centered>
             <Modal.Body>

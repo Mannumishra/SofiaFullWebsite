@@ -399,7 +399,7 @@ function Footer() {
                   <li key={index}>
                     {" "}
                     {/* Add a key for list items */}
-                    <Link to="/" className="text-white">
+                    <Link to="/OurProduct" className="text-white">
                       {item.categoryName}
                     </Link>
                   </li>
