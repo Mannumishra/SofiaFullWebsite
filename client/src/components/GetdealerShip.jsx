@@ -360,7 +360,7 @@ function GetdealerShip() {
                     <div className="col mb-4 position-relative">
                       <input
                         type="text"
-                        name="country"
+                        name="companyCountry"
                         className="form-control"
                         placeholder="Country*"
                         value={formData.companyCountry}
