@@ -96,13 +96,23 @@ const Header = () => {
               >
                 <i className="fa-solid fa-tag"></i> Manage Category
               </Link>
-            </li> <li>
+            </li>
+            <li>
               <Link
                 to="/all-vedio"
                 className={location.pathname === '/all-vedio' ? 'active-link' : ''}
                 onClick={handletoggleBtn}
               >
                 <i className="fa-solid fa-tag"></i> Manage Vedio
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/all-gallery"
+                className={location.pathname === '/all-gallery' ? 'active-link' : ''}
+                onClick={handletoggleBtn}
+              >
+                <i className="fa-solid fa-tag"></i> Manage Gallery
               </Link>
             </li>
             <li>

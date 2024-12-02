@@ -40,6 +40,8 @@ import AllCareerInquery from '../../Pages/CareerInquery/AllCareerInquery'
 import AllBannerVedio from '../../Pages/BannerVedio/AllBannerVedio'
 import AddBannerVedio from '../../Pages/BannerVedio/AddBannerVedio'
 import EditBannerVedio from '../../Pages/BannerVedio/EditBannerVedio'
+import AllGalleryImage from '../../Pages/GalleryImage/AllGalleryImage'
+import AddGalleryImage from '../../Pages/GalleryImage/AddGalleryImage'
 
 const Home = () => {
   return (
@@ -96,6 +98,11 @@ const Home = () => {
           <Route path={"/all-vedio"} element={<AllBannerVedio />} />   {/* // All Vouchers */}
           <Route path={"/add-vedio"} element={<AddBannerVedio />} />
           <Route path={"/edit-vedio/:id"} element={<EditBannerVedio />} />
+
+
+          <Route path={"/all-gallery"} element={<AllGalleryImage />} />   {/* // All Vouchers */}
+          <Route path={"/add-gallery"} element={<AddGalleryImage />} />
+          <Route path={"/edit-gallery/:id"} element={<EditBanner />} />
 
           {/* --- Tags --- */}
           <Route path={"/all-tags"} element={<AllTags />} />
