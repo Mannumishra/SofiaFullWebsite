@@ -56,7 +56,7 @@ const AddGalleryImage = () => {
                     <h4>Add Gallery Image</h4>
                 </div>
                 <div className="links">
-                    <Link to="/all-gallery-images" className="add-new">
+                    <Link to="/all-gallery" className="add-new">
                         Back <i className="fa-regular fa-circle-left"></i>
                     </Link>
                 </div>

@@ -91,7 +91,13 @@ const Header = () => {
             <li>
               <Link
                 to="/all-category"
-                className={location.pathname === '/all-category' ? 'active-link' : ''}
+                className={
+                  location.pathname === '/all-category' ||
+                    location.pathname === '/add-category' ||
+                    location.pathname.startsWith('/edit-category') // Check for any edit-category route
+                    ? 'active-link'
+                    : ''
+                }
                 onClick={handletoggleBtn}
               >
                 <i className="fa-solid fa-tag"></i> Manage Category
@@ -101,75 +107,131 @@ const Header = () => {
             <li>
               <Link
                 to="/all-inplants"
-                className={location.pathname === '/all-inplants' ? 'active-link' : ''}
+                className={
+                  location.pathname === '/all-inplants' ||
+                    location.pathname === '/add-inplants' ||
+                    location.pathname.startsWith('/edit-inplant') // Check for dynamic edit-inplant routes
+                    ? 'active-link'
+                    : ''
+                }
                 onClick={handletoggleBtn}
               >
                 <i className="fa-solid fa-tag"></i> Manage Implants
               </Link>
             </li>
+
             <li>
               <Link
                 to="/all-inplants-products"
-                className={location.pathname === '/all-inplants-products' ? 'active-link' : ''}
+                className={
+                  location.pathname === '/all-inplants-products' ||
+                    location.pathname === '/add-inplants-product' ||
+                    location.pathname.startsWith('/edit-inplant-product') // Check for dynamic edit-inplant-product routes
+                    ? 'active-link'
+                    : ''
+                }
                 onClick={handletoggleBtn}
               >
                 <i className="fa-solid fa-layer-group"></i> Manage Implants Product
               </Link>
             </li>
+
             <li>
               <Link
                 to="/all-instupment"
-                className={location.pathname === '/all-instupment' ? 'active-link' : ''}
+                className={
+                  location.pathname === '/all-instupment' ||
+                    location.pathname === '/add-instupment' ||
+                    location.pathname.startsWith('/edit-instupment') // Check for dynamic edit-instrument routes
+                    ? 'active-link'
+                    : ''
+                }
                 onClick={handletoggleBtn}
               >
                 <i className="fa-solid fa-tag"></i> Manage Instrument
               </Link>
             </li>
+
             <li>
               <Link
                 to="/all-instupment-products"
-                className={location.pathname === '/all-instupment-products' ? 'active-link' : ''}
+                className={
+                  location.pathname === '/all-instupment-products' ||
+                    location.pathname === '/add-instupment-product' ||
+                    location.pathname.startsWith('/edit-instupment-product') // Check for dynamic edit-instrument-product routes
+                    ? 'active-link'
+                    : ''
+                }
                 onClick={handletoggleBtn}
               >
                 <i className="fa-solid fa-layer-group"></i> Manage Instrument Product
               </Link>
             </li>
+
             <li>
               <Link
                 to="/all-vedio"
-                className={location.pathname === '/all-vedio' ? 'active-link' : ''}
+                className={
+                  location.pathname === '/all-vedio' ||
+                    location.pathname === '/add-vedio' ||
+                    location.pathname.startsWith('/edit-video') // Check for dynamic edit-video routes
+                    ? 'active-link'
+                    : ''
+                }
                 onClick={handletoggleBtn}
               >
                 <i className="fa-solid fa-tag"></i> Manage Video
               </Link>
             </li>
+
             <li>
               <Link
                 to="/all-gallery"
-                className={location.pathname === '/all-gallery' ? 'active-link' : ''}
+                className={
+                  location.pathname === '/all-gallery' ||
+                    location.pathname === '/add-gallery' ||
+                    location.pathname.startsWith('/edit-gallery') // Check for dynamic edit-gallery routes
+                    ? 'active-link'
+                    : ''
+                }
                 onClick={handletoggleBtn}
               >
                 <i className="fa-solid fa-tag"></i> Manage Gallery
               </Link>
             </li>
+
             <li>
               <Link
                 to="/all-catalog"
-                className={location.pathname === '/all-catalog' ? 'active-link' : ''}
+                className={
+                  location.pathname === '/all-catalog' ||
+                    location.pathname === '/add-catalog' ||
+                    location.pathname.startsWith('/edit-catalog') // Check for dynamic edit-catalog routes
+                    ? 'active-link'
+                    : ''
+                }
                 onClick={handletoggleBtn}
               >
                 <i className="fa-brands fa-unsplash"></i> Manage Catalogue
               </Link>
             </li>
+
             <li>
               <Link
                 to="/all-testimonial"
-                className={location.pathname === '/all-testimonial' ? 'active-link' : ''}
+                className={
+                  location.pathname === '/all-testimonial' ||
+                    location.pathname === '/add-testimonial' ||
+                    location.pathname.startsWith('/edit-testimonial') // Check for dynamic edit-testimonial routes
+                    ? 'active-link'
+                    : ''
+                }
                 onClick={handletoggleBtn}
               >
                 <i className="fa-solid fa-tag"></i> Manage Testimonial
               </Link>
             </li>
+
             <button className='logout mb-5'>Log Out <i className="fa-solid fa-right-from-bracket"></i></button>
           </ul>
         </div>

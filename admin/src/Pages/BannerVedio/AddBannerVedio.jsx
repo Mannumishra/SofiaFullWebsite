@@ -56,7 +56,7 @@ const AddBannerVedio = () => {
                     <h4>Add Banner Video</h4>
                 </div>
                 <div className="links">
-                    <Link to="/all-banner-vedio" className="add-new">
+                    <Link to="/all-vedio" className="add-new">
                         Back <i className="fa-regular fa-circle-left"></i>
                     </Link>
                 </div>
