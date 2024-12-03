@@ -7,14 +7,14 @@ const EventImageRouter = require("express").Router();
 EventImageRouter.post(
     "/add-event-image",
     upload.single("image"),
-    validateImageDimensions,
+    // validateImageDimensions,
     createEventImage
 );
 
 EventImageRouter.put(
     "/update-event-image/:id",
     upload.single("image"),
-    validateImageDimensions,
+    // validateImageDimensions,
     updateEventImage
 );
 
