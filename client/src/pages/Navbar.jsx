@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
   FaFacebook,
-  FaGoogle,
   FaInstagram,
   FaLinkedin,
   FaPhoneAlt,
@@ -11,13 +10,11 @@ import {
 } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next"; // Import useTranslation
 import logo from "../assets/images/sofia.png";
-import i18n from "../components/i18n";
 import { IoCallOutline } from "react-icons/io5";
 import { GrLanguage } from "react-icons/gr";
+
 function Navbar() {
-  const { t, i18n } = useTranslation(); // Initialize translation hook
   const location = useLocation();
   const navigate = useNavigate();
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -43,10 +40,6 @@ function Navbar() {
     }
   };
 
-  const handleLanguageChange = (lang) => {
-    i18n.changeLanguage(lang); // Change the language
-  };
-
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -62,8 +55,28 @@ function Navbar() {
     window.scrollTo(0, 0);
   }, [location]);
 
-  // Helper function to add active class based on the current path
+  useEffect(() => {
+    const initializeGoogleTranslate = () => {
+      new window.google.translate.TranslateElement(
+        { pageLanguage: "en" },
+        "google_translate_element"
+      );
+    };
+
+    if (window.google && window.google.translate) {
+      initializeGoogleTranslate();
+    } else {
+      const interval = setInterval(() => {
+        if (window.google && window.google.translate) {
+          initializeGoogleTranslate();
+          clearInterval(interval);
+        }
+      }, 100);
+    }
+  }, []);
+
   const isActive = (path) => (location.pathname === path ? "active" : "");
+
 
   return (
     <>
@@ -106,7 +119,7 @@ function Navbar() {
             </div>
 
             <div className="col-12 col-md-8 text-center text-md-end">
-              <div className="actions d-flex">
+              <div className="actions">
                 <div className="search-box mb-2 mb-md-0">
                   <form
                     onSubmit={handleSearchSubmit}
@@ -114,7 +127,7 @@ function Navbar() {
                   >
                     <input
                       type="text"
-                      placeholder={t("searchPlaceholder")}
+                      placeholder="Search..."
                       className="search-input"
                       value={searchQuery}
                       onChange={handleSearchChange}
@@ -124,17 +137,10 @@ function Navbar() {
                     </button>
                   </form>
                 </div>
-                <button
-                  className="language-button mb-2 mb-md-0"
-                  onClick={() =>
-                    handleLanguageChange(i18n.language === "en" ? "hi" : "en")
-                  }
-                >
-                  <GrLanguage /> &nbsp;{t("language")}
-                </button>
+                <div id="google_translate_element" style={{height:"30px"}}/>
                 <Link to="GetdealerShip">
                   <button className="cta-button mb-2 mb-md-0">
-                    <b>{t("getDealership")}</b>
+                    <b>Get Dealership</b>
                   </button>
                 </Link>
               </div>
@@ -168,7 +174,7 @@ function Navbar() {
                     to="/"
                     onClick={closeNavbar}
                   >
-                    {t("home")}
+                    Home
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -177,7 +183,7 @@ function Navbar() {
                     to="/About-us"
                     onClick={closeNavbar}
                   >
-                    {t("aboutUs")}
+                    About Us
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -186,7 +192,7 @@ function Navbar() {
                     to="/OurProduct"
                     onClick={closeNavbar}
                   >
-                    {t("products")}
+                    Products
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -195,7 +201,7 @@ function Navbar() {
                     to="/Certificates"
                     onClick={closeNavbar}
                   >
-                    {t("certificates")}
+                    Certificates
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -204,7 +210,7 @@ function Navbar() {
                     to="/Catalog"
                     onClick={closeNavbar}
                   >
-                    {t("catalog")}
+                    Catalog
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -213,7 +219,7 @@ function Navbar() {
                     to="/Contact-us"
                     onClick={closeNavbar}
                   >
-                    {t("contactUs")}
+                    Contact Us
                   </Link>
                 </li>
                 <li className="nav-item">
