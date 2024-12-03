@@ -295,8 +295,6 @@ function Aboutsection() {
                   where everyone can achieve optimal mobility and functionality,
                   free from the limitations of musculoskeletal disorders.
                 </p>
-                <p className="name">Simrat Kaur</p>
-                <p className="position">Founder of Sofia</p>
               </div>
             </div>
             <div className="col-md-4">
