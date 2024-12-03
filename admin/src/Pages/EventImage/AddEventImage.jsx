@@ -41,7 +41,7 @@ const AddEventImage = () => {
         try {
             // Replace with your actual API endpoint
             const response = await axios.post(
-                'http://localhost:8000/api/add-event-image',
+                'https://api.sofia.assortsmachinetools.com/api/add-event-image',
                 formData,
                 {
                     headers: {
