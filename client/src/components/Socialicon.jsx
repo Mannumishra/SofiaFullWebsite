@@ -13,7 +13,7 @@ const Socialicons = () => {
     const getEventImageData = async () => {
         try {
             const res = await axios.get("https://api.sofia.assortsmachinetools.com/api/get-event-image");
-            setEventImage(res.data);
+            setEventImage(res.data.slice(0, 2));
         } catch (error) {
             console.log(error);
         }
@@ -69,13 +69,13 @@ const Socialicons = () => {
                 </div>
 
                 {showImages && (
-                    <div className="iconImagesStyle" style={{ display: 'flex', flexDirection: 'row' }}>
+                    <div className="iconImagesStyle" style={{ display: 'flex', flexDirection: 'row', marginLeft: "-60px" }}>
                         {eventImage.map((item, index) => (
                             <img
                                 key={index}
                                 src={`https://api.sofia.assortsmachinetools.com/${item.image}`}
                                 alt="Event"
-                                style={{ marginRight: '10px', background: '#ffffff', cursor: 'pointer' }}
+                                style={{ marginRight: '10px', background: '#ffffff', cursor: 'pointer', height: "200px", width: "200px" }}
                                 onClick={() => handleImageClick(`https://api.sofia.assortsmachinetools.com/${item.image}`)} // Open image in modal
                             />
                         ))}
@@ -91,8 +91,8 @@ const Socialicons = () => {
             {modalImage && (
                 <div
                     style={{
-                        position: "absolute",
-                        top: -10,
+                        position: 'fixed',
+                        top: 0,
                         left: 0,
                         width: '100%',
                         height: '100%',
@@ -106,8 +106,8 @@ const Socialicons = () => {
                 >
                     <div
                         style={{
-                            width: '300px',
-                            height: '300px',
+                            width: '500px',
+                            height: '500px',
                             backgroundColor: '#fff',
                             display: 'flex',
                             alignItems: 'center',
@@ -116,12 +116,12 @@ const Socialicons = () => {
                             borderRadius: '10px',
                             overflow: 'hidden',
                         }}
-                        onClick={(e) => e.stopPropagation()} // Prevent modal close on content click
+                        onClick={(e) => e.stopPropagation()}
                     >
                         <img
                             src={modalImage}
                             alt="Modal"
-                            style={{ width: '100%', height: '100%', padding: "10px" }}
+                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                         />
                         <FaTimes
                             size={30}

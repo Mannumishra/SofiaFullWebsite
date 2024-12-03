@@ -78,7 +78,7 @@ const AddEventImage = () => {
                 <form className="row g-3" onSubmit={handleSubmit}>
                     <div className="col-md-6">
                         <label htmlFor="image" className="form-label">
-                            Upload Event Image (100x150px)
+                            Upload Event Image
                         </label>
                         <input
                             type="file"
