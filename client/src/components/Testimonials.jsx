@@ -14,7 +14,8 @@ function Testimonials() {
           "https://api.sofia.assortsmachinetools.com/api/all-textimonial"
         );
         console.log(response);
-        setTestimonials(response.data);
+        const filterTestimonial = response.data.filter((x)=>x.activeStatus==="True")
+        setTestimonials(filterTestimonial);
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching testimonials:", error);
