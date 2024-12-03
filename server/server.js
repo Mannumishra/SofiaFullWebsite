@@ -18,6 +18,7 @@ const TestimonialRouter = require("./Routes/TestimonialRouter")
 const CareerRouter = require("./Routes/careerRoutes")
 const VedioRouter = require("./Routes/VedioRouter")
 const GalleryImageRouter = require("./Routes/GalleryRouter")
+const EventImageRouter = require("./Routes/EventImageRouter")
 
 
 const app = express()
@@ -47,6 +48,7 @@ app.use("/api", TestimonialRouter)
 app.use("/api", CareerRouter)
 app.use("/api", VedioRouter)
 app.use("/api", GalleryImageRouter)
+app.use("/api", EventImageRouter)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server Is Running At ${process.env.PORT}`)

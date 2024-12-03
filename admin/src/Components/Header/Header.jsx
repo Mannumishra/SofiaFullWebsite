@@ -202,6 +202,22 @@ const Header = () => {
 
             <li>
               <Link
+                to="/all-event-image"
+                className={
+                  location.pathname === '/all-event-image' ||
+                    location.pathname === '/add-event-image' ||
+                    location.pathname.startsWith('/edit-event-image') // Check for dynamic edit-gallery routes
+                    ? 'active-link'
+                    : ''
+                }
+                onClick={handletoggleBtn}
+              >
+                <i className="fa-solid fa-tag"></i> Manage Event Image
+              </Link>
+            </li>
+
+            <li>
+              <Link
                 to="/all-catalog"
                 className={
                   location.pathname === '/all-catalog' ||

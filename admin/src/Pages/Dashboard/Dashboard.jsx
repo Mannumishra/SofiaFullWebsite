@@ -44,7 +44,7 @@ const Dashboard = () => {
       <Link to='/all-inplants' style={{ textDecoration: "none" }}>
         <div className="dashboard-card" style={{ backgroundColor: '#99ccff' }}>
           <FaClinicMedical className="dashboard-icon" />
-          <h3 className="dashboard-title">Inplants</h3>
+          <h3 className="dashboard-title">Implants</h3>
         </div>
       </Link>
 
@@ -58,7 +58,7 @@ const Dashboard = () => {
       <Link to='/all-inplants-products' style={{ textDecoration: "none" }}>
         <div className="dashboard-card" style={{ backgroundColor: '#ff99cc' }}>
           <FaProductHunt className="dashboard-icon" />
-          <h3 className="dashboard-title">Inplants Product</h3>
+          <h3 className="dashboard-title">Implants Product</h3>
         </div>
       </Link>
 

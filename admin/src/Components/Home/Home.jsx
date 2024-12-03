@@ -42,6 +42,9 @@ import AddBannerVedio from '../../Pages/BannerVedio/AddBannerVedio'
 import EditBannerVedio from '../../Pages/BannerVedio/EditBannerVedio'
 import AllGalleryImage from '../../Pages/GalleryImage/AllGalleryImage'
 import AddGalleryImage from '../../Pages/GalleryImage/AddGalleryImage'
+import AllEventImage from '../../Pages/EventImage/AllEventImage'
+import AddEventImage from '../../Pages/EventImage/AddEventImage'
+import EditEventImage from '../../Pages/EventImage/EditEventImage'
 
 const Home = () => {
   return (
@@ -103,6 +106,11 @@ const Home = () => {
           <Route path={"/all-gallery"} element={<AllGalleryImage />} />   {/* // All Vouchers */}
           <Route path={"/add-gallery"} element={<AddGalleryImage />} />
           <Route path={"/edit-gallery/:id"} element={<EditBanner />} />
+
+
+          <Route path={"/all-event-image"} element={<AllEventImage />} />   {/* // All Vouchers */}
+          <Route path={"/add-event-image"} element={<AddEventImage />} />
+          <Route path={"/edit-event-image/:id"} element={<EditEventImage />} />
 
           {/* --- Tags --- */}
           <Route path={"/all-tags"} element={<AllTags />} />
