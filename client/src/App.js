@@ -1,7 +1,6 @@
 
 import './App.css';
 import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
-// import { BrowserRouter as Routes, Route, Switch } from 'react-router-dom';
 import Navbar from './pages/Navbar';
 import Home from './pages/Home';
 import Footer from './pages/Footer';
@@ -17,12 +16,7 @@ import Thumbnail from './pages/Thumbnail.jsx';
 import Socialicons from './components/Socialicon.jsx';
 import InstrumentProduct from './pages/InstrumentProduct.jsx';
 import CareerPage from './pages/CareerPage.jsx';
-
-
-
-
 function App() {
-
   return (
    <>
     <BrowserRouter>
@@ -40,8 +34,6 @@ function App() {
         <Route path="/Catalog" element={<Catalog/>} />
         <Route path="/Contact-us" element={<ContactUs/>}/>
         <Route path="/career" element={<CareerPage/>}/>
-       
-        
       </Routes>
       <Socialicons/>
     <Footer/>

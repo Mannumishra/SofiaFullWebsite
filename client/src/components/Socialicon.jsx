@@ -69,7 +69,7 @@ const Socialicons = () => {
                 </div>
 
                 {showImages && (
-                    <div className="iconImagesStyle" style={{ display: 'flex', flexDirection: 'row', marginLeft: "-60px" }}>
+                    <div className="iconImagesStyle">
                         {eventImage.map((item, index) => (
                             <img
                                 key={index}
@@ -79,7 +79,7 @@ const Socialicons = () => {
                                 onClick={() => handleImageClick(`https://api.sofia.assortsmachinetools.com/${item.image}`)} // Open image in modal
                             />
                         ))}
-                        <div style={{ top: 0, right: 0, cursor: 'pointer', padding: '2px' }} onClick={() => setShowImages(false)}>
+                        <div className='cutButton' style={{ top: 0, right: 0, cursor: 'pointer', padding: '2px' }} onClick={() => setShowImages(false)}>
                             <FaTimes size={20} style={{ color: '#000' }} />
                         </div>
                     </div>

@@ -54,7 +54,8 @@ function InstrumentProduct() {
     return (
         <>
             {image && productDetails ? (
-                <div className="container-fluid ThumbnailSection" style={{ background: 'linear-gradient(175deg, #CEE5FD 0%, #FFFFFF 100%)' }}>
+                <div className='ThumbnailSection' style={{ background: 'linear-gradient(175deg, #CEE5FD 0%, #FFFFFF 100%)' }}>
+                <div className="container ThumbnailSection">
                     <div className="row px-3 px-md-5">
                         <div className="col-12 col-md-6 text-center mb-4 mb-md-0">
                             <img
@@ -79,7 +80,7 @@ function InstrumentProduct() {
                         </Modal.Body>
                     </Modal>
 
-                    <div className="container-fluid pt-5">
+                    <div className="container pt-5">
                         <div className="row px-3 px-md-5">
                             <div className="col-12 border border-primary rounded pt-2" style={{ background: '#3496FF' }}>
                                 <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
@@ -169,6 +170,8 @@ function InstrumentProduct() {
 
                     </div>
                 </div>
+                </div>
+
             ) : (
                 <p>No product details available for this implant.</p>
             )}

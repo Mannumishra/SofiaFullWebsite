@@ -64,147 +64,150 @@ function TibialNail() {
     <>
       {image && productDetails ? (
         <div
-          className="container-fluid ThumbnailSection"
           style={{
             background: "linear-gradient(175deg, #CEE5FD 0%, #FFFFFF 100%)",
           }}
+          className="ThumbnailSection"
         >
-          <div className="row px-3 px-md-5">
-            <div className="col-12 col-md-4 text-center mb-4 mb-md-0 product-image-wrapper">
-              <div className="product-image-container">
+          <div className="container">
+            <div className="row px-3 px-md-5">
+              <div className="col-12 col-md-4 text-center mb-4 mb-md-0 product-image-wrapper">
+                <div className="product-image-container">
+                  <img
+                    src={`https://api.sofia.assortsmachinetools.com/${image}`}
+                    alt="Product View"
+                    className="img-fluid thumbnail-image"
+                    style={{
+                      maxHeight: "350px",
+                      width: "90%",
+                      cursor: "pointer",
+                      objectFit: "cover",
+                    }}
+                    onClick={handleImageClick}
+                    loading="lazy" // Lazy loading
+                  />
+                </div>
+              </div>
+
+              <div
+                className="col-12 col-md-8"
+                dangerouslySetInnerHTML={{ __html: productDetails }}
+              />
+            </div>
+
+            {/* Modal Component */}
+            <Modal show={showModal} onHide={handleCloseModal} centered>
+              <Modal.Header closeButton>
+                <Modal.Title>Product View</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
                 <img
                   src={`https://api.sofia.assortsmachinetools.com/${image}`}
                   alt="Product View"
-                  className="img-fluid thumbnail-image"
-                  style={{
-                    maxHeight: "350px",
-                    width: "90%",
-                    cursor: "pointer",
-                    objectFit:"cover"
-                  }}
-                  onClick={handleImageClick}
-                  loading="lazy" // Lazy loading
+                  className="img-fluid"
                 />
-              </div>
-            </div>
+              </Modal.Body>
+            </Modal>
 
-            <div
-              className="col-12 col-md-8"
-              dangerouslySetInnerHTML={{ __html: productDetails }}
-            />
-          </div>
-
-          {/* Modal Component */}
-          <Modal show={showModal} onHide={handleCloseModal} centered>
-            <Modal.Header closeButton>
-              <Modal.Title>Product View</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <img
-                src={`https://api.sofia.assortsmachinetools.com/${image}`}
-                alt="Product View"
-                className="img-fluid"
-              />
-            </Modal.Body>
-          </Modal>
-
-          <div className="container-fluid pt-5">
-            <div className="row px-3 px-md-5">
-              <div
-                className="col-12 border border-primary rounded pt-2"
-                style={{ background: "#3496FF" }}
-              >
+            <div className="containerpt-5">
+              <div className="row px-3 px-md-5">
                 <div
-                  className="btn-group"
-                  role="group"
-                  aria-label="Basic radio toggle button group"
+                  className="col-12 border border-primary rounded pt-2"
+                  style={{ background: "#3496FF" }}
                 >
-                  {/* Radio Button for Stainless Steel */}
-                  <input
-                    type="radio"
-                    className="btn-check"
-                    name="btnradio"
-                    id="btnradio1"
-                    autoComplete="off"
-                    value="Stainless Steel"
-                    checked={selectedMaterial === "Stainless Steel"}
-                    onChange={() => handleMaterialClick("Stainless Steel")}
-                  />
-                  <label
-                    className="btn"
-                    htmlFor="btnradio1"
-                    style={{
-                      background:
-                        selectedMaterial === "Stainless Steel"
-                          ? "#fff"
-                          : "#3496FF",
-                      color:
-                        selectedMaterial === "Stainless Steel"
-                          ? "#000"
-                          : "#fff",
-                      border: "none",
-                      padding: "0.5rem 1rem",
-                      borderRadius: "5px",
-                    }}
+                  <div
+                    className="btn-group"
+                    role="group"
+                    aria-label="Basic radio toggle button group"
                   >
-                    Stainless Steel
-                  </label>
+                    {/* Radio Button for Stainless Steel */}
+                    <input
+                      type="radio"
+                      className="btn-check"
+                      name="btnradio"
+                      id="btnradio1"
+                      autoComplete="off"
+                      value="Stainless Steel"
+                      checked={selectedMaterial === "Stainless Steel"}
+                      onChange={() => handleMaterialClick("Stainless Steel")}
+                    />
+                    <label
+                      className="btn"
+                      htmlFor="btnradio1"
+                      style={{
+                        background:
+                          selectedMaterial === "Stainless Steel"
+                            ? "#fff"
+                            : "#3496FF",
+                        color:
+                          selectedMaterial === "Stainless Steel"
+                            ? "#000"
+                            : "#fff",
+                        border: "none",
+                        padding: "0.5rem 1rem",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      Stainless Steel
+                    </label>
 
-                  {/* Radio Button for Titanium */}
-                  <input
-                    type="radio"
-                    className="btn-check"
-                    name="btnradio"
-                    id="btnradio2"
-                    autoComplete="off"
-                    value="Titanium"
-                    checked={selectedMaterial === "Titanium"}
-                    onChange={() => handleMaterialClick("Titanium")}
-                  />
-                  <label
-                    className="btn"
-                    htmlFor="btnradio2"
-                    style={{
-                      background:
-                        selectedMaterial === "Titanium" ? "#fff" : "#3496FF",
-                      color: selectedMaterial === "Titanium" ? "#000" : "#fff",
-                      border: "none",
-                      padding: "0.5rem 1rem",
-                      borderRadius: "5px",
-                    }}
-                  >
-                    Titanium
-                  </label>
+                    {/* Radio Button for Titanium */}
+                    <input
+                      type="radio"
+                      className="btn-check"
+                      name="btnradio"
+                      id="btnradio2"
+                      autoComplete="off"
+                      value="Titanium"
+                      checked={selectedMaterial === "Titanium"}
+                      onChange={() => handleMaterialClick("Titanium")}
+                    />
+                    <label
+                      className="btn"
+                      htmlFor="btnradio2"
+                      style={{
+                        background:
+                          selectedMaterial === "Titanium" ? "#fff" : "#3496FF",
+                        color:
+                          selectedMaterial === "Titanium" ? "#000" : "#fff",
+                        border: "none",
+                        padding: "0.5rem 1rem",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      Titanium
+                    </label>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="row mt-4 mb-4 px-3 px-md-5">
-              <div className="col-12">
-                {/* Conditionally render material details */}
-                {selectedMaterial === "Stainless Steel" ? (
-                  stainlessDetails ? (
+              <div className="row mt-4 mb-4 px-3 px-md-5">
+                <div className="col-12">
+                  {/* Conditionally render material details */}
+                  {selectedMaterial === "Stainless Steel" ? (
+                    stainlessDetails ? (
+                      <div
+                        style={{
+                          maxHeight: "400px",
+                          overflowY: "auto",
+                        }}
+                        dangerouslySetInnerHTML={{ __html: stainlessDetails }}
+                      />
+                    ) : (
+                      <p>Stainless steel details are not available.</p>
+                    )
+                  ) : titaniumDetails ? (
                     <div
                       style={{
                         maxHeight: "400px",
                         overflowY: "auto",
                       }}
-                      dangerouslySetInnerHTML={{ __html: stainlessDetails }}
+                      dangerouslySetInnerHTML={{ __html: titaniumDetails }}
                     />
                   ) : (
-                    <p>Stainless steel details are not available.</p>
-                  )
-                ) : titaniumDetails ? (
-                  <div
-                    style={{
-                      maxHeight: "400px",
-                      overflowY: "auto",
-                    }}
-                    dangerouslySetInnerHTML={{ __html: titaniumDetails }}
-                  />
-                ) : (
-                  <p>Titanium details are not available.</p>
-                )}
+                    <p>Titanium details are not available.</p>
+                  )}
+                </div>
               </div>
             </div>
           </div>

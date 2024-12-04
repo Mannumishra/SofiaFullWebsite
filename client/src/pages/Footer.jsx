@@ -447,7 +447,8 @@ function Footer() {
                   />
                 </div>
                 <div className="form-group">
-                  <div className="col mb-4 position-relative">
+                  <div className="col mb-4">
+                    <div className="countrySection">
                     <input
                       type="text"
                       name="country"
@@ -460,7 +461,7 @@ function Footer() {
                     />
                     {showSuggestions && (
                       <ul
-                        className="list-group position-absolute w-100"
+                        className="list-group position-absolute"
                         style={{
                           maxHeight: "200px",
                           overflowY: "auto",
@@ -480,6 +481,7 @@ function Footer() {
                         ))}
                       </ul>
                     )}
+                    </div>
                   </div>
                 </div>
                 <div className="form-group">

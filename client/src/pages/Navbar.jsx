@@ -80,10 +80,10 @@ function Navbar() {
 
   return (
     <>
-      <section className={`headerSection pt-4 ${isSticky ? "hide-row" : ""}`}>
+      <section className={`headerSection pt-2 ${isSticky ? "hide-row" : ""}`}>
         <div className="container">
-          <div style={{ alignItems: "center" }} className="row pb-2 top-row">
-            <div className="col-12 col-md-4 text-center text-md-start mb-2 mb-md-0">
+          <div style={{ alignItems: "center" }} className="row top-row">
+            <div className="col-12 col-md-4 text-center text-md-start mb-2 mb-md-0 p-0">
               <div className="logoIcon">
                 <Link
                   target="_blank"
@@ -118,9 +118,9 @@ function Navbar() {
               </div>
             </div>
 
-            <div className="col-12 col-md-8 text-center text-md-end">
+            <div className="col-12 col-md-8 p-0 text-center text-md-end">
               <div className="actions">
-                <div className="search-box mb-2 mb-md-0">
+                <div className="search-box mb-md-0">
                   <form
                     onSubmit={handleSearchSubmit}
                     className="search-box mb-2 mb-md-0"
@@ -137,7 +137,7 @@ function Navbar() {
                     </button>
                   </form>
                 </div>
-                <div id="google_translate_element" style={{height:"30px"}}/>
+                <div id="google_translate_element"/>
                 <Link to="GetdealerShip">
                   <button className="cta-button mb-2 mb-md-0">
                     <b>Get Dealership</b>

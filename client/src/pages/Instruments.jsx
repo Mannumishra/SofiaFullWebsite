@@ -24,7 +24,7 @@ function Instruments() {
     return (
         <>
             <section className="implants">
-                <div className="container-fluid">
+                <div className="container">
                     <div className="row">
                         <div className="col-md-12">
                             <div className="ourproduct">
@@ -38,8 +38,8 @@ function Instruments() {
             {
                 data.length > 0 ?
                     <section className="implants">
-                        <div className="container-fluid">
-                            <div className="row mt-1 px-3 px-md-5 py-4 implants-card">
+                        <div className="container">
+                            <div className="row mt-1 py-4 implants-card">
                                 {data.map((instrument, index) => (
                                     <div className="col-md-3" key={index}>
                                         <div className="category-card">
