@@ -56,23 +56,32 @@ function Navbar() {
   }, [location]);
 
   useEffect(() => {
-    const initializeGoogleTranslate = () => {
-      new window.google.translate.TranslateElement(
-        { pageLanguage: "en" },
-        "google_translate_element"
-      );
+    const loadGoogleTranslate = () => {
+      const initializeGoogleTranslate = () => {
+        new window.google.translate.TranslateElement(
+          { pageLanguage: "en" },
+          "google_translate_element"
+        );
+      };
+
+      if (window.google && window.google.translate) {
+        initializeGoogleTranslate();
+      } else {
+        const interval = setInterval(() => {
+          if (window.google && window.google.translate) {
+            initializeGoogleTranslate();
+            clearInterval(interval);
+          }
+        }, 100);
+      }
     };
 
-    if (window.google && window.google.translate) {
-      initializeGoogleTranslate();
-    } else {
-      const interval = setInterval(() => {
-        if (window.google && window.google.translate) {
-          initializeGoogleTranslate();
-          clearInterval(interval);
-        }
-      }, 100);
-    }
+    // Defer the initialization of Google Translate widget
+    const timeoutId = setTimeout(() => {
+      loadGoogleTranslate();
+    }, 1000); // 2 seconds delay
+
+    return () => clearTimeout(timeoutId); // Cleanup timeout
   }, []);
 
   const isActive = (path) => (location.pathname === path ? "active" : "");
