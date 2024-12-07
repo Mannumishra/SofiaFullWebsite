@@ -44,7 +44,7 @@ const AllCareerInquery = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const response = await axios.delete(`https://api.sofiasurgicals.com/api/delete-catalog/${id}`);
+                    const response = await axios.delete(`https://api.sofiasurgicals.com/api/delete-career-record/${id}`);
                     if (response.data.success) {
                         toast.success("Catalog deleted successfully");
                         setCatalogs(catalogs.filter((catalog) => catalog._id !== id));
