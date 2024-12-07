@@ -79,7 +79,7 @@ function Navbar() {
     // Defer the initialization of Google Translate widget
     const timeoutId = setTimeout(() => {
       loadGoogleTranslate();
-    }, 1000); // 2 seconds delay
+    }, 10); // 2 seconds delay
 
     return () => clearTimeout(timeoutId); // Cleanup timeout
   }, []);

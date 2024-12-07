@@ -16,19 +16,19 @@ function Home() {
 
   // Fetch the videos on component mount
   useEffect(() => {
-      const fetchVideos = async () => {
-          try {
-              const response = await axios.get('https://api.sofiasurgicals.com/api/get-vedio');  // Replace with your API endpoint
-              console.log(response)
-              setVideos(response.data);
-              setIsLoading(false);
-          } catch (error) {
-              // toast.error('Error fetching videos');
-              setIsLoading(false);
-          }
-      };
+    const fetchVideos = async () => {
+      try {
+        const response = await axios.get('https://api.sofiasurgicals.com/api/get-vedio');  // Replace with your API endpoint
+        console.log(response)
+        setVideos(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        // toast.error('Error fetching videos');
+        setIsLoading(false);
+      }
+    };
 
-      fetchVideos();
+    fetchVideos();
   }, []);
   return (
     <>
@@ -51,7 +51,7 @@ function Home() {
                     exporting, and supplying top-quality<br />
                     orthopedic trauma products globally.
                   </p>
-                  <button type="submit" className="btn btn-primary px-4 w-30">View Products → </button>
+                  <Link to='/OurProduct' className="btn btn-primary px-4 w-30">View Products → </Link>
                 </div>
               </div>
 
