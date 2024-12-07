@@ -205,6 +205,7 @@ function ContactUs() {
     name: "",
     profession: "",
     email: "",
+    number: "",
     country: "",
     city: "",
     subject: "",
@@ -311,6 +312,19 @@ function ContactUs() {
                         className="form-control"
                         placeholder="Email*"
                         value={formData.email}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col mb-12 mb-3">
+                      <input
+                        type="number"
+                        name="number"
+                        className="form-control"
+                        placeholder="Contact No.*"
+                        value={formData.number}
                         onChange={handleChange}
                         required
                       />

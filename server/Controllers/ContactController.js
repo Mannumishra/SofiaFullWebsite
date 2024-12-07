@@ -9,13 +9,15 @@ const createContact = async (req, res) => {
             country,
             city,
             subject,
-            message
+            message,
+            number
         } = req.body;
 
         const errorMessage = [];
 
         // Validate required fields
         if (!name) errorMessage.push("Name is required.");
+        if (!number) errorMessage.push("Contact Number is required.");
         if (!profession) errorMessage.push("Profession is required.");
         if (!email) errorMessage.push("Email is required.");
         if (!country) errorMessage.push("Country is required.");
@@ -35,7 +37,8 @@ const createContact = async (req, res) => {
             country,
             city,
             subject,
-            message
+            message,
+            number
         });
 
         // Save the new contact record

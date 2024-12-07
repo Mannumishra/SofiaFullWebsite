@@ -15,14 +15,15 @@ import man from "../assets/images/man.png";
 import axios from "axios";
 
 function Aboutsection() {
-  const [images, setImage] = useState([]); 
+  const [images, setImage] = useState([]);
   const [show, setShow] = useState(false);
   const [currentImage, setCurrentImage] = useState("");
 
+
   const handleClose = () => setShow(false);
-  const handleShow = (image) => {
-    setCurrentImage(image);
-    setShow(true);
+  const handleShow = (imageUrl) => {
+    setCurrentImage(imageUrl); // Set the current image URL
+    setShow(true); // Open the modal
   };
 
   useEffect(() => {
@@ -180,7 +181,9 @@ function Aboutsection() {
                   <img
                     src={`https://api.sofiasurgicals.com/${images[0]?.image}`}
                     alt=""
-                    onClick={() => handleShow(fa110)}
+                    onClick={() =>
+                      handleShow(`https://api.sofiasurgicals.com/${images[0]?.image}`)
+                    }
                     className="pt-3"
                     height={"400px"}
                     width={"100%"}
@@ -196,8 +199,12 @@ function Aboutsection() {
                     <img
                       src={`https://api.sofiasurgicals.com/${images[1]?.image}`}
                       alt=""
+                      onClick={() =>
+                        handleShow(
+                          `https://api.sofiasurgicals.com/${images[1]?.image}`
+                        )
+                      }
                       className="pt-3"
-                      onClick={() => handleShow(fa111)}
                       height={"200px"}
                       width={"100%"}
                       style={{
@@ -211,7 +218,11 @@ function Aboutsection() {
                     <img
                       src={`https://api.sofiasurgicals.com/${images[2]?.image}`}
                       alt=""
-                      onClick={() => handleShow(fa112)}
+                      onClick={() =>
+                        handleShow(
+                          `https://api.sofiasurgicals.com/${images[2]?.image}`
+                        )
+                      }
                       className="pt-3"
                       height={"200px"}
                       width={"100%"}
@@ -228,8 +239,12 @@ function Aboutsection() {
                     <img
                       src={`https://api.sofiasurgicals.com/${images[3]?.image}`}
                       alt=""
+                      onClick={() =>
+                        handleShow(
+                          `https://api.sofiasurgicals.com/${images[3]?.image}`
+                        )
+                      }
                       className="pt-3"
-                      onClick={() => handleShow(fa113)}
                       height={"200px"}
                       width={"100%"}
                       style={{
@@ -243,7 +258,11 @@ function Aboutsection() {
                     <img
                       src={`https://api.sofiasurgicals.com/${images[4]?.image}`}
                       alt=""
-                      onClick={() => handleShow(fa114)}
+                      onClick={() =>
+                        handleShow(
+                          `https://api.sofiasurgicals.com/${images[4]?.image}`
+                        )
+                      }
                       className="pt-3"
                       height={"200px"}
                       width={"100%"}
@@ -260,7 +279,11 @@ function Aboutsection() {
                     <img
                       src={`https://api.sofiasurgicals.com/${images[5]?.image}`}
                       alt=""
-                      onClick={() => handleShow(fa115)}
+                      onClick={() =>
+                        handleShow(
+                          `https://api.sofiasurgicals.com/${images[5]?.image}`
+                        )
+                      }
                       className="pt-3"
                       height={"400px"}
                       width={"100%"}
@@ -282,6 +305,10 @@ function Aboutsection() {
                 alt="Selected"
                 width="100%"
                 height="380px"
+                style={{
+                  borderRadius: "6px",
+                  objectFit: "cover",
+                }}
               />
             </Modal.Body>
           </Modal>

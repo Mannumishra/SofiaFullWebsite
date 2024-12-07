@@ -203,10 +203,10 @@ function GetdealerShip() {
   const [filteredCountries, setFilteredCountries] = useState(countries);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
-  const handleSelect = (country) => {
-    setFormData({ ...formData, country });
-    setShowSuggestions(false);
-  };
+  // const handleSelect = (country) => {
+  //   setFormData({ ...formData, country });
+  //   setShowSuggestions(false);
+  // };
 
   const [formData, setFormData] = useState({
     companyName: "",
@@ -220,8 +220,8 @@ function GetdealerShip() {
   // Handle form field changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    if (name === "country") {
+  
+    if (name === "companyCountry") {
       setFilteredCountries(
         countries.filter((country) =>
           country.toLowerCase().includes(value.toLowerCase())
@@ -229,13 +229,20 @@ function GetdealerShip() {
       );
       setShowSuggestions(true);
     }
-
+  
     setFormData({
       ...formData,
       [name]: value,
     });
   };
+  
 
+  const handleSelect = (selectedCountry) => {
+    setFormData({ ...formData, companyCountry: selectedCountry });
+    setFilteredCountries(countries); // Reset the filtered countries list
+    setShowSuggestions(false); // Hide suggestions
+  };
+  
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -357,7 +364,7 @@ function GetdealerShip() {
                   </div>
                   <div className="col mb-4">
                     {/* <input type="text" className="form-control" name="companyCountry" placeholder="Country*" value={formData.companyCountry} onChange={handleChange} required /> */}
-                    <div className="col mb-4 position-relative">
+                    <div className="col position-relative">
                       <input
                         type="text"
                         name="companyCountry"
