@@ -11,7 +11,7 @@ function Testimonials() {
     const fetchTestimonials = async () => {
       try {
         const response = await axios.get(
-          "https://api.sofia.assortsmachinetools.com/api/all-textimonial"
+          "https://api.sofiasurgicals.com/api/all-textimonial"
         );
         console.log(response);
         const filterTestimonial = response.data.filter((x)=>x.activeStatus==="True")
@@ -67,7 +67,7 @@ function Testimonials() {
             </div>
             <div className="testimonial-author">
               <img
-                src={`https://api.sofia.assortsmachinetools.com/${testimonial.image}`}
+                src={`https://api.sofiasurgicals.com/${testimonial.image}`}
                 alt={testimonial.name}
                 className="author-image"
               />

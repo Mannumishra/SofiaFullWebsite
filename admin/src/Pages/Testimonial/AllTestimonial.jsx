@@ -9,7 +9,7 @@ const AllTestimonial = () => {
         // Fetch testimonials from the server
         const fetchTestimonials = async () => {
             try {
-                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/all-textimonial'); // Adjust this endpoint as per your backend
+                const response = await axios.get('https://api.sofiasurgicals.com/api/all-textimonial'); // Adjust this endpoint as per your backend
                 setTestimonials(response.data);
             } catch (error) {
                 console.error("Error fetching testimonials:", error);
@@ -20,7 +20,7 @@ const AllTestimonial = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`https://api.sofia.assortsmachinetools.com/api/delete-textimonial/${id}`); // Adjust this endpoint as per your backend
+            await axios.delete(`https://api.sofiasurgicals.com/api/delete-textimonial/${id}`); // Adjust this endpoint as per your backend
             setTestimonials(testimonials.filter((testimonial) => testimonial._id !== id));
         } catch (error) {
             console.error("Error deleting testimonial:", error);
@@ -60,7 +60,7 @@ const AllTestimonial = () => {
                                 <td>{testimonial.details}</td>
                                 <td>
                                     {testimonial.image ? (
-                                        <img src={`https://api.sofia.assortsmachinetools.com/${testimonial.image}`} alt={testimonial.name} width="50" height="50" />
+                                        <img src={`https://api.sofiasurgicals.com/${testimonial.image}`} alt={testimonial.name} width="50" height="50" />
                                     ) : (
                                         "No Image"
                                     )}

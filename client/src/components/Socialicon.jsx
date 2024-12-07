@@ -12,7 +12,7 @@ const Socialicons = () => {
 
     const getEventImageData = async () => {
         try {
-            const res = await axios.get("https://api.sofia.assortsmachinetools.com/api/get-event-image");
+            const res = await axios.get("https://api.sofiasurgicals.com/api/get-event-image");
             setEventImage(res.data.slice(0, 2));
         } catch (error) {
             console.log(error);
@@ -73,10 +73,10 @@ const Socialicons = () => {
                         {eventImage.map((item, index) => (
                             <img
                                 key={index}
-                                src={`https://api.sofia.assortsmachinetools.com/${item.image}`}
+                                src={`https://api.sofiasurgicals.com/${item.image}`}
                                 alt="Event"
                                 style={{ marginRight: '10px', background: '#ffffff', cursor: 'pointer', height: "200px", width: "200px" }}
-                                onClick={() => handleImageClick(`https://api.sofia.assortsmachinetools.com/${item.image}`)} // Open image in modal
+                                onClick={() => handleImageClick(`https://api.sofiasurgicals.com/${item.image}`)} // Open image in modal
                             />
                         ))}
                         <div className='cutButton' style={{ top: 0, right: 0, cursor: 'pointer', padding: '2px' }} onClick={() => setShowImages(false)}>

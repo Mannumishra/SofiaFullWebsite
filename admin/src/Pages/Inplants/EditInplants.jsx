@@ -20,7 +20,7 @@ const EditInplants = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/get-all-category');
+                const response = await axios.get('https://api.sofiasurgicals.com/api/get-all-category');
                 if (response.data.success) {
                     setCategories(response.data.data);
                 } else {
@@ -38,7 +38,7 @@ const EditInplants = () => {
     useEffect(() => {
         const fetchInplant = async () => {
             try {
-                const response = await axios.get(`https://api.sofia.assortsmachinetools.com/api/inplants/${id}`);
+                const response = await axios.get(`https://api.sofiasurgicals.com/api/inplants/${id}`);
                 console.log(response)
                 if (response.data.success) {
                     const { categoryName, inplantsName } = response.data.data;
@@ -87,7 +87,7 @@ const EditInplants = () => {
 
         setIsLoading(true);
         try {
-            const response = await axios.put(`https://api.sofia.assortsmachinetools.com/api/update-inplants/${id}`, data, {
+            const response = await axios.put(`https://api.sofiasurgicals.com/api/update-inplants/${id}`, data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

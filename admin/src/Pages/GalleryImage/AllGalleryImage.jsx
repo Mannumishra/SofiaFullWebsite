@@ -13,7 +13,7 @@ const AllGalleryImage = () => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/get-images');  // Adjust API endpoint for images
+                const response = await axios.get('https://api.sofiasurgicals.com/api/get-images');  // Adjust API endpoint for images
                 setImages(response.data);
                 setIsLoading(false);
             } catch (error) {
@@ -40,7 +40,7 @@ const AllGalleryImage = () => {
         if (confirmDelete.isConfirmed) {
             try {
                 // Delete the image from the backend
-                const response = await axios.delete(`https://api.sofia.assortsmachinetools.com/api/delete-image/${imageId}`);  // Adjust API endpoint for image deletion
+                const response = await axios.delete(`https://api.sofiasurgicals.com/api/delete-image/${imageId}`);  // Adjust API endpoint for image deletion
 
                 if (response.status === 200) {
                     // Remove the image from state (UI)
@@ -87,7 +87,7 @@ const AllGalleryImage = () => {
                                 <tr key={index}>
                                     <th scope="row">{index + 1}</th>
                                     <td>
-                                        <img src={`https://api.sofia.assortsmachinetools.com/${image.image}`} alt="Gallery" width="150" height="100" />
+                                        <img src={`https://api.sofiasurgicals.com/${image.image}`} alt="Gallery" width="150" height="100" />
                                     </td>
                                     {/* <td>
                                         <Link className="bt edit">

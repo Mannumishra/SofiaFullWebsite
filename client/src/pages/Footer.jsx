@@ -223,7 +223,7 @@ function Footer() {
   const catlogData = async () => {
     try {
       const res = await axios.get(
-        "https://api.sofia.assortsmachinetools.com/api/get-all-category"
+        "https://api.sofiasurgicals.com/api/get-all-category"
       );
       console.log(res);
       setCategoryData(res.data.data);
@@ -265,7 +265,7 @@ function Footer() {
 
     try {
       const response = await axios.post(
-        "https://api.sofia.assortsmachinetools.com/api/send-getintouch",
+        "https://api.sofiasurgicals.com/api/send-getintouch",
         formData
       );
       Swal.fire(

@@ -18,7 +18,7 @@ function Home() {
   useEffect(() => {
       const fetchVideos = async () => {
           try {
-              const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/get-vedio');  // Replace with your API endpoint
+              const response = await axios.get('https://api.sofiasurgicals.com/api/get-vedio');  // Replace with your API endpoint
               console.log(response)
               setVideos(response.data);
               setIsLoading(false);
@@ -61,7 +61,7 @@ function Home() {
 
               {/* Video Section */}
               <div className="col-md-6 text-center">
-                <video src={`https://api.sofia.assortsmachinetools.com/${videos[0]?.vedio}`} alt="Home Video" className="img-fluid" style={{ height: '350px', width: '100%' }}
+                <video src={`https://api.sofiasurgicals.com/${videos[0]?.vedio}`} alt="Home Video" className="img-fluid" style={{ height: '350px', width: '100%' }}
                   autoPlay loop muted />
               </div>
             </div>

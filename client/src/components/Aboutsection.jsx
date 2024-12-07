@@ -29,7 +29,7 @@ function Aboutsection() {
     const fetchImages = async () => {
       try {
         const res = await axios.get(
-          "https://api.sofia.assortsmachinetools.com/api/get-images"
+          "https://api.sofiasurgicals.com/api/get-images"
         );
         console.log(res)
         setImage(res.data);
@@ -178,7 +178,7 @@ function Aboutsection() {
               <>
                 <div className="col-md-3">
                   <img
-                    src={`https://api.sofia.assortsmachinetools.com/${images[0]?.image}`}
+                    src={`https://api.sofiasurgicals.com/${images[0]?.image}`}
                     alt=""
                     onClick={() => handleShow(fa110)}
                     className="pt-3"
@@ -194,7 +194,7 @@ function Aboutsection() {
                 <div className="col-md-3">
                   <div>
                     <img
-                      src={`https://api.sofia.assortsmachinetools.com/${images[1]?.image}`}
+                      src={`https://api.sofiasurgicals.com/${images[1]?.image}`}
                       alt=""
                       className="pt-3"
                       onClick={() => handleShow(fa111)}
@@ -209,7 +209,7 @@ function Aboutsection() {
                   </div>
                   <div>
                     <img
-                      src={`https://api.sofia.assortsmachinetools.com/${images[2]?.image}`}
+                      src={`https://api.sofiasurgicals.com/${images[2]?.image}`}
                       alt=""
                       onClick={() => handleShow(fa112)}
                       className="pt-3"
@@ -226,7 +226,7 @@ function Aboutsection() {
                 <div className="col-md-3">
                   <div>
                     <img
-                      src={`https://api.sofia.assortsmachinetools.com/${images[3]?.image}`}
+                      src={`https://api.sofiasurgicals.com/${images[3]?.image}`}
                       alt=""
                       className="pt-3"
                       onClick={() => handleShow(fa113)}
@@ -241,7 +241,7 @@ function Aboutsection() {
                   </div>
                   <div>
                     <img
-                      src={`https://api.sofia.assortsmachinetools.com/${images[4]?.image}`}
+                      src={`https://api.sofiasurgicals.com/${images[4]?.image}`}
                       alt=""
                       onClick={() => handleShow(fa114)}
                       className="pt-3"
@@ -258,7 +258,7 @@ function Aboutsection() {
                 <div className="col-md-3">
                   <div>
                     <img
-                      src={`https://api.sofia.assortsmachinetools.com/${images[5]?.image}`}
+                      src={`https://api.sofiasurgicals.com/${images[5]?.image}`}
                       alt=""
                       onClick={() => handleShow(fa115)}
                       className="pt-3"

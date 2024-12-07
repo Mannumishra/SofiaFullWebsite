@@ -32,7 +32,7 @@ const AddBannerVedio = () => {
 
         try {
             // Send POST request with video file
-            const response = await axios.post('https://api.sofia.assortsmachinetools.com/api/add-vedio', formData, {
+            const response = await axios.post('https://api.sofiasurgicals.com/api/add-vedio', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

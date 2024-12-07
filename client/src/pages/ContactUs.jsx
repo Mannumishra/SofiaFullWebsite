@@ -242,7 +242,7 @@ function ContactUs() {
 
     try {
       const response = await axios.post(
-        "https://api.sofia.assortsmachinetools.com/api/send-contact",
+        "https://api.sofiasurgicals.com/api/send-contact",
         formData
       );
       Swal.fire(

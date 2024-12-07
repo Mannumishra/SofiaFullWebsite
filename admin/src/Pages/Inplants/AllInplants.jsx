@@ -15,7 +15,7 @@ const AllInplants = () => {
     useEffect(() => {
         const fetchInplants = async () => {
             try {
-                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/all-inplants');
+                const response = await axios.get('https://api.sofiasurgicals.com/api/all-inplants');
                 setInplants(response.data.data);
             } catch (error) {
                 console.error("Error fetching inplants:", error);
@@ -41,7 +41,7 @@ const AllInplants = () => {
 
         if (result.isConfirmed) {
             try {
-                await axios.delete(`https://api.sofia.assortsmachinetools.com/api/delete-inplants/${id}`);
+                await axios.delete(`https://api.sofiasurgicals.com/api/delete-inplants/${id}`);
                 setInplants(inplants.filter(inplant => inplant._id !== id));
                 toast.success("Inplant deleted successfully.");
             } catch (error) {
@@ -113,7 +113,7 @@ const AllInplants = () => {
                                             <td>{inplant.categoryName.categoryName}</td>
                                             <td>{inplant.inplantsName}</td>
                                             <td>
-                                                <img src={`https://api.sofia.assortsmachinetools.com/${inplant.inplantsImage}`} alt={inplant.inplantsName} style={{ width: '50px', height: '50px' }} />
+                                                <img src={`https://api.sofiasurgicals.com/${inplant.inplantsImage}`} alt={inplant.inplantsName} style={{ width: '50px', height: '50px' }} />
                                             </td>
                                             <td>
                                                 <Link to={`/edit-inplants/${inplant._id}`} className="bt edit">Edit <i className="fa-solid fa-pen-to-square"></i></Link>

@@ -30,7 +30,7 @@ function TibialNail() {
   const getApiData = async () => {
     try {
       const res = await axios.get(
-        `https://api.sofia.assortsmachinetools.com/api/single-inplants-product-by-name/${name}`
+        `https://api.sofiasurgicals.com/api/single-inplants-product-by-name/${name}`
       );
       setData(res.data.data || null); // Ensure data is set to null if not available
     } catch (error) {
@@ -74,7 +74,7 @@ function TibialNail() {
               <div className="col-12 col-md-4 text-center mb-4 mb-md-0 product-image-wrapper">
                 <div className="product-image-container">
                   <img
-                    src={`https://api.sofia.assortsmachinetools.com/${image}`}
+                    src={`https://api.sofiasurgicals.com/${image}`}
                     alt="Product View"
                     className="img-fluid thumbnail-image"
                     style={{
@@ -102,7 +102,7 @@ function TibialNail() {
               </Modal.Header>
               <Modal.Body>
                 <img
-                  src={`https://api.sofia.assortsmachinetools.com/${image}`}
+                  src={`https://api.sofiasurgicals.com/${image}`}
                   alt="Product View"
                   className="img-fluid"
                 />

@@ -17,7 +17,7 @@ const AllCareerInquery = () => {
 
     const fetchCatalogs = async () => {
         try {
-            const response = await axios.get("https://api.sofia.assortsmachinetools.com/api/get-carrer-records");
+            const response = await axios.get("https://api.sofiasurgicals.com/api/get-carrer-records");
             if (response.status === 200) {
                 setCatalogs(response.data.reverse());
                 setLoading(false);
@@ -44,7 +44,7 @@ const AllCareerInquery = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const response = await axios.delete(`https://api.sofia.assortsmachinetools.com/api/delete-catalog/${id}`);
+                    const response = await axios.delete(`https://api.sofiasurgicals.com/api/delete-catalog/${id}`);
                     if (response.data.success) {
                         toast.success("Catalog deleted successfully");
                         setCatalogs(catalogs.filter((catalog) => catalog._id !== id));
@@ -107,7 +107,7 @@ const AllCareerInquery = () => {
                                             <td>
                                                 {catalog.resume ? (
                                                     <a
-                                                        href={`https://api.sofia.assortsmachinetools.com/${catalog.resume}`}
+                                                        href={`https://api.sofiasurgicals.com/${catalog.resume}`}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         className="btn btn-link"

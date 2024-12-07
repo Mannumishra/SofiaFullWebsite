@@ -242,7 +242,7 @@ function GetdealerShip() {
 
     try {
       const response = await axios.post(
-        "https://api.sofia.assortsmachinetools.com/api/send-dealership",
+        "https://api.sofiasurgicals.com/api/send-dealership",
         formData
       );
       Swal.fire(

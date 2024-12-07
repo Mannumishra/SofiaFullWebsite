@@ -31,7 +31,7 @@ const AddBanner = () => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            const response = await axios.post('https://api.sofia.assortsmachinetools.com/api/send-sale', data, { responseType: 'blob' });
+            const response = await axios.post('https://api.sofiasurgicals.com/api/send-sale', data, { responseType: 'blob' });
             const blob = new Blob([response.data], { type: 'application/pdf' });
 
             if (!blob) {

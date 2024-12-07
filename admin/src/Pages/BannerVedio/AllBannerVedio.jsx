@@ -13,7 +13,7 @@ const AllBannerVedio = () => {
     useEffect(() => {
         const fetchVideos = async () => {
             try {
-                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/get-vedio');  // Replace with your API endpoint
+                const response = await axios.get('https://api.sofiasurgicals.com/api/get-vedio');  // Replace with your API endpoint
                 setVideos(response.data);
                 setIsLoading(false);
             } catch (error) {
@@ -41,7 +41,7 @@ const AllBannerVedio = () => {
         if (confirmDelete.isConfirmed) {
             try {
                 // Delete the video from the backend
-                const response = await axios.delete(`https://api.sofia.assortsmachinetools.com/api/delete-vedio/${videoId}`);
+                const response = await axios.delete(`https://api.sofiasurgicals.com/api/delete-vedio/${videoId}`);
 
                 if (response.status === 200) {
                     // Remove the video from state (UI)
@@ -91,7 +91,7 @@ const AllBannerVedio = () => {
                                     <th scope="row">{index + 1}</th>
                                     <td>
                                         <video width="150" height="100" controls>
-                                            <source src={`https://api.sofia.assortsmachinetools.com/${video.vedio}`} type="video/mp4" />
+                                            <source src={`https://api.sofiasurgicals.com/${video.vedio}`} type="video/mp4" />
                                             Your browser does not support the video tag.
                                         </video>
                                     </td>

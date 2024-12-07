@@ -34,7 +34,7 @@ const AddCategory = () => {
 
         setIsLoading(true);
         try {
-            const response = await axios.post('https://api.sofia.assortsmachinetools.com/api/create-category', data, {
+            const response = await axios.post('https://api.sofiasurgicals.com/api/create-category', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

@@ -15,7 +15,7 @@ const AllInstupmentProduct = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/all-instupment-product');
+                const response = await axios.get('https://api.sofiasurgicals.com/api/all-instupment-product');
                 setData(response.data.data); // Assuming the data is in the 'data' field
             } catch (error) {
                 console.error("Error fetching products:", error);
@@ -40,7 +40,7 @@ const AllInstupmentProduct = () => {
 
         if (result.isConfirmed) {
             try {
-                await axios.delete(`https://api.sofia.assortsmachinetools.com/api/delete-instupment-product/${id}`);
+                await axios.delete(`https://api.sofiasurgicals.com/api/delete-instupment-product/${id}`);
                 setData(data.filter(item => item._id !== id));
                 toast.success("Product deleted successfully!");
             } catch (error) {
@@ -113,7 +113,7 @@ const AllInstupmentProduct = () => {
                                         <td>{item.category.categoryName}</td>
                                         <td>{item.instupment.instupmentName}</td>
                                         <td>{item.productName}</td>
-                                        <td><img src={`https://api.sofia.assortsmachinetools.com/${item.image}`} alt={item.productName} style={{ width: '50px', height: '50px' }} /></td>
+                                        <td><img src={`https://api.sofiasurgicals.com/${item.image}`} alt={item.productName} style={{ width: '50px', height: '50px' }} /></td>
                                         <td>
                                             <Link to={`/edit-instupment-product/${item._id}`} className="bt edit">Edit <i className="fa-solid fa-pen-to-square"></i></Link>
                                         </td>

@@ -11,7 +11,7 @@ function Products({ showOnlyActive = false }) { // Accept showOnlyActive prop wi
 
     const getApiData = async () => {
         try {
-            const res = await axios.get("https://api.sofia.assortsmachinetools.com/api/get-all-category");
+            const res = await axios.get("https://api.sofiasurgicals.com/api/get-all-category");
             console.log(res)
             setData(res.data.data);
         } catch (error) {
@@ -48,7 +48,7 @@ function Products({ showOnlyActive = false }) { // Accept showOnlyActive prop wi
                     filteredData.map((product, index) => (
                         <div className="col-md-3" key={index}>
                             <div className="category-card">
-                                <img alt={product.alt} className="img-fluid" src={`https://api.sofia.assortsmachinetools.com/${product.categoryImage}`} width="250" height="230" />
+                                <img alt={product.alt} className="img-fluid" src={`https://api.sofiasurgicals.com/${product.categoryImage}`} width="250" height="230" />
                                 <div className="category-title">
                                     {product.categoryName}
                                 </div>

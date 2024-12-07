@@ -10,7 +10,7 @@ const AllDealerShip = () => {
     useEffect(() => {
         const fetchDealerships = async () => {
             try {
-                const response = await axios.get('https://api.sofia.assortsmachinetools.com/api/all-dealership'); // Replace with your actual API endpoint
+                const response = await axios.get('https://api.sofiasurgicals.com/api/all-dealership'); // Replace with your actual API endpoint
                 setDealerships(response.data.data);
             } catch (error) {
                 console.error('Error fetching dealerships:', error);
@@ -24,7 +24,7 @@ const AllDealerShip = () => {
     const handleStatusChange = async (id) => {
         try {
             // Update the status to "Complete" in the backend
-            await axios.put(`https://api.sofia.assortsmachinetools.com/api/update-dealership-status/${id}`, { status: 'Complete' });
+            await axios.put(`https://api.sofiasurgicals.com/api/update-dealership-status/${id}`, { status: 'Complete' });
             setDealerships((prevDealerships) =>
                 prevDealerships.map((dealer) =>
                     dealer._id === id ? { ...dealer, status: 'Complete' } : dealer
@@ -38,7 +38,7 @@ const AllDealerShip = () => {
     // Handle delete dealership
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`https://api.sofia.assortsmachinetools.com/api/delete-dealership/${id}`);
+            await axios.delete(`https://api.sofiasurgicals.com/api/delete-dealership/${id}`);
             setDealerships((prevDealerships) =>
                 prevDealerships.filter((dealer) => dealer._id !== id)
             );

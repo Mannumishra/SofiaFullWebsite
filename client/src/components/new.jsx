@@ -3,10 +3,10 @@
         {eventImage.map((item, index) => (
             <img
                 key={index}
-                src={https://api.sofia.assortsmachinetools.com/${item.image}}
+                src={https://api.sofiasurgicals.com/${item.image}}
                 alt="Event"
                 style={{ marginRight: '10px', background: '#ffffff', cursor: 'pointer', height: "200px", width: "200px" }}
-                onClick={() => handleImageClick(https://api.sofia.assortsmachinetools.com/${item.image})} // Open image in modal
+                onClick={() => handleImageClick(https://api.sofiasurgicals.com/${item.image})} // Open image in modal
             />
         ))}
         <div style={{ top: 0, right: 0, cursor: 'pointer', padding: '2px' }} onClick={() => setShowImages(false)}>
