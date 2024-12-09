@@ -26,8 +26,8 @@ const AllBannerVedio = () => {
     }, []);
 
 
-     // Delete video function
-     const deleteVideo = async (videoId) => {
+    // Delete video function
+    const deleteVideo = async (videoId) => {
         const confirmDelete = await Swal.fire({
             title: 'Are you sure?',
             text: 'You will not be able to recover this video!',
@@ -68,7 +68,7 @@ const AllBannerVedio = () => {
                 </div>
             </div>
 
-         
+
 
             <section className="d-table">
                 <table className="table table-bordered table-striped table-hover">
@@ -76,7 +76,8 @@ const AllBannerVedio = () => {
                         <tr>
                             <th scope="col">Sr.No.</th>
                             <th scope="col">Video</th>
-                            {/* <th scope="col">Edit</th> */}
+                            <th scope="col">Status</th>
+                            <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                         </tr>
                     </thead>
@@ -95,14 +96,15 @@ const AllBannerVedio = () => {
                                             Your browser does not support the video tag.
                                         </video>
                                     </td>
-                                    {/* <td>
-                                        <Link className="bt edit">
+                                    <td>{video.status === "True" ? "Ture" : "False"}</td>
+                                    <td>
+                                        <Link className="bt edit" to={`/edit-vedio/${video._id}`}>
                                             Edit <i className="fa-solid fa-pen-to-square"></i>
                                         </Link>
-                                    </td> */}
+                                    </td>
                                     <td>
-                                        <button 
-                                            className="bt delete" 
+                                        <button
+                                            className="bt delete"
                                             onClick={() => deleteVideo(video._id)}>
                                             Delete <i className="fa-solid fa-trash"></i>
                                         </button>

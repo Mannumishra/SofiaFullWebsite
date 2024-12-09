@@ -73,7 +73,7 @@ const AllGalleryImage = () => {
                         <tr>
                             <th scope="col">Sr.No.</th>
                             <th scope="col">Image</th>
-                            {/* <th scope="col">Edit</th> */}
+                            <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                         </tr>
                     </thead>
@@ -89,11 +89,11 @@ const AllGalleryImage = () => {
                                     <td>
                                         <img src={`https://api.sofiasurgicals.com/${image.image}`} alt="Gallery" width="150" height="100" />
                                     </td>
-                                    {/* <td>
-                                        <Link className="bt edit">
+                                    <td>
+                                        <Link className="bt edit" to={`/edit-gallery/${image._id}`}>
                                             Edit <i className="fa-solid fa-pen-to-square"></i>
                                         </Link>
-                                    </td> */}
+                                    </td>
                                     <td>
                                         <button
                                             className="bt delete"

@@ -22,8 +22,13 @@ const deleteFile = async (filePath) => {
 // Create a new BannerVedio
 const createBannerVedio = async (req, res) => {
     try {
+        const { status } = req.body
+        if (!req.file || !req.file.path) {
+            return res.status(400).json({ message: 'No video file uploaded' });
+        }
         const newBannerVedio = new BannerVedio({
-            vedio: req.file.path // Store the video path
+            vedio: req.file.path,// Store the video path
+            status: status || "False"
         });
 
         await newBannerVedio.save();
@@ -59,28 +64,29 @@ const getBannerVedioById = async (req, res) => {
 // Update a BannerVedio by ID
 const updateBannerVedio = async (req, res) => {
     try {
-        // Find the existing BannerVedio to get the old video path
+        const { status } = req.body;
         const existingBannerVedio = await BannerVedio.findById(req.params.id);
         if (!existingBannerVedio) {
             return res.status(404).json({ message: 'Banner video not found' });
         }
-
-        // Delete the old video file if it exists
-        await deleteFile(existingBannerVedio.vedio);
-
-        // Update the BannerVedio document with the new video path
+        if (req.file && req.file.path) {
+            await deleteFile(existingBannerVedio.vedio); // Assuming deleteFile is a function that deletes a file
+        }
+        const updatedData = {
+            vedio: req.file ? req.file.path : existingBannerVedio.vedio, // Update video if a new one is uploaded
+            status: status || existingBannerVedio.status,              // Update status if provided, else keep existing
+        };
         const updatedBannerVedio = await BannerVedio.findByIdAndUpdate(
             req.params.id,
-            { vedio: req.file.path }, // Update with new video path
+            updatedData,
             { new: true }
         );
-
-        // Return success response with updated BannerVedio
         res.status(200).json({ message: 'Banner video updated successfully', data: updatedBannerVedio });
     } catch (error) {
         res.status(500).json({ message: 'Failed to update Banner video', error: error.message });
     }
 };
+
 
 // Delete a BannerVedio by ID
 const deleteBannerVedio = async (req, res) => {

@@ -1,16 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const EditGalleryImage = () => {
-    const { id } = useParams(); // Get image ID from the URL params
-    const history = useHistory();
+    const { id } = useParams();
+    const navigate = useNavigate();
     const [imageData, setImageData] = useState({
-        title: '',
         image: '',
-        active: false
     });
     const [imagePreview, setImagePreview] = useState('');
     const [btnLoading, setBtnLoading] = useState(false);
@@ -42,9 +40,7 @@ const EditGalleryImage = () => {
         e.preventDefault();
         setBtnLoading(true);
         const formData = new FormData();
-        formData.append('title', imageData.title);
-        formData.append('image', e.target.bannerImage.files[0] || ''); // Append new image if selected
-        formData.append('active', imageData.active);
+        formData.append('image', e.target.bannerImage.files[0] || ''); // Append the selected image if available
 
         try {
             const response = await axios.put(`https://api.sofiasurgicals.com/api/update-image/${id}`, formData, {
@@ -53,23 +49,14 @@ const EditGalleryImage = () => {
                 }
             });
             if (response.status === 200) {
-                toast.success('Banner updated successfully');
-                history.push('/all-banners'); // Redirect to the list of banners after successful update
+                toast.success('Gallery image updated successfully');
+                navigate('/all-gallery'); // Redirect to the list of banners after successful update
             }
         } catch (error) {
-            toast.error('Error updating banner');
+            toast.error('Error updating gallery image');
         } finally {
             setBtnLoading(false);
         }
-    };
-
-    // Handle input changes
-    const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        setImageData({
-            ...imageData,
-            [name]: type === 'checkbox' ? checked : value
-        });
     };
 
     return (
@@ -87,52 +74,28 @@ const EditGalleryImage = () => {
             <div className="d-form">
                 <form className="row g-3" onSubmit={handleSubmit}>
                     <div className="col-md-4">
-                        <label htmlFor="title" className="form-label">Banner Name</label>
-                        <input
-                            type="text"
-                            name="title"
-                            className="form-control"
-                            id="title"
-                            value={imageData.title}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="col-md-4">
-                        <label htmlFor="bannerImage" className="form-label">Banner Image</label>
+                        <label htmlFor="bannerImage" className="form-label">Gallery Image</label>
                         <input
                             type="file"
                             name="bannerImage"
                             className="form-control"
                             id="bannerImage"
                             onChange={handleImageChange}
+                            accept="image/png, image/jpeg"
                         />
                     </div>
-                    <div className="col-4">
-                        <img
-                            src={imagePreview || ''}
-                            alt="Category Preview"
-                            style={{ width: '100%', height: 'auto' }}
-                        />
-                    </div>
-                    <div className="col-12">
-                        <div className="form-check">
-                            <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="active"
-                                id="active"
-                                checked={imageData.active}
-                                onChange={handleChange}
-                            />
-                            <label className="form-check-label" htmlFor="active">
-                                Active
-                            </label>
-                        </div>
+                    {/* Image preview section */}
+                    <div className="col-md-4">
+                        <label className="form-label">Current Image</label>
+                        {imagePreview ? (
+                            <img src={imagePreview} alt="Current Image" style={{ width: '100%', height: 'auto' }} />
+                        ) : (
+                            <p>No image available</p>
+                        )}
                     </div>
                     <div className="col-12 text-center">
                         <button type="submit" className={`${btnLoading ? 'not-allowed' : 'allowed'}`} disabled={btnLoading}>
-                            {btnLoading ? "Please Wait..." : "Update Banner"}
+                            {btnLoading ? "Please Wait..." : "Update Image"}
                         </button>
                     </div>
                 </form>

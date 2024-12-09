@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const AddBannerVedio = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [file, setFile] = useState(null);  // Store the video file
+    const [status, setStatus] = useState("False"); // Handle the status field
 
     const navigate = useNavigate();
 
@@ -29,6 +30,7 @@ const AddBannerVedio = () => {
 
         const formData = new FormData();
         formData.append('vedio', file);  // Append the video file to form data
+        formData.append('status', status);
 
         try {
             // Send POST request with video file
@@ -75,6 +77,19 @@ const AddBannerVedio = () => {
                             onChange={handleFileChange}
                             required
                         />
+                    </div>
+
+                    <div className="col-md-6 mt-5">
+                        <div className="form-check">
+                            <input
+                                type="checkbox"
+                                className="form-check-input"
+                                id="status"
+                                checked={status === "True"} // Checkbox is checked if status is "True"
+                                onChange={(e) => setStatus(e.target.checked ? "True" : "False")} // Toggle between "True" and "False"
+                            />
+                            <label htmlFor="status" className="form-check-label">Active Status</label>
+                        </div>
                     </div>
 
                     <div className="col-12 text-center">

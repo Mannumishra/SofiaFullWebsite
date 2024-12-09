@@ -45,6 +45,7 @@ import AddGalleryImage from '../../Pages/GalleryImage/AddGalleryImage'
 import AllEventImage from '../../Pages/EventImage/AllEventImage'
 import AddEventImage from '../../Pages/EventImage/AddEventImage'
 import EditEventImage from '../../Pages/EventImage/EditEventImage'
+import EditGalleryImage from '../../Pages/GalleryImage/EditGalleryImage'
 
 const Home = () => {
   return (
@@ -105,7 +106,7 @@ const Home = () => {
 
           <Route path={"/all-gallery"} element={<AllGalleryImage />} />   {/* // All Vouchers */}
           <Route path={"/add-gallery"} element={<AddGalleryImage />} />
-          <Route path={"/edit-gallery/:id"} element={<EditBanner />} />
+          <Route path={"/edit-gallery/:id"} element={<EditGalleryImage />} />
 
 
           <Route path={"/all-event-image"} element={<AllEventImage />} />   {/* // All Vouchers */}
