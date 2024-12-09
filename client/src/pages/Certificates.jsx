@@ -61,7 +61,7 @@ function Certificates() {
                                     <img src={`http://localhost:8000/${image.image}`} alt={image.title} className="inner-image" onClick={() => handleShowModal(image)} style={{ cursor: 'pointer' }} />
                                 </div>
                                 <div className="card-body">
-                                    <h5 className="card-title text-center pt-3 fs-5 fw-bold">{image.title}</h5>
+                                    <h5 className="card-title text-center pt-3 fs-5 fw-bold">{image.name}</h5>
                                 </div>
                             </div>
                         ))}

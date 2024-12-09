@@ -72,6 +72,7 @@ const AllCertificateImage = () => {
                     <thead>
                         <tr>
                             <th scope="col">Sr.No.</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Image</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
@@ -86,6 +87,7 @@ const AllCertificateImage = () => {
                             images.map((image, index) => (
                                 <tr key={index}>
                                     <th scope="row">{index + 1}</th>
+                                    <td>{image.name}</td>
                                     <td>
                                         <img src={`http://localhost:8000/${image.image}`} alt="Gallery" width="150" height="100" />
                                     </td>

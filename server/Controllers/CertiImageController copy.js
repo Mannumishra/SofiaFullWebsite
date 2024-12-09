@@ -22,7 +22,15 @@ const deleteFile = async (filePath) => {
 // Create a new GalleryImage
 const createGalleryImage = async (req, res) => {
     try {
+        const { name } = req.body
+        if (!name) {
+            return res.status(404).json({
+                success: false,
+                message: "Name is must required"
+            })
+        }
         const newGalleryImage = new CertiImage({
+            name: name,
             image: req.file.path // Store the image path
         });
 
@@ -56,31 +64,37 @@ const getGalleryImageById = async (req, res) => {
     }
 };
 
-// Update a GalleryImage by ID
 const updateGalleryImage = async (req, res) => {
     try {
-        // Find the existing GalleryImage to get the old image path
+        const { name } = req.body;
+
+        // Fetch the existing image document
         const existingGalleryImage = await CertiImage.findById(req.params.id);
         if (!existingGalleryImage) {
             return res.status(404).json({ message: 'Gallery image not found' });
         }
 
-        // Delete the old image file if it exists
-        await deleteFile(existingGalleryImage.image);
+        // Check if a new file is uploaded
+        const newImagePath = req.file ? req.file.path : existingGalleryImage.image;
 
-        // Update the GalleryImage document with the new image path
+        // Delete the old image file if a new one is uploaded
+        if (req.file && existingGalleryImage.image) {
+            await deleteFile(existingGalleryImage.image);
+        }
+
+        // Update the document
         const updatedGalleryImage = await CertiImage.findByIdAndUpdate(
             req.params.id,
-            { image: req.file.path }, // Update with new image path
+            { image: newImagePath, name },
             { new: true }
         );
 
-        // Return success response with updated GalleryImage
         res.status(200).json({ message: 'Gallery image updated successfully', data: updatedGalleryImage });
     } catch (error) {
-        res.status(500).json({ message: 'Failed to update Gallery image', error: error.message });
+        res.status(500).json({ message: 'Failed to update gallery image', error: error.message });
     }
 };
+
 
 // Delete a GalleryImage by ID
 const deleteGalleryImage = async (req, res) => {

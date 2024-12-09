@@ -7,9 +7,13 @@ import 'react-toastify/dist/ReactToastify.css';
 const AddCertificateImage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [file, setFile] = useState(null);  // Store the image file
+    const [name, setName] = useState("")
 
     const navigate = useNavigate();
 
+    const getinputData = (e) => {
+        setName(e.target.value)
+    }
     // Handle file input change
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);  // Set the selected file
@@ -29,6 +33,7 @@ const AddCertificateImage = () => {
 
         const formData = new FormData();
         formData.append('image', file);  // Append the image file to form data
+        formData.append('name', name);  // Append the image file to form data
 
         try {
             // Send POST request with image file
@@ -64,6 +69,17 @@ const AddCertificateImage = () => {
 
             <div className="d-form">
                 <form className="row g-3" onSubmit={handleSubmit}>
+                    <div className="col-md-6">
+                        <label htmlFor="image" className="form-label">Cirtificate Name</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="name"
+                            name="name"
+                            onChange={getinputData}
+                            required
+                        />
+                    </div>
                     <div className="col-md-6">
                         <label htmlFor="image" className="form-label">Upload Gallery Image</label>
                         <input
