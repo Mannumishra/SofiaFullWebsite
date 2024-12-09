@@ -20,7 +20,8 @@ function Home() {
       try {
         const response = await axios.get('https://api.sofiasurgicals.com/api/get-vedio');  // Replace with your API endpoint
         console.log(response)
-        setVideos(response.data);
+        const filterData = response.data.filter((x) => x.status === "True")
+        setVideos(filterData);
         setIsLoading(false);
       } catch (error) {
         // toast.error('Error fetching videos');
