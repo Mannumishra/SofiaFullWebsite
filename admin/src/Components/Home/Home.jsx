@@ -46,101 +46,104 @@ import AllEventImage from '../../Pages/EventImage/AllEventImage'
 import AddEventImage from '../../Pages/EventImage/AddEventImage'
 import EditEventImage from '../../Pages/EventImage/EditEventImage'
 import EditGalleryImage from '../../Pages/GalleryImage/EditGalleryImage'
+import Login from '../auth/Login'
 
 const Home = () => {
+  const login = sessionStorage.getItem("login")
   return (
     <>
+      {
+        login ? (
+          <>
+            <Header />
+            <div className="rightside">
+              <Routes>
+                <Route path={"/dashboard"} element={<Dashboard />} />
 
-      <Header />
-      <div className="rightside">
-        <Routes>
-          <Route path={"/dashboard"} element={<Dashboard />} />
-
-          {/* Category --  */}
-          <Route path={"/all-category"} element={<AllCategory />} />
-          <Route path={"/add-category"} element={<AddCategory />} />
-          <Route path={"/edit-category/:id"} element={<EditCategory />} />
-
-
-          {/* Category --  */}
-          <Route path={"/all-inplants"} element={<AllInplants />} />
-          <Route path={"/add-inplants"} element={<AddInplants />} />
-          <Route path={"/edit-inplants/:id"} element={<EditInplants />} />
+                {/* Category --  */}
+                <Route path={"/all-category"} element={<AllCategory />} />
+                <Route path={"/add-category"} element={<AddCategory />} />
+                <Route path={"/edit-category/:id"} element={<EditCategory />} />
 
 
-          {/* Category --  */}
-          <Route path={"/all-instupment"} element={<AllInstupment />} />
-          <Route path={"/add-instupment"} element={<AddInstupment />} />
-          <Route path={"/edit-instupment/:id"} element={<EditInstupment />} />
-
-          {/* Product --  */}
-          <Route path={"/all-inplants-products"} element={<AllProduct />} />
-          <Route path={"/add-inplants-product"} element={<AddProduct />} />
-          <Route path={"/edit-inplants-product/:id"} element={<EditProduct />} />
-
-          {/* Product --  */}
-          <Route path={"/all-instupment-products"} element={<AllInstupmentProduct />} />
-          <Route path={"/add-instupment-product"} element={<AddInstupmentProduct />} />
-          <Route path={"/edit-instupment-product/:id"} element={<EditInstupmentProduct />} />
+                {/* Category --  */}
+                <Route path={"/all-inplants"} element={<AllInplants />} />
+                <Route path={"/add-inplants"} element={<AddInplants />} />
+                <Route path={"/edit-inplants/:id"} element={<EditInplants />} />
 
 
-          {/* --- Orders --- */}
-          <Route path={"/all-dealership-query"} element={<AllDealerShip />} />
-          <Route path={"/all-getintouch-query"} element={<AllGetInTouch />} />
-          <Route path={"/all-contact-query"} element={<AllContactQuery />} />
-          <Route path={"/all-catelog-query"} element={<AllDownCatelogQuery />} />
-          <Route path={"/all-career-query"} element={<AllCareerInquery />} />
-      
+                {/* Category --  */}
+                <Route path={"/all-instupment"} element={<AllInstupment />} />
+                <Route path={"/add-instupment"} element={<AddInstupment />} />
+                <Route path={"/edit-instupment/:id"} element={<EditInstupment />} />
 
-          {/* --- Vouchers --- */}
-          <Route path={"/all-testimonial"} element={<AllTestimonial />} />   {/* // All Vouchers */}
-          <Route path={"/add-testimonial"} element={<AddTestimonial />} />
-          <Route path={"/edit-testimonial/:id"} element={<EditTestimonial />} />
+                {/* Product --  */}
+                <Route path={"/all-inplants-products"} element={<AllProduct />} />
+                <Route path={"/add-inplants-product"} element={<AddProduct />} />
+                <Route path={"/edit-inplants-product/:id"} element={<EditProduct />} />
 
-
-
-          <Route path={"/all-vedio"} element={<AllBannerVedio />} />   {/* // All Vouchers */}
-          <Route path={"/add-vedio"} element={<AddBannerVedio />} />
-          <Route path={"/edit-vedio/:id"} element={<EditBannerVedio />} />
+                {/* Product --  */}
+                <Route path={"/all-instupment-products"} element={<AllInstupmentProduct />} />
+                <Route path={"/add-instupment-product"} element={<AddInstupmentProduct />} />
+                <Route path={"/edit-instupment-product/:id"} element={<EditInstupmentProduct />} />
 
 
-          <Route path={"/all-gallery"} element={<AllGalleryImage />} />   {/* // All Vouchers */}
-          <Route path={"/add-gallery"} element={<AddGalleryImage />} />
-          <Route path={"/edit-gallery/:id"} element={<EditGalleryImage />} />
+                {/* --- Orders --- */}
+                <Route path={"/all-dealership-query"} element={<AllDealerShip />} />
+                <Route path={"/all-getintouch-query"} element={<AllGetInTouch />} />
+                <Route path={"/all-contact-query"} element={<AllContactQuery />} />
+                <Route path={"/all-catelog-query"} element={<AllDownCatelogQuery />} />
+                <Route path={"/all-career-query"} element={<AllCareerInquery />} />
 
 
-          <Route path={"/all-event-image"} element={<AllEventImage />} />   {/* // All Vouchers */}
-          <Route path={"/add-event-image"} element={<AddEventImage />} />
-          <Route path={"/edit-event-image/:id"} element={<EditEventImage />} />
-
-          {/* --- Tags --- */}
-          <Route path={"/all-tags"} element={<AllTags />} />
-          <Route path={"/add-tag"} element={<AddTag />} />
-          <Route path={"/edit-tag/:id"} element={<EditTag />} />
-
-          {/* --- Banners --- */}
-          <Route path={"/all-banners"} element={<AllBanner />} />
-          <Route path={"/add-banner"} element={<AddBanner />} />
-          <Route path={"/edit-banner/:id"} element={<EditBanner />} />
-
-          {/* --- Catalog --- */}
-          <Route path={"/all-catalog"} element={<AllCatalog />} />
-          <Route path={"/add-catalog"} element={<AddCatalog />} />
-          <Route path={"/edit-catalog/:id"} element={<EditCatalog />} />
-
-          {/* --- Orders --- */}
-          <Route path={"/all-orders"} element={<AllOrder />} />
-          <Route path={"/edit-order/:id"} element={<EditOrder />} />
+                {/* --- Vouchers --- */}
+                <Route path={"/all-testimonial"} element={<AllTestimonial />} />   {/* // All Vouchers */}
+                <Route path={"/add-testimonial"} element={<AddTestimonial />} />
+                <Route path={"/edit-testimonial/:id"} element={<EditTestimonial />} />
 
 
 
+                <Route path={"/all-vedio"} element={<AllBannerVedio />} />   {/* // All Vouchers */}
+                <Route path={"/add-vedio"} element={<AddBannerVedio />} />
+                <Route path={"/edit-vedio/:id"} element={<EditBannerVedio />} />
 
 
-          {/* all-shop */}
+                <Route path={"/all-gallery"} element={<AllGalleryImage />} />   {/* // All Vouchers */}
+                <Route path={"/add-gallery"} element={<AddGalleryImage />} />
+                <Route path={"/edit-gallery/:id"} element={<EditGalleryImage />} />
 
-        </Routes>
-      </div>
 
+                <Route path={"/all-event-image"} element={<AllEventImage />} />   {/* // All Vouchers */}
+                <Route path={"/add-event-image"} element={<AddEventImage />} />
+                <Route path={"/edit-event-image/:id"} element={<EditEventImage />} />
+
+                {/* --- Tags --- */}
+                <Route path={"/all-tags"} element={<AllTags />} />
+                <Route path={"/add-tag"} element={<AddTag />} />
+                <Route path={"/edit-tag/:id"} element={<EditTag />} />
+
+                {/* --- Banners --- */}
+                <Route path={"/all-banners"} element={<AllBanner />} />
+                <Route path={"/add-banner"} element={<AddBanner />} />
+                <Route path={"/edit-banner/:id"} element={<EditBanner />} />
+
+                {/* --- Catalog --- */}
+                <Route path={"/all-catalog"} element={<AllCatalog />} />
+                <Route path={"/add-catalog"} element={<AddCatalog />} />
+                <Route path={"/edit-catalog/:id"} element={<EditCatalog />} />
+
+                {/* --- Orders --- */}
+                <Route path={"/all-orders"} element={<AllOrder />} />
+                <Route path={"/edit-order/:id"} element={<EditOrder />} />
+
+              </Routes>
+            </div>
+          </>
+        ) : (
+          <Routes>
+            <Route path="/*" element={<Login />} />
+          </Routes>
+        )}
     </>
   )
 }

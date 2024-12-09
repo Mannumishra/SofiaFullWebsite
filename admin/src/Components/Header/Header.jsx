@@ -11,6 +11,11 @@ const Header = () => {
     setSideToggle(!sidetoggle);
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('login'); // Remove login status
+    window.location.href='/login' // Redirect to login page
+  };
+
   return (
     <>
       <header>
@@ -22,11 +27,11 @@ const Header = () => {
             </div>
           </div>
           <div className="left">
-            <a href="https://client.sofia.assortsmachinetools.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://sofiasurgicals.com/" target="_blank" rel="noopener noreferrer">
               <i className="fa-solid fa-globe"></i>
               Go To Website
             </a>
-            <div className="logout">
+            <div className="logout"  onClick={handleLogout}>
               Log Out <i className="fa-solid fa-right-from-bracket"></i>
             </div>
           </div>
@@ -248,7 +253,7 @@ const Header = () => {
               </Link>
             </li>
 
-            <button className='logout mb-5'>Log Out <i className="fa-solid fa-right-from-bracket"></i></button>
+            <button className='logout mb-5' onClick={handleLogout}>Log Out <i className="fa-solid fa-right-from-bracket"></i></button>
           </ul>
         </div>
       </header>
