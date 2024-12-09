@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import axios from 'axios';
+import Loader from '../components/Loader/Loader';
 
 function Catalog() {
     const countries = [
@@ -200,10 +201,13 @@ function Catalog() {
     ];
     const [filteredCountries, setFilteredCountries] = useState(countries);
     const [showSuggestions, setShowSuggestions] = useState(false);
-
     const [showModal, setShowModal] = useState(false);
     const [selectedCatalogId, setSelectedCatalogId] = useState("");  // State to hold catalog ID
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+
+
     const [formData, setFormData] = useState({
         catelogId: "",
         name: "",
@@ -237,6 +241,8 @@ function Catalog() {
             setData(res.data.data);
         } catch (error) {
             console.log(error);
+        } finally {
+            setLoading(false); // Stop loader after data is fetched
         }
     };
 
@@ -266,6 +272,9 @@ function Catalog() {
         }
     };
 
+    if (loading) {
+        return <Loader message="Fetching Catalogue..." />;
+    }
 
     return (
         <>

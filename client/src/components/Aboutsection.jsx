@@ -77,7 +77,7 @@ function Aboutsection() {
                 >
                   <div className="text-16">
                     <MdDiamond size={50} />
-                    <h2>16 Years</h2>
+                    <h2>28 Years</h2>
                     <p>Experience</p>
                   </div>
                 </div>

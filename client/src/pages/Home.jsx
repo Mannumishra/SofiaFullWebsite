@@ -48,7 +48,7 @@ function Home() {
                     </span>
                   </h1>
                   <p>
-                    Over 16 years of excellence in manufacturing,<br />
+                    Over 28 years of excellence in manufacturing,<br />
                     exporting, and supplying top-quality<br />
                     orthopedic trauma products globally.
                   </p>

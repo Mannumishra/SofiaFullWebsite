@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import Loader from './Loader/Loader';
 
-function Products({ showOnlyActive = false }) { // Accept showOnlyActive prop with a default value of false
+function Products({ showOnlyActive = false }) {
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
+    const [loading, setLoading] = useState(true);
     const location = useLocation();
-    
+
     const searchQuery = new URLSearchParams(location.search).get('search');
 
     const getApiData = async () => {
         try {
             const res = await axios.get("https://api.sofiasurgicals.com/api/get-all-category");
-            console.log(res)
             setData(res.data.data);
         } catch (error) {
             console.log(error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -26,12 +29,10 @@ function Products({ showOnlyActive = false }) { // Accept showOnlyActive prop wi
     useEffect(() => {
         let filtered = data;
 
-        // Apply status filter if showOnlyActive is true
         if (showOnlyActive) {
             filtered = filtered.filter(product => product.categoryStatus === "True");
         }
 
-        // Apply search filter
         if (searchQuery) {
             filtered = filtered.filter(product =>
                 product.categoryName.toLowerCase().includes(searchQuery.toLowerCase())
@@ -40,6 +41,10 @@ function Products({ showOnlyActive = false }) { // Accept showOnlyActive prop wi
 
         setFilteredData(filtered);
     }, [searchQuery, data, showOnlyActive]);
+
+    if (loading) {
+        return <Loader message="Fetching products..." />;
+    }
 
     return (
         <div className="container">
@@ -69,7 +74,7 @@ function Products({ showOnlyActive = false }) { // Accept showOnlyActive prop wi
                     ))
                 ) : (
                     <div className="col-12 text-center">
-                        <h3>No products found</h3>
+                        No Products Found
                     </div>
                 )}
             </div>
