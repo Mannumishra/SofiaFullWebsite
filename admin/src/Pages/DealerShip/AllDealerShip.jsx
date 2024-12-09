@@ -104,13 +104,13 @@ const AllDealerShip = () => {
                                             <button
                                                 onClick={() => handleStatusChange(dealer._id)}
                                                 disabled={dealer.status === 'Complete'}
-                                                className={`btn ${dealer.status === 'Complete' ? 'btn-secondary' : 'btn-primary'}`}
+                                                className={`bt ${dealer.status === 'Complete' ? 'edit' : 'edit'}`}
                                             >
                                                 {dealer.status === 'Complete' ? 'Completed' : 'Complete'}
                                             </button>
                                             <button
                                                 onClick={() => handleDelete(dealer._id)}
-                                                className="btn btn-danger ml-2"
+                                                className="bt delete ml-2"
                                             >
                                                 Delete
                                             </button>

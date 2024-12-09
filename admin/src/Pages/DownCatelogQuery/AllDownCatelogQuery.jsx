@@ -109,7 +109,7 @@ const AllDownCatelogQuery = () => {
                                             </button> */}
                                             <button
                                                 onClick={() => handleDelete(contact._id)}
-                                                className="btn btn-danger ml-2"
+                                                className="bt delete ml-2"
                                             >
                                                 Delete
                                             </button>

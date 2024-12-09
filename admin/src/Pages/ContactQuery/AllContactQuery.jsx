@@ -110,13 +110,13 @@ const AllContactQuery = () => {
                                             <button
                                                 onClick={() => handleStatusChange(contact._id)}
                                                 disabled={contact.status === 'Complete'}
-                                                className={`btn ${contact.status === 'Complete' ? 'btn-secondary' : 'btn-primary'}`}
+                                                className={`bt ${contact.status === 'Complete' ? 'edit' : 'edit'}`}
                                             >
                                                 {contact.status === 'Complete' ? 'Completed' : 'Complete'}
                                             </button>
                                             <button
                                                 onClick={() => handleDelete(contact._id)}
-                                                className="btn btn-danger ml-2"
+                                                className="bt delete ml-2"
                                             >
                                                 Delete
                                             </button>
