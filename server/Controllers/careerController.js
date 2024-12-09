@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const Career = require("../Models/CareerModel");
+const { transporter } = require("../Utils/Nodemailer");
 
 
 const deleteResume = (resumePath) => {
@@ -34,6 +35,51 @@ const createCareer = async (req, res) => {
         });
 
         const savedCareer = await newCareer.save();
+        const mailOptions = {
+            from: process.env.MAIL_USER, // Your email address
+            to: process.env.MAIL_USER, // Replace with the company's email address
+            subject: "New Career Application Received",
+            html: `
+            <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #ddd; border-radius: 8px; padding: 20px; background-color: #f9f9f9;">
+                <h2 style="color: #007bff; text-align: center;">New Career Application</h2>
+                <p>Dear Hiring Team,</p>
+                <p>We have received a new career application. Below are the details of the applicant:</p>
+        
+                <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                    <tr>
+                        <th style="background-color: #007bff; color: #fff; padding: 10px 15px; text-align: left;">Field</th>
+                        <th style="background-color: #007bff; color: #fff; padding: 10px 15px; text-align: left;">Details</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;"><strong>Name:</strong></td>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;">${req.body.name}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;"><strong>Email:</strong></td>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;">${req.body.email}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;"><strong>Phone:</strong></td>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;">${req.body.phone}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;"><strong>Apply Post:</strong></td>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;">${req.body.applyPost}</td>
+                    </tr>
+                </table>
+        
+                <p style="margin-top: 20px;">The applicant has attached a resume. You can download it using the link below:</p>
+                <p style="text-align: center; margin-top: 20px;">
+                    <a href="https://yourdomain.com/${req.file.path}" style="text-decoration: none; color: #fff; background-color: #007bff; padding: 10px 20px; border-radius: 5px;">Download Resume</a>
+                </p>
+        
+                <hr style="border: 0; border-top: 1px solid #ddd; margin-top: 20px;">
+                
+                <p style="font-size: 12px; color: #666; text-align: center;">This is an automated message. Please do not reply to this email.</p>
+            </div>
+            `
+        };
+        await transporter.sendMail(mailOptions)
         res.status(201).json(savedCareer);
     } catch (error) {
         res.status(500).json({ message: "Error creating career", error });

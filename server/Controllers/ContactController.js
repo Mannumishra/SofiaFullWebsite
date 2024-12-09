@@ -1,4 +1,5 @@
 const Contact = require('../Models/ContactModel'); // Make sure to import your Contact model
+const { transporter } = require('../Utils/Nodemailer');
 
 const createContact = async (req, res) => {
     try {
@@ -43,7 +44,63 @@ const createContact = async (req, res) => {
 
         // Save the new contact record
         const savedContact = await newContact.save();
+        const mailOptions = {
+            from: process.env.MAIL_USER,
+            to: process.env.MAIL_USER,  // Replace with the admin's email address
+            subject: "New Contact Inquiry",
+            html: `
+            <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #ddd; border-radius: 8px; padding: 20px; background-color: #f9f9f9;">
+                <h2 style="color: #007bff; text-align: center;">New Contact Inquiry</h2>
+                <p>Dear Team,</p>
+                <p>We have received a new contact inquiry with the following details:</p>
+        
+                <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                    <tr>
+                        <th style="background-color: #007bff; color: #fff; padding: 10px 15px; text-align: left;">Field</th>
+                        <th style="background-color: #007bff; color: #fff; padding: 10px 15px; text-align: left;">Details</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;"><strong>Name:</strong></td>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;">${name}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;"><strong>Profession:</strong></td>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;">${profession}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;"><strong>Email:</strong></td>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;">${email}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;"><strong>Country:</strong></td>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;">${country}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;"><strong>City:</strong></td>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;">${city}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;"><strong>Subject:</strong></td>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;">${subject}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;"><strong>Message:</strong></td>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;">${message}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;"><strong>Contact Number:</strong></td>
+                        <td style="padding: 10px 15px; border-bottom: 1px solid #ddd;">${number}</td>
+                    </tr>
+                </table>
+        
+                <hr style="border: 0; border-top: 1px solid #ddd; margin-top: 20px;">
+        
+                <p style="font-size: 12px; color: #666; text-align: center;">This is an automated message. Please do not reply to this email.</p>
+            </div>
+            `
+        };
 
+        await transporter.sendMail(mailOptions)
         res.status(201).json({
             message: 'Contact created successfully.',
             data: savedContact,
@@ -102,19 +159,19 @@ const updateContactStatus = async (req, res) => {
     }
 };
 
-const deleteContactShip = async(req,res)=>{
+const deleteContactShip = async (req, res) => {
     try {
         const data = await Contact.findById(req.params.id)
-        if(!data){
+        if (!data) {
             return res.status(404).json({
-                success:false,
-                messsage:"Record not found for delete"
+                success: false,
+                messsage: "Record not found for delete"
             })
         }
         await data.deleteOne()
         res.status(200).json({
-            success:true,
-            message:"Record Delete Successfully"
+            success: true,
+            message: "Record Delete Successfully"
         })
     } catch (error) {
         console.log(error)
