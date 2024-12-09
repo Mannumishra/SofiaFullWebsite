@@ -106,7 +106,7 @@ function Aboutsection() {
                   <div className="text-16">
                     <img src={earth} alt="" height={100} />
                     <h2>195</h2>
-                    <p style={{ color: "#667085" }}>World Wild</p>
+                    <p style={{ color: "#667085" }}>World Wide</p>
                   </div>
                 </div>
                 <div
