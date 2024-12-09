@@ -31,7 +31,7 @@ const createGetInTouch = async (req, res) => {
         const savedGetInTouch = await newGetInTouch.save();
         const mailOptions = {
             from: process.env.MAIL_USER, // Sender's email address
-            to: process.env.MAIL_USER, // Admin's email address
+            to: process.env.MAIL_USER,
             subject: 'New GetInTouch Query Received',
             html: `
                 <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #ddd; border-radius: 8px; padding: 20px; background-color: #f9f9f9;">
