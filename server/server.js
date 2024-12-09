@@ -3,7 +3,7 @@ dotenv.config()
 
 const express = require("express")
 const { connectDB } = require("./DB/ConnectDB")
-const cors = require("cors")
+const cors = require("cors");
 const CategoryRouter = require("./Routes/CategoryRouter")
 const InplantsRouter = require("./Routes/InplantsRouter")
 const InstupmentRouter = require("./Routes/InstupmentRouter")
@@ -22,8 +22,8 @@ const EventImageRouter = require("./Routes/EventImageRouter")
 
 
 const app = express()
+app.use(cors());
 
-app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.set(express.static("./Public"))
