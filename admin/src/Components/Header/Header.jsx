@@ -124,7 +124,7 @@ const Header = () => {
               <Link
                 to="/all-inplants-products"
                 className={
-                  location.pathname === '/all-inplants-products' ||
+                  location.pathname === '/all-inplants-product' ||
                     location.pathname === '/add-inplants-product' ||
                     location.pathname.startsWith('/edit-inplant-product') // Check for dynamic edit-inplant-product routes
                     ? 'active-link'
@@ -156,7 +156,7 @@ const Header = () => {
               <Link
                 to="/all-instupment-products"
                 className={
-                  location.pathname === '/all-instupment-products' ||
+                  location.pathname === '/all-instupment-product' ||
                     location.pathname === '/add-instupment-product' ||
                     location.pathname.startsWith('/edit-instupment-product') // Check for dynamic edit-instrument-product routes
                     ? 'active-link'
