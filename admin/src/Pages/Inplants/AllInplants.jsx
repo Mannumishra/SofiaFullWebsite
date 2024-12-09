@@ -110,7 +110,7 @@ const AllInplants = () => {
                                     currentInplants.map((inplant, index) => (
                                         <tr key={inplant._id}>
                                             <th scope="row">{index + 1}</th>
-                                            <td>{inplant.categoryName.categoryName}</td>
+                                            <td>{inplant?.categoryName?.categoryName}</td>
                                             <td>{inplant.inplantsName}</td>
                                             <td>
                                                 <img src={`https://api.sofiasurgicals.com/${inplant.inplantsImage}`} alt={inplant.inplantsName} style={{ width: '50px', height: '50px' }} />
