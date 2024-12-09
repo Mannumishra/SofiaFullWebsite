@@ -47,6 +47,9 @@ import AddEventImage from '../../Pages/EventImage/AddEventImage'
 import EditEventImage from '../../Pages/EventImage/EditEventImage'
 import EditGalleryImage from '../../Pages/GalleryImage/EditGalleryImage'
 import Login from '../auth/Login'
+import AllCertificateImage from '../../Pages/CertificateImage/AllCertificateImage'
+import AddCertificateImage from '../../Pages/CertificateImage/AddCertificateImage'
+import EditCertificateImage from '../../Pages/CertificateImage/EditCertificateImage'
 
 const Home = () => {
   const login = sessionStorage.getItem("login")
@@ -111,6 +114,11 @@ const Home = () => {
                 <Route path={"/all-gallery"} element={<AllGalleryImage />} />   {/* // All Vouchers */}
                 <Route path={"/add-gallery"} element={<AddGalleryImage />} />
                 <Route path={"/edit-gallery/:id"} element={<EditGalleryImage />} />
+
+                <Route path={"/all-certificate"} element={<AllCertificateImage />} />   {/* // All Vouchers */}
+                <Route path={"/add-certificate"} element={<AddCertificateImage />} />
+                <Route path={"/edit-certificate/:id"} element={<EditCertificateImage />} />
+
 
 
                 <Route path={"/all-event-image"} element={<AllEventImage />} />   {/* // All Vouchers */}

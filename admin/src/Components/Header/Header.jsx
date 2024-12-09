@@ -207,6 +207,21 @@ const Header = () => {
 
             <li>
               <Link
+                to="/all-certificate"
+                className={
+                  location.pathname === '/all-certificate' ||
+                    location.pathname === '/add-certificate' ||
+                    location.pathname.startsWith('/edit-certificate') // Check for dynamic edit-gallery routes
+                    ? 'active-link'
+                    : ''
+                }
+                onClick={handletoggleBtn}
+              >
+                <i className="fa-solid fa-tag"></i> Manage Certificate Image
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/all-event-image"
                 className={
                   location.pathname === '/all-event-image' ||
