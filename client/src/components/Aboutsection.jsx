@@ -58,23 +58,7 @@ function Aboutsection() {
                   Innovation Since <span>2010</span>
                 </h2>
                 <p className="para">
-                  Our Story Founded in 2010, Sofia Surgicals Pvt. Ltd. has been
-                  at the forefront of orthopedic innovation. With a commitment
-                  to improving patient outcomes, our team of experts
-                  collaborates with leading surgeons and researchers to develop
-                  cutting-edge orthopedic implants. Sofia has an experience of
-                  27 years as a Manufacturer since 1996. The company is engaged
-                  in manufacturing: Mini Fragment Plate, Small Fragment Plates,
-                  Large Fragment Plates, Hip Prosthesis, DHS/DCS Plates, Bone
-                  Screws , Locking Plates, Locking Screws , Intramedullary
-                  Nails, Spine Implants, Pins- Wires-Drill-Bits, Fixator
-                  Ilizarow &amp; Clamp and Power Tools as well as various
-                  Orthopedicle Instruments. Our Manufacturing unit is based in
-                  Delhi (INDIA). With the aim of serving patients and medical
-                  fraternity across the global market, we are always committed
-                  to provide the best products and services to ensure total
-                  satisfaction of the clients. We provide our products in indian
-                  competitive prices and overseas markets.
+                  Our Story Founded in 2010, Sofia Surgicals Pvt. Ltd. has been at the forefront of orthopedic innovation. With a commitment to improving patient outcomes, our team of experts collaborates with leading surgeons and researchers to develop cutting-edge orthopedic implants. Sofia has an experience of 27 years as a Manufacturer since 1996. The company is engaged in manufacturing; Mini Fragment Plate, Small Fragment Plates, Large Fragment Plates, Hip Prosthesis, DHS/DCS Plates, Bone Screws , Locking Plates, Locking Screws , Intramedullary Nails, Spine Implants, Pins- Wires-Drill-Bits, Fixator Illizarow & Clamp and Power Tools as well as various Orthopedicle Instruments. Our Manufacturing unit is based in Delhi (INDIA). With the aim of serving patients and medical fraternity across the globe, we are always committed to provide the best products and services to ensure total satisfaction of the clients.
                 </p>
               </div>
             </div>
@@ -121,8 +105,8 @@ function Aboutsection() {
                 >
                   <div className="text-16">
                     <img src={earth} alt="" height={100} />
-                    <h2>140+</h2>
-                    <p style={{ color: "#667085" }}>Countries</p>
+                    <h2>195</h2>
+                    <p style={{ color: "#667085" }}>World Wild</p>
                   </div>
                 </div>
                 <div

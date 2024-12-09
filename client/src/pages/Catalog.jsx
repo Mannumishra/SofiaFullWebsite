@@ -280,7 +280,7 @@ function Catalog() {
                     </div>
                 </div>
             </section>
-            <section className="implants">
+            <section className="">
                 <div className="container">
                     <div className="row mt-2 implants-card">
                         {data.map((item, index) => (

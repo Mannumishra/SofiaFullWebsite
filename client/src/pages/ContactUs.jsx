@@ -453,7 +453,7 @@ function ContactUs() {
               <div className="contact-card p-4 text-center h-100">
                 <FaMapMarkerAlt className="mb-3 faIcon" size={50} />
                 <p>
-                  Regd. Office: 3965/224, 2nd floor City Market, Ajmeri Gate,
+                  Regd. Office: 3965/224, 2nd floor, City Market, Ajmeri Gate,
                   Delhi-110006 (INDIA)
                 </p>
               </div>

@@ -7,10 +7,11 @@ import {
   FaSearch,
   FaWhatsapp,
   FaYoutube,
+  FaGoogle
 } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import logo from "../assets/images/sofia.png";
+import logo from "../assets/images/sofiaalogo.png";
 import { IoCallOutline } from "react-icons/io5";
 import { GrLanguage } from "react-icons/gr";
 
@@ -84,7 +85,11 @@ function Navbar() {
     return () => clearTimeout(timeoutId); // Cleanup timeout
   }, []);
 
-  const isActive = (path) => (location.pathname === path ? "active" : "");
+  const isActive = (path) => {
+    const currentPath = window.location.pathname;
+    return currentPath === path || currentPath.startsWith(path);
+  };
+
 
 
   return (
@@ -124,6 +129,12 @@ function Navbar() {
                 >
                   <FaYoutube size={20} className="icon m-1" />
                 </Link>
+                <Link
+                  target="_blank"
+                  to="https://g.co/kgs/6dqMdyG"
+                >
+                  <FaGoogle size={20} className="icon m-1" />
+                </Link>
               </div>
             </div>
 
@@ -146,7 +157,7 @@ function Navbar() {
                     </button>
                   </form>
                 </div>
-                <div id="google_translate_element"/>
+                <div id="google_translate_element" />
                 <Link to="GetdealerShip">
                   <button className="cta-button mb-2 mb-md-0">
                     <b>Get Dealership</b>
@@ -197,12 +208,13 @@ function Navbar() {
                 </li>
                 <li className="nav-item">
                   <Link
-                    className={`nav-link ${isActive("/OurProduct")}`}
+                    className={`nav-link ${isActive("/OurProduct") || isActive("/Implants") || isActive("/Instruments") ? "active" : ""}`}
                     to="/OurProduct"
                     onClick={closeNavbar}
                   >
                     Products
                   </Link>
+
                 </li>
                 <li className="nav-item">
                   <Link
@@ -219,7 +231,7 @@ function Navbar() {
                     to="/Catalog"
                     onClick={closeNavbar}
                   >
-                    Catalog
+                    Catalogue
                   </Link>
                 </li>
                 <li className="nav-item">

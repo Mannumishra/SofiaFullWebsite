@@ -45,7 +45,7 @@ function Certificates() {
 
             {/* image section  */}
             
-           <div style={{ background: 'linear-gradient(180deg, #E3F1FF 0%, #FFFFFF 125.72%)' }}>
+           <div >
                 <div className="container py-4">
                     <div className="row">
                         {images.map((image, index) => (

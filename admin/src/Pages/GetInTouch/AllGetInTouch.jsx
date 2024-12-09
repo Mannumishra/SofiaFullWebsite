@@ -65,7 +65,7 @@ const AllGetInTouch = () => {
         <>
             <div className="bread">
                 <div className="head">
-                    <h4>All Get In Touch Queries</h4>
+                    <h4>All SEND US A MESSAGE</h4>
                 </div>
             </div>
 

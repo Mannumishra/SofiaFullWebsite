@@ -17,15 +17,15 @@ function About() {
     },
     {
       title: "Research and Development",
-      text: "At Sofia Surgicals Pvt. Ltd., innovation drives our R&D efforts. Our state-of-the-art laboratories and partnerships with leading medical institutions enable us to pioneer new technologies and materials that enhance the performance and safety of our implants.",
+      text: "At Sofia Surgicals Pvt. Ltd., innovation drives our R&amp;D efforts. Our state-of-the-art laboratories and partnerships with leading medical institutions enable us to pioneer new technologies and materials that enhance the performance and safety of our implants.",
     },
     {
-      title: "Research and Development",
-      text: "At Sofia Surgicals Pvt. Ltd., innovation drives our R&D efforts. Our state-of-the-art laboratories and partnerships with leading medical institutions enable us to pioneer new technologies and materials that enhance the performance and safety of our implants.",
+      title: "Clinical Evidence",
+      text: "Our implants are backed by extensive clinical research and trials. We continuously monitor post-market performance to gather real-world data and refine our products based on patient outcomes. We believe that the best products come from close collaboration with surgeons. By working together, we gain valuable insights into surgical techniques and patient needs, driving the continuous improvement of our implants.",
     },
     {
-      title: "Research and Development",
-      text: "At Sofia Surgicals Pvt. Ltd., innovation drives our R&D efforts. Our state-of-the-art laboratories and partnerships with leading medical institutions enable us to pioneer new technologies and materials that enhance the performance and safety of our implants.",
+      title: "Material Science",
+      text: "We utilize advanced materials such as titanium, medical-grade stainless steel, and biocompatible material to ensure our implants are both strong and compatible with the human body. Our coatings and surface treatments promote osseointegration and reduce the risk of infection.",
     },
   ];
 

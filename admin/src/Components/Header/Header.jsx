@@ -63,7 +63,7 @@ const Header = () => {
                 className={location.pathname === '/all-getintouch-query' ? 'active-link' : ''}
                 onClick={handletoggleBtn}
               >
-                <i className="fa-solid fa-layer-group"></i> GetInTouch Query
+                <i className="fa-solid fa-layer-group"></i> Send Us A Message
               </Link>
             </li>
             <li>

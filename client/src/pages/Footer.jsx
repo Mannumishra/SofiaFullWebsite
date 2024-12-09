@@ -333,6 +333,12 @@ function Footer() {
               >
                 <FaYoutube size={20} className="icon m-1" />
               </Link>
+              <Link
+                  target="_blank"
+                  to="https://g.co/kgs/6dqMdyG"
+                >
+                  <FaGoogle size={20} className="icon m-1" />
+                </Link>
             </div>
             <div>
               <p>
@@ -351,7 +357,7 @@ function Footer() {
               </p>
               <p>
                 <FaMapMarkedAlt className="text-white mx-1 fs-5" /> Regd. Office
-                : 3965/224 , 2nd floor City Market , Ajmeri Gate, Delhi-110006
+                : 3965/224 , 2nd floor, City Market , Ajmeri Gate, Delhi-110006
                 (INDIA)
               </p>
             </div>
