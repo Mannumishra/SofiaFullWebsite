@@ -110,8 +110,8 @@ const AllInstupmentProduct = () => {
                                 currentItems.map((item, index) => (
                                     <tr key={item._id}>
                                         <td>{index + 1}</td>
-                                        <td>{item.category.categoryName}</td>
-                                        <td>{item.instupment.instupmentName}</td>
+                                        <td>{item?.category?.categoryName}</td>
+                                        <td>{item?.instupment?.instupmentName}</td>
                                         <td>{item.productName}</td>
                                         <td><img src={`https://api.sofiasurgicals.com/${item.image}`} alt={item.productName} style={{ width: '50px', height: '50px' }} /></td>
                                         <td>
