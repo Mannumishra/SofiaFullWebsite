@@ -226,7 +226,7 @@ function Footer() {
         "https://api.sofiasurgicals.com/api/get-all-category"
       );
       console.log(res);
-      setCategoryData(res.data.data);
+      setCategoryData(res.data.data.slice(0, 6));
     } catch (error) {
       console.log(error);
     }
@@ -405,6 +405,7 @@ function Footer() {
                   </li>
                 );
               })}
+              <Link to='/OurProduct'> <li style={{ color: "white" }}>View All</li></Link>
             </ul>
           </div>
 
@@ -449,38 +450,38 @@ function Footer() {
                 <div className="form-group">
                   <div className="col mb-4">
                     <div className="countrySection">
-                    <input
-                      type="text"
-                      name="country"
-                      className="form-control"
-                      placeholder="Country*"
-                      value={formData.country}
-                      onChange={handleChange}
-                      onFocus={() => setShowSuggestions(true)}
-                      required
-                    />
-                    {showSuggestions && (
-                      <ul
-                        className="list-group position-absolute"
-                        style={{
-                          maxHeight: "200px",
-                          overflowY: "auto",
-                          zIndex: 1000,
-                          backgroundColor: "white",
-                        }}
-                      >
-                        {filteredCountries.map((country, index) => (
-                          <li
-                            key={index}
-                            className="list-group-item list-group-item-action"
-                            style={{ cursor: "pointer" }}
-                            onClick={() => handleSelect(country)}
-                          >
-                            {country}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+                      <input
+                        type="text"
+                        name="country"
+                        className="form-control"
+                        placeholder="Country*"
+                        value={formData.country}
+                        onChange={handleChange}
+                        onFocus={() => setShowSuggestions(true)}
+                        required
+                      />
+                      {showSuggestions && (
+                        <ul
+                          className="list-group position-absolute"
+                          style={{
+                            maxHeight: "200px",
+                            overflowY: "auto",
+                            zIndex: 1000,
+                            backgroundColor: "white",
+                          }}
+                        >
+                          {filteredCountries.map((country, index) => (
+                            <li
+                              key={index}
+                              className="list-group-item list-group-item-action"
+                              style={{ cursor: "pointer" }}
+                              onClick={() => handleSelect(country)}
+                            >
+                              {country}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   </div>
                 </div>
