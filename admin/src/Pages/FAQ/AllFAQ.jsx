@@ -12,7 +12,7 @@ const AllFAQ = () => {
         // Fetch FAQs from the server with pagination
         const fetchFaqs = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/get-faq', {
+                const response = await axios.get('https://api.sofiasurgicals.com/api/get-faq', {
                     params: {
                         page: currentPage,
                         limit: itemsPerPage,
@@ -32,7 +32,7 @@ const AllFAQ = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:8000/api/delete-faq/${id}`);
+            await axios.delete(`https://api.sofiasurgicals.com/api/delete-faq/${id}`);
             setFaqs(faqs.filter((faq) => faq._id !== id));
         } catch (error) {
             console.error("Error deleting FAQ:", error);

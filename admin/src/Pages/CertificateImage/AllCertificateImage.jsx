@@ -13,7 +13,7 @@ const AllCertificateImage = () => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/get-certi-images');  // Adjust API endpoint for images
+                const response = await axios.get('https://api.sofiasurgicals.com/api/get-certi-images');  // Adjust API endpoint for images
                 setImages(response.data);
                 setIsLoading(false);
             } catch (error) {
@@ -40,7 +40,7 @@ const AllCertificateImage = () => {
         if (confirmDelete.isConfirmed) {
             try {
                 // Delete the image from the backend
-                const response = await axios.delete(`http://localhost:8000/api/delete-certi-image/${imageId}`);  // Adjust API endpoint for image deletion
+                const response = await axios.delete(`https://api.sofiasurgicals.com/api/delete-certi-image/${imageId}`);  // Adjust API endpoint for image deletion
 
                 if (response.status === 200) {
                     // Remove the image from state (UI)
@@ -89,7 +89,7 @@ const AllCertificateImage = () => {
                                     <th scope="row">{index + 1}</th>
                                     <td>{image.name}</td>
                                     <td>
-                                        <img src={`http://localhost:8000/${image.image}`} alt="Gallery" width="150" height="100" />
+                                        <img src={`https://api.sofiasurgicals.com/${image.image}`} alt="Gallery" width="150" height="100" />
                                     </td>
                                     <td>
                                         <Link className="bt edit" to={`/edit-certificate/${image._id}`}>

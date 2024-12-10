@@ -37,7 +37,7 @@ const AddCertificateImage = () => {
 
         try {
             // Send POST request with image file
-            const response = await axios.post('http://localhost:8000/api/add-certi-image', formData, {
+            const response = await axios.post('https://api.sofiasurgicals.com/api/add-certi-image', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

@@ -28,7 +28,7 @@ const AddFAQ = ({ onCreate }) => {
         const { question, answer, staus } = formData;
 
         try {
-            await axios.post('http://localhost:8000/api/create-faq', {
+            await axios.post('https://api.sofiasurgicals.com/api/create-faq', {
                 question,
                 answer,
                 staus

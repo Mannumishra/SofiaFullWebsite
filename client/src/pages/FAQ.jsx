@@ -11,7 +11,7 @@ const FAQ = () => {
     const fetchFAQs = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('http://localhost:8000/api/get-all-faq');
+            const response = await axios.get('https://api.sofiasurgicals.com/api/get-all-faq');
             setFaqs(response.data);
         } catch (error) {
             console.error('Error fetching FAQs:', error);

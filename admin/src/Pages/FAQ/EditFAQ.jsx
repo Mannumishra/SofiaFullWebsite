@@ -18,7 +18,7 @@ const EditFAQ = () => {
         // Fetch existing FAQ data
         const fetchFAQ = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/get-single-faq/${id}`);
+                const response = await axios.get(`https://api.sofiasurgicals.com/api/get-single-faq/${id}`);
                 const { question, answer, status } = response.data;
                 setFormData({
                     question,
@@ -59,7 +59,7 @@ const EditFAQ = () => {
         };
 
         try {
-            await axios.put(`http://localhost:8000/api/update-faq/${id}`, data);
+            await axios.put(`https://api.sofiasurgicals.com/api/update-faq/${id}`, data);
             toast.success('FAQ updated successfully!');
             navigate('/all-faqs'); // Navigate to FAQ list after successful update
         } catch (error) {
