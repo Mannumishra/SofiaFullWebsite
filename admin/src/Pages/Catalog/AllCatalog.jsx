@@ -15,7 +15,7 @@ const AllCatalog = () => {
 
     const fetchCatalogs = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/api/all-catalog');
+            const response = await axios.get('https://api.sofiasurgicals.com/api/all-catalog');
             console.log(response)
             if (response.data.success) {
                 setCatalogs(response.data.data);
@@ -43,7 +43,7 @@ const AllCatalog = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const response = await axios.delete(`http://localhost:8000/api/delete-catalog/${id}`);
+                    const response = await axios.delete(`https://api.sofiasurgicals.com/api/delete-catalog/${id}`);
                     if (response.data.success) {
                         toast.success('Catalog deleted successfully');
                         setCatalogs(catalogs.filter((catalog) => catalog._id !== id));
@@ -95,14 +95,14 @@ const AllCatalog = () => {
                                         <td>{catalog.catalogName}</td>
                                         <td>
                                             {catalog.catalogImage ? (
-                                                <img src={`http://localhost:8000/${catalog.catalogImage}`} alt="Catalog" style={{ width: '100px', height: '100px' }} />
+                                                <img src={`https://api.sofiasurgicals.com/${catalog.catalogImage}`} alt="Catalog" style={{ width: '100px', height: '100px' }} />
                                             ) : (
                                                 <p>No Image</p>
                                             )}
                                         </td>
                                         <td>
                                             {catalog.catalogPDF ? (
-                                                <a href={`http://localhost:8000/${catalog.catalogPDF}`} target="_blank" rel="noopener noreferrer" className="btn btn-link">
+                                                <a href={`https://api.sofiasurgicals.com/${catalog.catalogPDF}`} target="_blank" rel="noopener noreferrer" className="btn btn-link">
                                                     View/Download PDF
                                                 </a>
                                             ) : (

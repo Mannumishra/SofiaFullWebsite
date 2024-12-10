@@ -112,7 +112,7 @@ const AddCatalog = () => {
                             className="form-control"
                             id="catalogImage"
                             onChange={handleFileChange}
-                              accept="image/*"
+                            accept="image/*"
                         />
                     </div>
                     <div className="col-md-6">
@@ -123,7 +123,7 @@ const AddCatalog = () => {
                             className="form-control"
                             id="catalogPDF"
                             onChange={handleFileChange}
-                              accept="application/pdf"
+                            accept="application/pdf"
                         />
                     </div>
                     <div className="col-12 text-center">
