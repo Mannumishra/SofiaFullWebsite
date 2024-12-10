@@ -13,7 +13,7 @@ const Header = () => {
 
   const handleLogout = () => {
     sessionStorage.removeItem('login'); // Remove login status
-    window.location.href='/login' // Redirect to login page
+    window.location.href = '/login' // Redirect to login page
   };
 
   return (
@@ -31,7 +31,7 @@ const Header = () => {
               <i className="fa-solid fa-globe"></i>
               Go To Website
             </a>
-            <div className="logout"  onClick={handleLogout}>
+            <div className="logout" onClick={handleLogout}>
               Log Out <i className="fa-solid fa-right-from-bracket"></i>
             </div>
           </div>
