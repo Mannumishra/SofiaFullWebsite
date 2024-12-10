@@ -30,10 +30,11 @@ function App() {
     // Disable specific keyboard shortcuts
     const disableShortcuts = (e) => {
       if (
-        e.ctrlKey && (e.key === "u" || e.key === "U") // View Source
-        || e.ctrlKey && (e.key === "s" || e.key === "S") // Save
-        || e.key === "F12" // DevTools
-        || (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) // Inspect
+        e.ctrlKey && (e.key === "u" || e.key === "U") || // View Source
+        e.ctrlKey && (e.key === "s" || e.key === "S") || // Save
+        e.key === "F12" || // DevTools
+        (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) || // Inspect
+        (e.ctrlKey && e.shiftKey && (e.key === "C" || e.key === "c")) // Copy / Inspect
       ) {
         e.preventDefault();
       }
@@ -46,6 +47,7 @@ function App() {
       document.removeEventListener("keydown", disableShortcuts);
     };
   }, []);
+
   return (
     <>
       <BrowserRouter>
