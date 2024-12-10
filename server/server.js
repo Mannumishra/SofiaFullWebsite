@@ -23,9 +23,9 @@ const CertiImageRouter = require("./Routes/CertiRouter");
 
 
 const app = express()
-app.use(cors());
 
 app.use(express.json())
+app.use(cors());
 app.use(express.urlencoded({ extended: true }))
 app.set(express.static("./Public"))
 app.use("/Public", express.static("Public"))
