@@ -121,7 +121,6 @@ const REviews = () => {
                                             name="image"
                                             accept="image/*"
                                             onChange={handleFileChange}
-                                            required
                                         />
                                     </div>
 
