@@ -4,13 +4,12 @@ import Swal from "sweetalert2";
 import "./CareerPage.css";
 import Loader from "../components/Loader/Loader";
 
-const CareerPage = () => {
+const REviews = () => {
     const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        applyPost: "",
-        resume: null,
+        name: '',
+        position: '',
+        details: '',
+        image: null,
     });
     const [isLoading, setIsLoading] = useState(false);
 
@@ -20,7 +19,7 @@ const CareerPage = () => {
     };
 
     const handleFileChange = (e) => {
-        setFormData({ ...formData, resume: e.target.files[0] });
+        setFormData({ ...formData, image: e.target.files[0] });
     };
 
     const handleSubmit = async (e) => {
@@ -28,13 +27,12 @@ const CareerPage = () => {
         setIsLoading(true)
         const formDataToSend = new FormData();
         formDataToSend.append("name", formData.name);
-        formDataToSend.append("email", formData.email);
-        formDataToSend.append("phone", formData.phone);
-        formDataToSend.append("applyPost", formData.applyPost);
-        formDataToSend.append("resume", formData.resume);
+        formDataToSend.append("position", formData.position);
+        formDataToSend.append("details", formData.details);
+        formDataToSend.append("image", formData.image);
 
         try {
-            const response = await axios.post("https://api.sofiasurgicals.com/api/apply-job", formDataToSend, {
+            const response = await axios.post("https://api.sofiasurgicals.com/api/add-textimonial", formDataToSend, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
             setIsLoading(false)
@@ -45,7 +43,7 @@ const CareerPage = () => {
                 confirmButtonText: "OK",
             });
 
-            setFormData({ name: "", email: "", phone: "", applyPost: "", resume: null });
+            setFormData({ name: "", position: "", details: "", image: null });
         } catch (error) {
             setIsLoading(false)
             Swal.fire({
@@ -67,21 +65,19 @@ const CareerPage = () => {
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="ourproduct">
-                                            <h2 className="product">Career</h2>
+                                            <h2 className="product">Write a Review</h2>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </section>
                         <div className="container-fluid" style={{ backgroundColor: "#CEE5FD" }}>
-                            <div className="career-page" >
+                            <div className="career-page">
                                 <p>
-                                    We are always interested in finding new talents to join <strong>Sofia Surgicals</strong>. You need to have a great personality
-                                    that shines through in everything you do and communicate, be committed to your work, eager to increase your knowledge,
-                                    and of course, have a unique skill to bring to the table.
+                                    We value your feedback and invite you to share your experience with <strong>Sofia Surgicals</strong>. Your review helps us to improve and provide the best service possible. Whether it's about our products, customer support, or overall experience, we would love to hear from you!
                                 </p>
                                 <p>
-                                    If you believe you are our next colleague, but none of the job openings below fits you, submit an open application.
+                                    Please take a moment to write your review below. Your input is greatly appreciated and helps us serve you better.
                                 </p>
                                 <form className="career-form" onSubmit={handleSubmit}>
                                     <div className="form-group">
@@ -96,44 +92,34 @@ const CareerPage = () => {
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label>Email</label>
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleInputChange}
-                                            required
-                                            placeholder="Enter your email"
-                                        />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Phone</label>
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            value={formData.phone}
-                                            onChange={handleInputChange}
-                                            required
-                                            placeholder="Enter your phone number"
-                                        />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Apply for Post</label>
+                                        <label>Position</label>
                                         <input
                                             type="text"
-                                            name="applyPost"
-                                            value={formData.applyPost}
+                                            name="position"
+                                            value={formData.position}
                                             onChange={handleInputChange}
                                             required
-                                            placeholder="Enter the post you're applying for"
+                                            placeholder="Enter your Profession"
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label>Resume (PDF only)</label>
+                                        <label>Write Comment</label>
+                                        <textarea
+                                            name="details"
+                                            value={formData.details}
+                                            onChange={handleInputChange}
+                                            rows={4}
+                                            className="form-control"
+                                            placeholder="Write Comment"
+                                            required
+                                        ></textarea>
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Image</label>
                                         <input
                                             type="file"
-                                            name="resume"
-                                            accept=".pdf"
+                                            name="image"
+                                            accept="image/*"
                                             onChange={handleFileChange}
                                             required
                                         />
@@ -148,8 +134,7 @@ const CareerPage = () => {
                     </>
             }
         </>
-
     );
 };
 
-export default CareerPage;
+export default REviews;

@@ -190,7 +190,7 @@ function Navbar() {
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
                 <li className="nav-item">
                   <Link
-                    className={`nav-link ${isActive("/")}`}
+                    className={`nav-link ${isActive("/") ? "active" : ""}`}
                     to="/"
                     onClick={closeNavbar}
                   >
@@ -199,7 +199,7 @@ function Navbar() {
                 </li>
                 <li className="nav-item">
                   <Link
-                    className={`nav-link ${isActive("/About-us")}`}
+                    className={`nav-link ${isActive("/About-us") ? "active" : ""}`}
                     to="/About-us"
                     onClick={closeNavbar}
                   >
@@ -218,7 +218,7 @@ function Navbar() {
                 </li>
                 <li className="nav-item">
                   <Link
-                    className={`nav-link ${isActive("/Certificates")}`}
+                    className={`nav-link ${isActive("/Certificates") ? "active" : ""}`}
                     to="/Certificates"
                     onClick={closeNavbar}
                   >
@@ -227,7 +227,7 @@ function Navbar() {
                 </li>
                 <li className="nav-item">
                   <Link
-                    className={`nav-link ${isActive("/Catalog")}`}
+                    className={`nav-link ${isActive("/Catalog") ? "active" : ""}`}
                     to="/Catalog"
                     onClick={closeNavbar}
                   >
@@ -236,7 +236,7 @@ function Navbar() {
                 </li>
                 <li className="nav-item">
                   <Link
-                    className={`nav-link ${isActive("/Contact-us")}`}
+                    className={`nav-link ${isActive("/Contact-us") ? "active" : ""}`}
                     to="/Contact-us"
                     onClick={closeNavbar}
                   >

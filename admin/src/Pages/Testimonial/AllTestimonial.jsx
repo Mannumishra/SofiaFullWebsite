@@ -10,7 +10,7 @@ const AllTestimonial = () => {
         const fetchTestimonials = async () => {
             try {
                 const response = await axios.get('https://api.sofiasurgicals.com/api/all-textimonial'); // Adjust this endpoint as per your backend
-                setTestimonials(response.data);
+                setTestimonials(response.data.reverse());
             } catch (error) {
                 console.error("Error fetching testimonials:", error);
             }
@@ -72,9 +72,9 @@ const AllTestimonial = () => {
                                     </Link>
                                 </td>
                                 <td>
-                                    <button 
-                                        onClick={() => handleDelete(testimonial._id)} 
-                                       className="bt delete"
+                                    <button
+                                        onClick={() => handleDelete(testimonial._id)}
+                                        className="bt delete"
                                     >
                                         Delete
                                     </button>

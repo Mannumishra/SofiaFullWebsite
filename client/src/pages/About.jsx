@@ -65,7 +65,7 @@ function About() {
                   </span>
                 </h2>
                 <p>
-                  Over 16 years of excellence in manufacturing,
+                  Over 28 years of excellence in manufacturing,
                   <br />
                   exporting, and supplying top-quality
                   <br />
@@ -161,7 +161,7 @@ function About() {
                 >
                   <div className="text-16">
                     <MdDiamond size={50} />
-                    <h2>16 Years</h2>
+                    <h2>28 Years</h2>
                     <p>Experience</p>
                   </div>
                 </div>
@@ -174,7 +174,7 @@ function About() {
                 >
                   <div className="text-16">
                     <img src={group} alt="" height={100} />
-                    <h2>9000+</h2>
+                    <h2>7500+</h2>
                     <p style={{ color: "#667085" }}>Customers</p>
                   </div>
                 </div>
@@ -189,7 +189,7 @@ function About() {
                 >
                   <div className="text-16">
                     <img src={earth} alt="" height={100} />
-                    <h2>140+</h2>
+                    <h2>18+</h2>
                     <p style={{ color: "#667085" }}>Countries</p>
                   </div>
                 </div>

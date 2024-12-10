@@ -3,11 +3,12 @@ import { Modal } from 'react-bootstrap';
 import certificates from '../assets/images/certificates.png';
 import backgroundImage from '../assets/images/certificatesback.png';
 import axios from 'axios';
+import Loader from '../components/Loader/Loader';
 
 function Certificates() {
     const [showModal, setShowModal] = useState(false);
     const [currentImage, setCurrentImage] = useState('');
-
+    const [loading, setLoading] = useState(true);
 
     //  CardData Array
 
@@ -20,6 +21,8 @@ function Certificates() {
                 // setIsLoading(false);
             } catch (error) {
                 // setIsLoading(false);
+            } finally {
+                setLoading(false); // Stop loader after data is fetched
             }
         };
 
@@ -34,6 +37,9 @@ function Certificates() {
     const handleCloseModal = () => {
         setShowModal(false);
     };
+    if (loading) {
+        return <Loader message="Fetching Certificates..." />;
+    }
 
     return (
         <>

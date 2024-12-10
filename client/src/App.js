@@ -16,6 +16,7 @@ import Thumbnail from './pages/Thumbnail.jsx';
 import Socialicons from './components/Socialicon.jsx';
 import InstrumentProduct from './pages/InstrumentProduct.jsx';
 import CareerPage from './pages/CareerPage.jsx';
+import REviews from './pages/REviews.jsx';
 function App() {
   return (
    <>
@@ -34,6 +35,7 @@ function App() {
         <Route path="/Catalog" element={<Catalog/>} />
         <Route path="/Contact-us" element={<ContactUs/>}/>
         <Route path="/career" element={<CareerPage/>}/>
+        <Route path="/write-review" element={<REviews/>}/>
       </Routes>
       <Socialicons/>
     <Footer/>

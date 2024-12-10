@@ -58,7 +58,7 @@ function Aboutsection() {
                   Innovation Since <span>2010</span>
                 </h2>
                 <p className="para">
-                  Our Story Founded in 2010, Sofia Surgicals Pvt. Ltd. has been at the forefront of orthopedic innovation. With a commitment to improving patient outcomes, our team of experts collaborates with leading surgeons and researchers to develop cutting-edge orthopedic implants. Sofia has an experience of 27 years as a Manufacturer since 1996. The company is engaged in manufacturing; Mini Fragment Plate, Small Fragment Plates, Large Fragment Plates, Hip Prosthesis, DHS/DCS Plates, Bone Screws , Locking Plates, Locking Screws , Intramedullary Nails, Spine Implants, Pins- Wires-Drill-Bits, Fixator Illizarow & Clamp and Power Tools as well as various Orthopedicle Instruments. Our Manufacturing unit is based in Delhi (INDIA). With the aim of serving patients and medical fraternity across the globe, we are always committed to provide the best products and services to ensure total satisfaction of the clients.
+                  Our Story Founded in 2010, Sofia Surgicals Pvt. Ltd. has been at the forefront of orthopedic innovation. With a commitment to improving patient outcomes, our team of experts collaborates with leading surgeons and researchers to develop cutting-edge orthopedic implants. Sofia has an experience of 28 years as a Manufacturer since 1996. The company is engaged in manufacturing; Mini Fragment Plate, Small Fragment Plates, Large Fragment Plates, Hip Prosthesis, DHS/DCS Plates, Bone Screws , Locking Plates, Locking Screws , Intramedullary Nails, Spine Implants, Pins- Wires-Drill-Bits, Fixator Illizarow & Clamp and Power Tools as well as various Orthopedicle Instruments. Our Manufacturing unit is based in Delhi (INDIA). With the aim of serving patients and medical fraternity across the globe, we are always committed to provide the best products and services to ensure total satisfaction of the clients.
                 </p>
               </div>
             </div>
@@ -90,7 +90,7 @@ function Aboutsection() {
                 >
                   <div className="text-16">
                     <img src={group} alt="" height={100} />
-                    <h2>9000+</h2>
+                    <h2>7500+</h2>
                     <p style={{ color: "#667085" }}>Customers</p>
                   </div>
                 </div>
@@ -105,8 +105,8 @@ function Aboutsection() {
                 >
                   <div className="text-16">
                     <img src={earth} alt="" height={100} />
-                    <h2>195</h2>
-                    <p style={{ color: "#667085" }}>World Wide</p>
+                    <h2>18+</h2>
+                    <p style={{ color: "#667085" }}>Countries</p>
                   </div>
                 </div>
                 <div

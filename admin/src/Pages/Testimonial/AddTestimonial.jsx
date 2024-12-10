@@ -116,6 +116,7 @@ const AddTestimonial = ({ onCreate }) => {
                             value={formData.details}
                             onChange={handleChange}
                             required
+                            rows={4}
                         />
                     </div>
                     <div className="col-md-6 form-check">

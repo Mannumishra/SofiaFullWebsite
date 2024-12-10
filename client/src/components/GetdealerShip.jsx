@@ -3,6 +3,7 @@ import axios from "axios";
 import { FaEnvelope, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import Loader from "./Loader/Loader";
 
 function GetdealerShip() {
   const countries = [
@@ -202,6 +203,7 @@ function GetdealerShip() {
   ];
   const [filteredCountries, setFilteredCountries] = useState(countries);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // const handleSelect = (country) => {
   //   setFormData({ ...formData, country });
@@ -220,7 +222,7 @@ function GetdealerShip() {
   // Handle form field changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-  
+
     if (name === "companyCountry") {
       setFilteredCountries(
         countries.filter((country) =>
@@ -229,29 +231,30 @@ function GetdealerShip() {
       );
       setShowSuggestions(true);
     }
-  
+
     setFormData({
       ...formData,
       [name]: value,
     });
   };
-  
+
 
   const handleSelect = (selectedCountry) => {
     setFormData({ ...formData, companyCountry: selectedCountry });
     setFilteredCountries(countries); // Reset the filtered countries list
     setShowSuggestions(false); // Hide suggestions
   };
-  
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setIsLoading(true);
     try {
       const response = await axios.post(
         "https://api.sofiasurgicals.com/api/send-dealership",
         formData
       );
+      setIsLoading(false);
       Swal.fire(
         "Success",
         "Dealership request submitted successfully!",
@@ -266,6 +269,7 @@ function GetdealerShip() {
         companyAddress: "",
       });
     } catch (error) {
+      setIsLoading(false);
       console.error("Error submitting form:", error);
       Swal.fire(
         "Error",
@@ -277,167 +281,170 @@ function GetdealerShip() {
 
   return (
     <>
-      <section
-        className="contact-section"
-        style={{ background: "linear-gradient(180deg, #CEE5FD, #FFFFFF)" }}
-      >
-        <div className="container py-4">
-          <div className="row pt-2 pb-5 get-dealership">
-            <div className="col-md-6">
-              <h2>Get Dealership</h2>
-              <p>
-                Sofia Surgicals is one of the most sold brands in the Indian
-                Orthopedic market...
-              </p>
-              <div className="iconSection">
-                <div className="pt-2">
-                  <FaEnvelope size={35} className="faIcon" />
-                  <Link to="" style={{ textDecoration: "none", color: "#000" }}>
-                    <span className="px-3">
-                      sofiasurgicals@gmail.com
-                      <br />
-                      <span className="px-5">exports@sofiasurgicals.com</span>
-                    </span>
-                  </Link>
-                </div>
-                <div className="pt-3">
-                  <FaPhone size={35} className="faIcon" />
-                  <Link to="" style={{ textDecoration: "none", color: "#000" }}>
-                    <span className="px-3">
-                      +91-9015555501
-                      <br />
-                      <span className="px-5">+91-11-41414592</span>
-                    </span>
-                  </Link>
-                </div>
-                <div className="pt-3">
-                  <FaMapMarkerAlt size={35} className="faIcon" />
-                  <Link to="" style={{ textDecoration: "none", color: "#000" }}>
-                    <span className="px-3">
-                      Regd. Off : 3965/224, 2nd floor City Market, <br />
-                      <span className="px-5">
-                        Ajmeri Gate Delhi-110006 (INDIA)
-                      </span>
-                    </span>
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-6 pt-2">
-              <form onSubmit={handleSubmit}>
-                <div className="row">
-                  <div className="col mb-4">
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="companyName"
-                      placeholder="Company Name*"
-                      value={formData.companyName}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <div className="col mb-4">
-                    <input
-                      type="number"
-                      className="form-control"
-                      name="companyNumber"
-                      placeholder="Company Contact No.*"
-                      value={formData.companyNumber}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col mb-4">
-                    <input
-                      type="email"
-                      className="form-control"
-                      name="companyEmail"
-                      placeholder="Company Email ID*"
-                      value={formData.companyEmail}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <div className="col mb-4">
-                    {/* <input type="text" className="form-control" name="companyCountry" placeholder="Country*" value={formData.companyCountry} onChange={handleChange} required /> */}
-                    <div className="col position-relative">
-                      <input
-                        type="text"
-                        name="companyCountry"
-                        className="form-control"
-                        placeholder="Country*"
-                        value={formData.companyCountry}
-                        onChange={handleChange}
-                        onFocus={() => setShowSuggestions(true)}
-                        required
-                      />
-                      {showSuggestions && (
-                        <ul
-                          className="list-group position-absolute w-100"
-                          style={{
-                            maxHeight: "200px",
-                            overflowY: "auto",
-                            zIndex: 1000,
-                            backgroundColor: "white",
-                          }}
-                        >
-                          {filteredCountries.map((country, index) => (
-                            <li
-                              key={index}
-                              className="list-group-item list-group-item-action"
-                              style={{ cursor: "pointer" }}
-                              onClick={() => handleSelect(country)}
-                            >
-                              {country}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
+      {
+        isLoading ? <Loader /> :
+          <section
+            className="contact-section"
+            style={{ background: "linear-gradient(180deg, #CEE5FD, #FFFFFF)" }}
+          >
+            <div className="container py-4">
+              <div className="row pt-2 pb-5 get-dealership">
+                <div className="col-md-6">
+                  <h2>Get Dealership</h2>
+                  <p>
+                    Sofia Surgicals is one of the most sold brands in the Indian
+                    Orthopedic market...
+                  </p>
+                  <div className="iconSection">
+                    <div className="pt-2">
+                      <FaEnvelope size={35} className="faIcon" />
+                      <Link to="" style={{ textDecoration: "none", color: "#000" }}>
+                        <span className="px-3">
+                          sofiasurgicals@gmail.com
+                          <br />
+                          <span className="px-5">exports@sofiasurgicals.com</span>
+                        </span>
+                      </Link>
+                    </div>
+                    <div className="pt-3">
+                      <FaPhone size={35} className="faIcon" />
+                      <Link to="" style={{ textDecoration: "none", color: "#000" }}>
+                        <span className="px-3">
+                          +91-9015555501
+                          <br />
+                          <span className="px-5">+91-11-41414592</span>
+                        </span>
+                      </Link>
+                    </div>
+                    <div className="pt-3">
+                      <FaMapMarkerAlt size={35} className="faIcon" />
+                      <Link to="" style={{ textDecoration: "none", color: "#000" }}>
+                        <span className="px-3">
+                          Regd. Off : 3965/224, 2nd floor City Market, <br />
+                          <span className="px-5">
+                            Ajmeri Gate Delhi-110006 (INDIA)
+                          </span>
+                        </span>
+                      </Link>
                     </div>
                   </div>
                 </div>
-                <div className="row">
-                  <div className="col mb-4">
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="companyCity"
-                      placeholder="City*"
-                      value={formData.companyCity}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
+
+                <div className="col-md-6 pt-2">
+                  <form onSubmit={handleSubmit}>
+                    <div className="row">
+                      <div className="col mb-4">
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="companyName"
+                          placeholder="Company Name*"
+                          value={formData.companyName}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                      <div className="col mb-4">
+                        <input
+                          type="number"
+                          className="form-control"
+                          name="companyNumber"
+                          placeholder="Company Contact No.*"
+                          value={formData.companyNumber}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col mb-4">
+                        <input
+                          type="email"
+                          className="form-control"
+                          name="companyEmail"
+                          placeholder="Company Email ID*"
+                          value={formData.companyEmail}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                      <div className="col mb-4">
+                        {/* <input type="text" className="form-control" name="companyCountry" placeholder="Country*" value={formData.companyCountry} onChange={handleChange} required /> */}
+                        <div className="col position-relative">
+                          <input
+                            type="text"
+                            name="companyCountry"
+                            className="form-control"
+                            placeholder="Country*"
+                            value={formData.companyCountry}
+                            onChange={handleChange}
+                            onFocus={() => setShowSuggestions(true)}
+                            required
+                          />
+                          {showSuggestions && (
+                            <ul
+                              className="list-group position-absolute w-100"
+                              style={{
+                                maxHeight: "200px",
+                                overflowY: "auto",
+                                zIndex: 1000,
+                                backgroundColor: "white",
+                              }}
+                            >
+                              {filteredCountries.map((country, index) => (
+                                <li
+                                  key={index}
+                                  className="list-group-item list-group-item-action"
+                                  style={{ cursor: "pointer" }}
+                                  onClick={() => handleSelect(country)}
+                                >
+                                  {country}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col mb-4">
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="companyCity"
+                          placeholder="City*"
+                          value={formData.companyCity}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col mb-4">
+                        <textarea
+                          className="form-control"
+                          name="companyAddress"
+                          rows="3"
+                          placeholder="Company Address*"
+                          value={formData.companyAddress}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col mb-4">
+                        <button type="submit" className="btn btn-primary px-4 w-30">
+                          Submit <span className="ms-2">→</span>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
-                <div className="row">
-                  <div className="col mb-4">
-                    <textarea
-                      className="form-control"
-                      name="companyAddress"
-                      rows="3"
-                      placeholder="Company Address*"
-                      value={formData.companyAddress}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col mb-4">
-                    <button type="submit" className="btn btn-primary px-4 w-30">
-                      Submit <span className="ms-2">→</span>
-                    </button>
-                  </div>
-                </div>
-              </form>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
+      }
     </>
   );
 }
