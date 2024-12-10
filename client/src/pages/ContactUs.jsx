@@ -441,26 +441,34 @@ function ContactUs() {
 
             <div className="container mt-2 mb-5">
               <div className="row px-3 px-md-5">
-                <div className="col-md-4 mb-4">
+                <div className="col-md-3 mb-4">
                   <div className="contact-card p-4 text-center h-100">
                     <FaPhone className="mb-3 faIcon" size={50} />
                     <p className="mb-1">+91-9015555501</p>
                     <p>+91-11-41414592</p>
                   </div>
                 </div>
-                <div className="col-md-4 mb-4">
+                <div className="col-md-3 mb-4">
                   <div className="contact-card p-4 text-center h-100">
                     <FaEnvelope className="mb-3 faIcon" size={50} />
                     <p className="mb-1">sofiasurgicals@gmail.com</p>
                     <p>exports@sofiasurgicals.com</p>
                   </div>
                 </div>
-                <div className="col-md-4 mb-4">
+                <div className="col-md-3 mb-4">
                   <div className="contact-card p-4 text-center h-100">
                     <FaMapMarkerAlt className="mb-3 faIcon" size={50} />
                     <p>
                       Regd. Office: 3965/224, 2nd floor, City Market, Ajmeri Gate,
                       Delhi-110006 (INDIA)
+                    </p>
+                  </div>
+                </div>
+                <div className="col-md-3 mb-4">
+                  <div className="contact-card p-4 text-center h-100">
+                    <FaMapMarkerAlt className="mb-3 faIcon" size={50} />
+                    <p>
+                      Factory : Plot No 74, HSIIDC, Industrial Area, Faridabad - 121004 (Haryana) INDIA
                     </p>
                   </div>
                 </div>

@@ -3,7 +3,6 @@ import {
   FaFacebook,
   FaInstagram,
   FaLinkedin,
-  FaPhoneAlt,
   FaSearch,
   FaWhatsapp,
   FaYoutube,
@@ -87,9 +86,13 @@ function Navbar() {
 
   const isActive = (path) => {
     const currentPath = window.location.pathname;
-    return currentPath === path || currentPath.startsWith(path);
-  };
 
+    // Check if the path matches exactly for Home
+    if (path === "/") {
+      return currentPath === "/";
+    }
+    return currentPath.startsWith(path);
+  };
 
 
   return (

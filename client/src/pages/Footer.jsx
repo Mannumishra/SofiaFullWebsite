@@ -367,6 +367,9 @@ function Footer() {
                       : 3965/224 , 2nd floor, City Market , Ajmeri Gate, Delhi-110006
                       (INDIA)
                     </p>
+                    <p>
+                      <FaMapMarkedAlt className="text-white mx-1 fs-5" /> Factory : Plot No 74, HSIIDC, Industrial Area, Faridabad - 121004 (Haryana) INDIA
+                    </p>
                   </div>
                   <div><Link to={`/write-review`} className="btn btn-primary">Write review</Link></div>
                 </div>

@@ -941,7 +941,6 @@ select:focus {
 }
 
 .image-frame {
-  /* Optional background styling */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -949,17 +948,12 @@ select:focus {
   padding: 20px;
   border-radius: 8px;
   height:500px;
-  /* Define a fixed height for the container */
  
 }
 
 .inner-image {
   width: 100%;
-  /* Ensure the image doesn't overflow horizontally */
   height: 100%;
-  /* Ensure the image doesn't overflow vertically */
-  object-fit: cover;
-  /* Maintain aspect ratio while fitting within the container */
   border-radius: 5px;
 }
 
