@@ -17,7 +17,7 @@ function About() {
     },
     {
       title: "Research and Development",
-      text: "At Sofia Surgicals Pvt. Ltd., innovation drives our R&amp;D efforts. Our state-of-the-art laboratories and partnerships with leading medical institutions enable us to pioneer new technologies and materials that enhance the performance and safety of our implants.",
+      text: "At Sofia Surgicals Pvt. Ltd., innovation drives our R&D efforts. Our state-of-the-art laboratories and partnerships with leading medical institutions enable us to pioneer new technologies and materials that enhance the performance and safety of our implants.",
     },
     {
       title: "Clinical Evidence",
