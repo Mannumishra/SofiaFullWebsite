@@ -70,7 +70,7 @@ const AllCatalog = () => {
                 </div>
             </div>
 
-         
+
 
             <section className="d-table">
                 {loading ? (

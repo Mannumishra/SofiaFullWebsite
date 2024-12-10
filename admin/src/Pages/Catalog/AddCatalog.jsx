@@ -63,11 +63,7 @@ const AddCatalog = () => {
 
         try {
             setIsLoading(true);
-            const response = await axios.post('https://api.sofiasurgicals.com/api/create-catalog', uploadData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
+            const response = await axios.post('https://api.sofiasurgicals.com/api/create-catalog', uploadData,);
             setIsLoading(false);
             if (response.data.success) {
                 toast.success('Catalog added successfully');

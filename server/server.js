@@ -25,14 +25,14 @@ const FAQRouter = require("./Routes/faqRoutes");
 
 const app = express()
 
-app.use(express.json())
-const corsOptions = {
-    origin: ['https://admin.sofiasurgicals.com', 'https://sofiasurgicals.com', 'https://www.sofiasurgicals.com'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-};
-app.use(cors(corsOptions));
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json({ limit: "50mb" }))
+// const corsOptions = {
+//     origin: ['https://admin.sofiasurgicals.com', 'https://sofiasurgicals.com', 'https://www.sofiasurgicals.com'],
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+// };
+app.use(cors());
+app.use(express.urlencoded({ extended: true, limit: "50mb" }))
 app.set(express.static("./Public"))
 app.use("/Public", express.static("Public"))
 
