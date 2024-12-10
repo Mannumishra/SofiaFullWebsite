@@ -304,7 +304,7 @@ function Footer() {
                 {/* Company Info */}
                 <div className="col-lg-3 col-md-6 mb-4">
                   <h4 className="mb-3">
-                    <img src={footerLogo} alt="Sofia Logo" width={"210px"} />
+                    <img src={footerLogo} alt="Sofia Logo" width={"250px"} height={"100px"} />
                   </h4>
                   <p>
                     Your Trusted Source for Quality Orthopedic Implants & Instruments

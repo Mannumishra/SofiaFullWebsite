@@ -205,7 +205,7 @@ function Catalog() {
     const [selectedCatalogId, setSelectedCatalogId] = useState("");  // State to hold catalog ID
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
-
+    const [isLoading, setIsLoading] = useState(false);
 
 
     const [formData, setFormData] = useState({
@@ -260,6 +260,7 @@ function Catalog() {
 
     const postData = async (e) => {
         e.preventDefault();
+        setIsLoading(true)
         try {
             const updatedFormData = { ...formData, catelogId: selectedCatalogId }; // Change catalogId to catelogId
             const response = await axios.post("https://api.sofiasurgicals.com/api/download-catelog", updatedFormData);
@@ -267,13 +268,15 @@ function Catalog() {
                 window.open(response.data.catalogUrl, "_blank");
             }
             handleCloseModal();
+            setIsLoading(false)
         } catch (error) {
             console.log(error);
+            setIsLoading(false)
         }
     };
 
-    if (loading) {
-        return <Loader message="Fetching Catalogue..." />;
+    if (loading || isLoading) {
+        return <Loader message="Loading, please wait..." />;
     }
 
     return (

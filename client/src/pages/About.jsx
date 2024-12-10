@@ -185,7 +185,8 @@ function About() {
                   class="rectangle-icon text-center d-flex"
                 >
                   <div className="text-16">
-                    <img src={man} alt="" height={100} />
+                    <img src={man} alt="" height={60} />
+                    <h2>Best</h2>
                     <p style={{ color: "#667085" }}>We are proud to be recognized as one of India's leading orthopedic manufacturing companies.</p>
                   </div>
                 </div>
