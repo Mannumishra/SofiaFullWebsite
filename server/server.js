@@ -26,7 +26,12 @@ const FAQRouter = require("./Routes/faqRoutes");
 const app = express()
 
 app.use(express.json())
-app.use(cors());
+const corsOptions = {
+    origin: ['https://admin.sofiasurgicals.com', 'https://sofiasurgicals.com', 'https://www.sofiasurgicals.com'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+};
+app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }))
 app.set(express.static("./Public"))
 app.use("/Public", express.static("Public"))

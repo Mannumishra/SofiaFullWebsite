@@ -15,6 +15,6 @@ const CatalogSchema = new mongoose.Schema({
     }
 })
 
-const Catalog = mongoose.model("catalog" ,CatalogSchema)
+const Catalog = mongoose.model("catalog", CatalogSchema)
 
 module.exports = Catalog
