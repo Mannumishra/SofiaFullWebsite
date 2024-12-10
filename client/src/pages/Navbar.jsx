@@ -237,6 +237,13 @@ function Navbar() {
                     Catalogue
                   </Link>
                 </li>
+                <li>
+                <Link style={{textDecoration:'none' , color:'var(--bs-nav-link-color)'}} to="GetdealerShip" onClick={closeNavbar}>
+                  <span className="cta-button-responsive mb-2 mb-md-0">
+                  Get Dealership
+                  </span>
+                  </Link>
+                </li>
                 <li className="nav-item">
                   <Link
                     className={`nav-link ${isActive("/Contact-us") ? "active" : ""}`}

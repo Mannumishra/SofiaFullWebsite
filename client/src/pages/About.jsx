@@ -187,7 +187,7 @@ function About() {
                   <div className="text-16">
                     <img src={man} alt="" height={60} />
                     <h2>Best</h2>
-                    <p style={{ color: "#667085" }}>We are proud to be recognized as one of India's leading orthopedic manufacturing companies.</p>
+                    <p className="about-icon-content" style={{ color: "#667085"}}>We are proud to be recognized as one of India's leading orthopedic manufacturing companies.</p>
                   </div>
                 </div>
               </div>

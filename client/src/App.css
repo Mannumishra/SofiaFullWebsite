@@ -226,6 +226,9 @@ input::placeholder {
   cursor: pointer;
   /* margin-left: 2rem; */
 }
+.cta-button-responsive{
+  display: none;
+}
 
 .cta-button {
   background-color: #0077cc;
@@ -1148,8 +1151,9 @@ input::placeholder {
     height: 100px;
   }
 
-  .circle-icon {
+  .circle-icon , .square-icon , .rectangle-icon {
     height: 200px;
+    margin: 0 5px;
     width: 200px;
   }
 
@@ -1176,6 +1180,12 @@ input::placeholder {
   .cta-button {
     display: none;
   }
+
+  .cta-button-responsive{
+    display: block;
+    text-decoration: none;
+  }
+  
 
   .navbar-brand .logoImg {
     width: 200px;
@@ -1214,10 +1224,13 @@ input::placeholder {
     margin-bottom: 12px;
   }
 
+  .about-icon-content{
+    font-size: 10px;
+  }
+
   .text-center img {
-    height: 100px;
+    height: 80px;
     margin-top: 0px;
-    width: 100%;
   }
 
   .card {
