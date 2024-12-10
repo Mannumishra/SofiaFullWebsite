@@ -9,6 +9,7 @@ import Aboutsection from '../components/Aboutsection';
 import Testimonials from '../components/Testimonials';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import FAQ from './FAQ';
 
 function Home() {
   const [videos, setVideos] = useState([]);
@@ -112,6 +113,12 @@ function Home() {
         <div className="row">
           <div className="col-md-12">
             <Testimonials />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-md-12">
+            <FAQ />
           </div>
         </div>
       </section>

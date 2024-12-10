@@ -268,6 +268,21 @@ const Header = () => {
               </Link>
             </li>
 
+            <li>
+              <Link
+                to="/all-faqs"
+                className={
+                  location.pathname === '/all-faqs' ||
+                    location.pathname === '/add-faq' ||
+                    location.pathname.startsWith('/edit-faq') // Check for dynamic edit-testimonial routes
+                    ? 'active-link'
+                    : ''
+                }
+                onClick={handletoggleBtn}
+              >
+                <i className="fa-solid fa-tag"></i> Manage FAQs
+              </Link>
+            </li>
             <button className='logout mb-5' onClick={handleLogout}>Log Out <i className="fa-solid fa-right-from-bracket"></i></button>
           </ul>
         </div>

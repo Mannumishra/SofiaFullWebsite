@@ -20,6 +20,7 @@ const VedioRouter = require("./Routes/VedioRouter")
 const GalleryImageRouter = require("./Routes/GalleryRouter")
 const EventImageRouter = require("./Routes/EventImageRouter");
 const CertiImageRouter = require("./Routes/CertiRouter");
+const FAQRouter = require("./Routes/faqRoutes");
 
 
 const app = express()
@@ -51,6 +52,7 @@ app.use("/api", VedioRouter)
 app.use("/api", GalleryImageRouter)
 app.use("/api", EventImageRouter)
 app.use("/api", CertiImageRouter)
+app.use("/api", FAQRouter)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server Is Running At ${process.env.PORT}`)

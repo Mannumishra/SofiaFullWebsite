@@ -50,6 +50,9 @@ import Login from '../auth/Login'
 import AllCertificateImage from '../../Pages/CertificateImage/AllCertificateImage'
 import AddCertificateImage from '../../Pages/CertificateImage/AddCertificateImage'
 import EditCertificateImage from '../../Pages/CertificateImage/EditCertificateImage'
+import AllFAQ from '../../Pages/FAQ/AllFAQ'
+import AddFAQ from '../../Pages/FAQ/AddFAQ'
+import EditFAQ from '../../Pages/FAQ/EditFAQ'
 
 const Home = () => {
   const login = sessionStorage.getItem("login")
@@ -129,6 +132,10 @@ const Home = () => {
                 <Route path={"/all-tags"} element={<AllTags />} />
                 <Route path={"/add-tag"} element={<AddTag />} />
                 <Route path={"/edit-tag/:id"} element={<EditTag />} />
+
+                <Route path={"/all-faqs"} element={<AllFAQ />} />
+                <Route path={"/add-faq"} element={<AddFAQ />} />
+                <Route path={"/edit-faq/:id"} element={<EditFAQ />} />
 
                 {/* --- Banners --- */}
                 <Route path={"/all-banners"} element={<AllBanner />} />

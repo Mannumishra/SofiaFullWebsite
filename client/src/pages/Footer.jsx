@@ -399,6 +399,11 @@ function Footer() {
                         Our Certificates
                       </Link>
                     </li>
+                    <li>
+                      <Link to="/faq" className="text-white">
+                        FAQs
+                      </Link>
+                    </li>
                   </ul>
                 </div>
 
