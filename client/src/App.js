@@ -1,6 +1,6 @@
 
 import './App.css';
-import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from './pages/Navbar';
 import Home from './pages/Home';
 import Footer from './pages/Footer';
@@ -18,31 +18,58 @@ import InstrumentProduct from './pages/InstrumentProduct.jsx';
 import CareerPage from './pages/CareerPage.jsx';
 import REviews from './pages/REviews.jsx';
 import FAQ from './pages/FAQ.jsx';
+import { useEffect } from 'react';
 function App() {
+  useEffect(() => {
+    // Disable right-click context menu
+    const disableRightClick = (e) => {
+      e.preventDefault();
+    };
+    document.addEventListener("contextmenu", disableRightClick);
+
+    // Disable specific keyboard shortcuts
+    const disableShortcuts = (e) => {
+      if (
+        e.ctrlKey && (e.key === "u" || e.key === "U") // View Source
+        || e.ctrlKey && (e.key === "s" || e.key === "S") // Save
+        || e.key === "F12" // DevTools
+        || (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i")) // Inspect
+      ) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener("keydown", disableShortcuts);
+
+    // Cleanup event listeners on component unmount
+    return () => {
+      document.removeEventListener("contextmenu", disableRightClick);
+      document.removeEventListener("keydown", disableShortcuts);
+    };
+  }, []);
   return (
-   <>
-    <BrowserRouter>
-    <Navbar/>
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/About-us" element={<About/>}/>
-        <Route path="/Ourproduct" element={<OurProduct/>} />
-        <Route path="/Implants/:categoryName" element={<Implants/>}/>
-        <Route path="/Instruments/:categoryName" element={<Instruments/>} />
-        <Route path="/inplants-details/:name" element={<Thumbnail/>}/>
-        <Route path="/instrument-details/:name" element={<InstrumentProduct/>}/>
-         <Route path="/GetdealerShip" element={<GetdealerShip/>} /> 
-        <Route path="/Certificates" element={<Certificates/>} />
-        <Route path="/Catalog" element={<Catalog/>} />
-        <Route path="/Contact-us" element={<ContactUs/>}/>
-        <Route path="/career" element={<CareerPage/>}/>
-        <Route path="/write-review" element={<REviews/>}/>
-        <Route path="/faq" element={<FAQ/>}/>
-      </Routes>
-      <Socialicons/>
-    <Footer/>
-  </BrowserRouter>
-   </>
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/About-us" element={<About />} />
+          <Route path="/Ourproduct" element={<OurProduct />} />
+          <Route path="/Implants/:categoryName" element={<Implants />} />
+          <Route path="/Instruments/:categoryName" element={<Instruments />} />
+          <Route path="/inplants-details/:name" element={<Thumbnail />} />
+          <Route path="/instrument-details/:name" element={<InstrumentProduct />} />
+          <Route path="/GetdealerShip" element={<GetdealerShip />} />
+          <Route path="/Certificates" element={<Certificates />} />
+          <Route path="/Catalog" element={<Catalog />} />
+          <Route path="/Contact-us" element={<ContactUs />} />
+          <Route path="/career" element={<CareerPage />} />
+          <Route path="/write-review" element={<REviews />} />
+          <Route path="/faq" element={<FAQ />} />
+        </Routes>
+        <Socialicons />
+        <Footer />
+      </BrowserRouter>
+    </>
   );
 }
 
