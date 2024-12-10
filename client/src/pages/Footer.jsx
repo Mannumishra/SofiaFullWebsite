@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import footerLogo from "../assets/images/sofia.png";
+import footerLogo from "../assets/images/footerlogo.png";
 import {
   FaEnvelope,
   FaFacebook,
