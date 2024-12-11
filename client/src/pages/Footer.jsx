@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import footerLogo from "../assets/images/sofiafooterlogo.png";
+import footerLogo from "../assets/images/sofiafooterlogoo.png";
 import {
   FaEnvelope,
   FaFacebook,
@@ -303,8 +303,8 @@ function Footer() {
               <div className="row">
                 {/* Company Info */}
                 <div className="col-lg-3 col-md-6 mb-4">
-                  <h4 className="mb-3">
-                    <img src={footerLogo} alt="Sofia Logo" width={"250px"} height={"60px"} />
+                  <h4 className="mb-3" style={{backgroundColor:"#CEE5FD" ,width:"200px"}}>
+                    <img src={footerLogo} alt="Sofia Logo" width={"200px"} height={"40px"} />
                   </h4>
                   <p>
                     Your Trusted Source for Quality Orthopedic Implants & Instruments
